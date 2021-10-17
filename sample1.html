@@ -40,6 +40,7 @@
             }
 
             renderframe() {          
+                this.ctx.clearRect(-this.ss, -this.ss, this.ss * 2, this.ss * 2);
                 this.drawStaticBackground();      
                 this.drawTime();
             }

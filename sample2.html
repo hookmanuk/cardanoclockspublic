@@ -40,9 +40,10 @@
         this.drawNumbers();                       
     }
 
-    renderframe() {          
+    renderframe() {         
+        this.ctx.clearRect(-this.ss, -this.ss, this.ss * 2, this.ss * 2);
         this.drawStaticBackground();      
-        this.drawTime();
+        this.drawTime();        
     }
 
     formatNumber(n) {
@@ -265,7 +266,7 @@
                 default:
                     break;                    
             }
-        }    
+        }            
     }
 
     drawHand(ctx, pos, length, width, transparentratio, colour, neglength) {
