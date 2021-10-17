@@ -52,3 +52,14 @@ body {
 .clockscontainer canvas {
     margin: auto;
 }
+
+.footericons {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.footericons img {
+    width:48px;
+    color: #FFFFFF;
+    margin:20px;    
+}
