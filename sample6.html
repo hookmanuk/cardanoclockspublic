@@ -14,11 +14,11 @@
                 this.backgroundColour = 'rgba(0,0,0,0)';
                 this.clockColour = '#FDFFFC';
                 this.handsColour = '#222222';
-                this.numbersType = 'none';
-                this.secondHandType = 'red';
+                this.numbersType = 'numbers';
+                this.secondHandType = 'none';
                 this.handsEndType = 'rounded';
-                this.handsWidthType = 'thin';
-                this.handsCentreType = 'circle';
+                this.handsWidthType = 'thick';
+                this.handsCentreType = 'point';
                 this.handsLengthType = 'extended';
                 this.backgroundType = 'fractal';
                 this.borderType = 'nothing';
@@ -423,7 +423,7 @@
         var x = 0;
         var y = 0;
         var xt = 0;
-        var res = 1;
+        var res = 2;
         
         this.ctxfractal.clearRect(0, 0, this.ss, this.ss);
         this.ctxfractal.beginPath();  
