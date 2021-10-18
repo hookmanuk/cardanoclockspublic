@@ -1,26 +1,26 @@
 <html>
 <body style="margin:0;">            
 <div class="clockdiv" style="width:80%; margin:auto;">
-    <canvas style="padding: 0; border-radius: 50%; position:absolute; top:0; left:0;" id="canvas5fractal"></canvas>  
-    <canvas style="padding: 0; position:absolute; top:0; left:0;" id="canvas5"></canvas>                  
+    <canvas style="padding: 0; border-radius: 50%; position:absolute; top:0; left:0;" id="myCanvas"></canvas>  
+    <canvas style="padding: 0; position:absolute; top:0; left:0;" id="canvas6"></canvas>                  
 </div>
     
     <script>
-        class renderclocksample5 {
+        class renderclocksample6 {
             constructor() {       
                             
-                this.canvas = document.getElementById("canvas5");        
+                this.canvas = document.getElementById("canvas6");        
                 
                 this.backgroundColour = 'rgba(0,0,0,0)';
                 this.clockColour = '#FDFFFC';
-                this.handsColour = '#222222';
-                this.numbersType = 'numbers';
-                this.secondHandType = 'none';
+                this.handsColour = '#FDFFFC';
+                this.numbersType = 'none';
+                this.secondHandType = 'handscolour';
                 this.handsEndType = 'rounded';
-                this.handsWidthType = 'thick';
-                this.handsCentreType = 'point';
+                this.handsWidthType = 'tapered';
+                this.handsCentreType = 'circle';
                 this.handsLengthType = 'extended';
-                this.backgroundType = 'fractal';
+                this.backgroundType = 'therefresh';
                 this.borderType = 'nothing';
                 this.dimensionType = '3d';
                 this.hourHandType = 'standard';      
@@ -30,11 +30,11 @@
                 //this.radius = this.radius * 0.85;
                 this.renderframe();
 
-                if (this.backgroundType == "fractal")
+                if (this.backgroundType == "therefresh")
                 {                                                                       
-                    this.initFractal();                    
+                    this.updateTheRefresh();
                     setInterval(this.renderframe.bind(this), 1000);                    
-                    setInterval(this.updateFractal.bind(this, 1000), 60000);
+                    setInterval(this.updateTheRefresh.bind(this), 60000);
                 }
                 else
                 {
@@ -63,7 +63,14 @@
             this.radius = this.canvas.height / 2;
             this.ctx.translate(this.radius, this.radius);
             
-            setTimeout(this.updateFractal.bind(this, 1), 1);            
+            //if (this.backgroundType = 'fractal')
+            //{
+            //    setTimeout(this.updateFractal.bind(this, 1), 1);            
+            //}
+            if (this.backgroundType = 'therefresh')
+            {
+                setTimeout(this.updateTheRefresh.bind(this, 1), 1);            
+            }
         }
         //this.canvas.style.marginTop = "-" + this.ss * 0.8 + "px"; //account for 20% margin                            
 
@@ -82,7 +89,7 @@
         var grad;
 
         //centre
-        if (this.backgroundType != "fractal")
+        if (this.backgroundType != "fractal" && this.backgroundType != "therefresh")
         {
             this.ctx.beginPath();
             this.ctx.arc(0, 0, this.radius, 0, 2 * Math.PI);    
@@ -463,9 +470,55 @@
         this.cimag=.156+.4*Math.cos(this.frame/(3.14*40));   // of the c point
         this.drawFractal();
     }
+
+    updateTheRefresh()
+    {
+        this.canvasrefresh = document.getElementById('myCanvas');
+        this.canvasrefresh.width = this.ss;
+        this.canvasrefresh.height = this.ss;  
+        //canvas.width =550;
+        //canvas.height = 550;
+        //canvas.style.width = '100vw';
+        //canvas.style.height = '100vh';
+        this.canvasrefresh.getContext('2d').scale(2,2);
+
+
+        var c = document.getElementById("myCanvas");
+        var ctx = c.getContext("2d");
+        var grd = ctx.createLinearGradient(0, 0, Math.floor(Math.random() * 550), Math.floor(Math.random() * 550));
+        grd.addColorStop(Math.random(), "#f50c0c");
+        grd.addColorStop(Math.random(), "#ef5c0c");
+        grd.addColorStop(Math.random(), "#eb7c08");
+        grd.addColorStop(Math.random(), "#edb404");
+        grd.addColorStop(Math.random(), "#ffdc77");
+
+        ctx.fillStyle = grd;
+        ctx.fillRect(-this.ss/2, -this.ss/2, this.ss, this.ss);
+
+        var c=document.getElementById("myCanvas");
+        var cxt=c.getContext("2d");
+        var centerX = Math.floor(Math.random() * 200 / 550 * this.ss);
+        var centerY = Math.floor(Math.random() * 350 /550 * this.ss);
+        cxt.moveTo(centerX, centerY);
+
+        var gap = Math.floor(Math.random() * 1) + .005; // increase this for spacing between spiral lines also bigger smaller
+        var STEPS_PER_ROTATION = Math.floor(Math.random() * 500) + 1; // increasing this makes the curve smoother
+
+        var increment = Math.floor(Math.random() * 400) + .01*Math.PI/STEPS_PER_ROTATION;//lower=darker
+        var theta = increment;
+        while( theta < Math.floor(Math.random() * 150) + 35000) {//bigger or smaller
+           var newX = centerX + theta * Math.cos(theta) * gap;
+           var newY = centerY + theta * Math.sin(theta) * gap;
+           cxt.lineTo(newX, newY);
+           theta = theta + increment;
+                }
+        ctx.strokeStyle = "#000000";
+        ctx.lineWidth = .5;
+        ctx.stroke(); // draw
+    }
 }           
 
-        new renderclocksample5();
-    </script>    
+        new renderclocksample6();
+    </script>        
 </body>
 </html>
