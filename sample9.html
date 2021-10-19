@@ -1,0 +1,593 @@
+<html>
+<body style="margin:0;">            
+<div class="clockdiv" style="width:80%; margin:auto;">
+    <canvas style="padding: 0; border-radius: 50%; position:absolute; top:0; left:0;" id="canvas"></canvas>  
+    <canvas style="padding: 0; position:absolute; top:0; left:0;" id="canvas9"></canvas>                  
+</div>
+<script src="js\webglshadertoy.min.js"></script>
+    
+    <script>
+       canvas = document.getElementById("canvas9");        
+                
+       backgroundColour = 'rgba(0,0,0,0)';
+                clockColour = '#FDFFFC';
+                handsColour = '#FDFFFC';
+                numbersType = 'none';
+                secondHandType = 'red';
+                handsEndType = 'rounded';
+                handsWidthType = 'thin';
+                handsCentreType = 'circle';
+                handsLengthType = 'extended';
+                backgroundType = 'webgl';
+                borderType = 'nothing';
+                dimensionType = '3d';
+                hourHandType = 'standard';      
+
+                fps = 60;                
+                
+                //radius = radius * 0.85;
+                renderframe();
+
+                canvasgl = document.getElementById("canvas");
+            
+                canvasgl.width = ss;
+                canvasgl.height = ss;  
+                
+                setInterval(renderframe.bind(this), 1000);                                       
+            
+
+    function drawStaticBackground() {            
+        //ctx.arc(0, 0, radius, 0 , ss * Math.PI);    
+        ctx.fillStyle = backgroundColour;
+        ctx.fillRect(-ss, -ss, ss * 2, ss * 2);  
+        ctx.restore();  
+        drawFace();         
+        drawNumbers();                       
+    }
+    
+    function renderframe() {     
+        body = document.querySelector("body");
+        var oldss = ss;
+        ss = (body.clientWidth < body.clientHeight ? body.clientWidth : body.clientHeight) *0.8;                
+        if (ss != oldss)
+        {
+            canvas.width = ss;
+            canvas.height = ss;      
+            ctx = canvas.getContext("2d");        
+            radius = canvas.height / 2;
+            ctx.translate(radius, radius);
+                            
+        }
+        //canvas.style.marginTop = "-" + ss * 0.8 + "px"; //account for 20% margin                            
+
+        ctx.clearRect(-ss, -ss, ss * 2, ss * 2);
+        drawStaticBackground();      
+        drawTime();
+    }
+
+    function formatNumber(n) {
+        return n.toString().padStart(2,"0");
+    }
+
+    
+
+    function drawFace() {
+        var grad;
+
+        //centre
+        if (backgroundType != "webgl")
+        {
+            ctx.beginPath();
+            ctx.arc(0, 0, radius, 0, 2 * Math.PI);    
+            ctx.fillStyle = clockColour;    
+            ctx.fill();    
+        }
+        
+
+        //border
+        if (borderType != "nothing")
+        {
+            if (borderType == "gradient")
+            {
+                grad = ctx.createRadialGradient(0, 0 ,radius * 0.9, 0, 0, radius * 1);
+                grad.addColorStop(0, clockColour);
+                grad.addColorStop(0.5, handsColour);
+                grad.addColorStop(1, clockColour);
+                ctx.strokeStyle = grad;
+            }
+            else
+            {
+                ctx.strokeStyle = handsColour;
+            }
+            ctx.lineWidth = radius*0.03;
+            ctx.stroke();
+        }
+        
+
+        if (backgroundType == "cardano")
+        {
+            drawCardanoLogo();        
+        }        
+
+        //border
+        //grad = ctx.createRadialGradient(0, 0 ,radius * 0.95, 0, 0, radius * 1.05);
+        //grad.addColorStop(0, clockColour);
+        //grad.addColorStop(0.5, 'white');
+        //grad.addColorStop(1, clockColour);
+        //ctx.strokeStyle = grad;
+        //ctx.lineWidth = radius*0.1;
+        //ctx.stroke();    
+
+        //ctx.beginPath();
+        //ctx.arc(0, 0, radius * 0.1, 0, 2 * Math.PI);
+        //ctx.fillStyle = clockColour;
+        //ctx.fill();              
+    }
+
+    function drawNumbers() {
+        var ang;
+        var num;
+        ctx.font = radius * 0.15 + "px arial";
+        ctx.textBaseline = "middle";
+        ctx.textAlign = "center";
+        ctx.fillStyle = handsColour;
+
+        switch (numbersType) {
+            case "numbers":
+                for(num = 1; num < 13; num++){
+                    ang = num * Math.PI / 6;
+                    ctx.rotate(ang);
+                    ctx.translate(0, -radius * 0.85);
+                    ctx.rotate(-ang);
+                    ctx.fillText(num.toString(), 0, 0);
+                    ctx.rotate(ang);
+                    ctx.translate(0, radius * 0.85);
+                    ctx.rotate(-ang);
+                }
+                break;
+            case "somedashes":
+                for(num = 0; num < 12; num++){
+                    ang = num * Math.PI / 6;                                
+                    drawHand(ctx, ang, radius*0.95, radius*0.02, (num % 3 ? 0.91 : 0.87));
+                }
+                break;
+            case "alldashes":
+                for(num = 0; num < 60; num++){
+                    ang = num * Math.PI / 30;                                
+                    startdashratio = (num % 15 == 0 ? 0.85 : (num % 5 == 0 ? 0.88 : 0.92));
+                    drawHand(ctx, ang, radius*0.95, radius*0.02, startdashratio);
+                }
+                break;
+            case "numbersdashes":
+                    for(num = 0; num < 60; num++){
+                        ang = num * Math.PI / 30;                                
+                        startdashratio = (num % 15 == 0.85 ? 0 : (num % 5 == 0 ? 0.88 : 0.92));     
+                        
+                        drawHand(ctx, ang, radius*0.95, radius*0.02, startdashratio);                                        
+                        if (startdashratio == 0.88)
+                        {                        
+                            ctx.rotate(ang);
+                            ctx.translate(0, -radius * 0.77);
+                            ctx.rotate(-ang);
+                            ctx.fillText((num == 0 ? 12 : num.toString() / 5), 0, 0);
+                            ctx.rotate(ang);
+                            ctx.translate(0, radius * 0.77);
+                            ctx.rotate(-ang);
+                        }
+                    }
+                    break;
+            case "bits":
+                for(num = 1; num < 13; num++){
+                    ang = num * Math.PI / 6;
+                    ctx.rotate(ang);
+                    ctx.translate(0, -radius * 0.82);
+                    ctx.rotate(-ang);                    
+                    ctx.fillText(num.toString(2).replaceAll('1','I').padStart(4,'0'), 0, 0);
+                    ctx.rotate(ang);
+                    ctx.translate(0, radius * 0.82);
+                    ctx.rotate(-ang);
+                }
+                break;
+            case "nothing":
+                break;
+        }    
+    }
+
+    function drawTime() {
+        var now = new Date();
+        var hour = now.getHours();
+        var minute = now.getMinutes();
+        var second = now.getSeconds();
+        //hour
+        hour = hour%12;
+        hour = (hour*Math.PI/6)+(minute*Math.PI/(6*60))+(second*Math.PI/(360*60));    
+        var ang = now.getHours()%12 * 30 + (now.getMinutes()*0.5) - 90;
+
+        ctx.save();
+        if (dimensionType == "3d")
+        {            
+            ctx.shadowBlur = 5;
+            ctx.shadowColor = '#222222';
+            ctx.shadowOffsetX = -4;
+            ctx.shadowOffsetY = 3;
+        }        
+
+        if (hourHandType == "cutout")
+        {
+            ctx.beginPath();
+            ctx.rotate(ang * Math.PI/180);
+            ctx.arc(0, 0, radius, 0.09 * Math.PI, 1.91 * Math.PI);                
+            ctx.lineTo(0, 0);
+            ctx.closePath();
+            ctx.fillStyle = handsColour;    
+            ctx.fill();    
+            ctx.rotate(-ang * Math.PI/180);                                     
+        }
+        
+        //middle circle
+        if (handsCentreType == "circle" || handsCentreType == "circle")
+        {
+            ctx.beginPath();
+            ctx.arc(0, 0, radius * 0.05, 0, 2 * Math.PI);
+            ctx.fillStyle = (hourHandType == "cutout" ? clockColour : handsColour);
+            ctx.fill();
+        }        
+
+        if (hourHandType == "circle")
+        {                        
+            x = Math.cos(ang *  Math.PI / 180) * radius * 0.6;
+            y = Math.sin(ang *  Math.PI / 180) * radius * 0.6;            
+
+            var gradient = ctx.createRadialGradient(x + radius * 0.025, y - radius * 0.02, radius * 0.01, x, y, radius * 0.1);
+            gradient.addColorStop(0, 'white');
+            gradient.addColorStop(1, handsColour);
+            ctx.beginPath();     
+            ctx.arc(x, y, radius * 0.08, 0, 2 * Math.PI);            
+            ctx.fillStyle = gradient;            
+            ctx.fill();     
+            
+
+            //ctx.restore();
+        }        
+        else
+        {
+            var extension = 0;
+            if (handsLengthType == "extended" || handsLengthType == "extended")
+            {
+                extension = radius * 0.1;
+            }
+            var lengthratio = 1;
+            if (handsLengthType == "short")
+            {
+                lengthratio = 0.7;
+            }
+
+            if (hourHandType != "cutout")
+            {                
+                drawHand(ctx, hour, radius*0.5*lengthratio, radius*0.03, 0, null, extension);
+            }            
+    
+            //minute
+            minute = (minute*Math.PI/30)+(second*Math.PI/(30*60));
+            drawHand(ctx, minute, radius*0.7*lengthratio, radius*0.02, 0, (hourHandType == "cutout" ? clockColour : handsColour), extension);
+            // second
+            second = (second*Math.PI/30);
+            switch (secondHandType) {
+                case 'nothing':            
+                    break;
+                case 'handscolour':
+                    drawHand(ctx, second, radius*0.9, radius*0.01, 0, null, radius*0.2);    
+                    break;
+                case 'red':
+                    drawHand(ctx, second, radius*0.9, radius*0.01, 0, '#C71013', radius*0.2);  
+                    //middle circle
+                    ctx.beginPath();
+                    ctx.arc(0, 0, radius * 0.015, 0, 2 * Math.PI);
+                    ctx.fillStyle = '#C71013';
+                    ctx.fill();  
+                    break;
+                default:
+                    break;                    
+            }
+        }    
+    }
+
+    function drawHand(ctx, pos, length, width, transparentratio, colour, neglength) {
+        //ctx.strokeStyle = getHandsColour();    
+        //ctx.strokeStyle = "#FF0000";    
+        if (colour == null)
+        {
+            colour = handsColour;
+        }
+        if (transparentratio > 0)
+        {
+            strokestyle = ctx.createRadialGradient(0, 0 ,0 , 0, 0, radius);
+            strokestyle.addColorStop(0, 'rgba(255, 255, 255, 0)');
+            strokestyle.addColorStop(transparentratio , 'rgba(255, 255, 255, 0)');
+            strokestyle.addColorStop(transparentratio, colour);
+            //strokestyle.addColorStop(0.5 , 'rgba(255, 255, 255, 0)');
+            //strokestyle.addColorStop(0.5, 'rgba(255, 255, 255, 1)');
+            strokestyle.addColorStop(1, colour);
+            ctx.strokeStyle = strokestyle;
+            ctx.lineCap = "butt";
+        }
+        else
+        {
+            ctx.strokeStyle = colour;
+            if (handsEndType == 'rounded')
+            {
+                ctx.lineCap = "round";
+            }
+            switch (handsWidthType) {
+                case "thin":
+                    width = width * 0.5;
+                    break;
+                case "medium":
+                    break;
+                case "thick":
+                    width = width * 2;
+                    break;
+                default:
+                    break;
+            }
+        }
+        
+        ctx.beginPath();            
+        ctx.lineWidth = width;
+        ctx.moveTo(0,0);
+        ctx.rotate(pos);
+        ctx.lineTo(0, -length);
+        ctx.stroke();
+        ctx.rotate(-pos);
+
+        if (neglength > 0)
+        {
+            ctx.beginPath();    
+            ctx.moveTo(0,0);    
+            ctx.rotate(pos);
+            ctx.lineTo(0, neglength);
+            ctx.stroke();
+            ctx.rotate(-pos);        
+        }
+        
+    }
+
+    function drawCardanoLogo()
+    {
+        drawCardanoRing(0, radius * 0.3, radius * 0.116);
+        drawCardanoRing(90, radius * 0.42, radius * 0.05);
+        drawCardanoRing(0, radius * 0.52, radius * 0.04);
+        drawCardanoRing(90, radius * 0.60, radius * 0.033);
+        drawCardanoRing(0, radius * 0.65, radius * 0.024);
+    }
+
+    function drawCardanoRing(startangle, distance, circlesize)
+    {        
+        //var x = Math.cos(-90 * Math.PI / 180) * distance;
+        //var y = Math.sin(-90 * Math.PI / 180) * distance;
+
+        for (let i = 0; i < 6; i++) {        
+            x = 0 + Math.cos(startangle * Math.PI / 180) * distance;
+            y = 0 + Math.sin(startangle * Math.PI / 180) * distance;
+
+            startangle = startangle + 60;
+
+            ctx.beginPath();        
+            ctx.arc(x, y, circlesize, 0, 2 * Math.PI);
+            ctx.fillStyle = '#1F61BA';    
+            ctx.fill();              
+        }
+        
+        
+
+    }
+      
+
+        new renderclocksample9();
+    </script>    
+
+<script>
+function main() {  
+  var canvas = document.querySelector("#canvas");
+  var gl = canvas.getContext("webgl");
+
+  var vs = `
+  attribute vec4 a_position;
+
+    void main() {      
+      // gl_Position is a special variable a vertex shader
+      // is responsible for setting
+      gl_Position = a_position;
+    }
+  `;
+
+  var fs = `
+    precision highp float;
+
+    uniform vec2 iResolution;
+    uniform vec2 iMouse;
+    uniform float iTime;
+
+vec4 permute(vec4 x){return mod(((x*34.0)+1.0)*x, 289.0);}
+vec4 taylorInvSqrt(vec4 r){return 1.79284291400159 - 0.85373472095314 * r;}
+
+float snoise(vec3 v){ 
+  vec2  C = vec2(1.0/6.0, 1.0/3.0) ;
+  vec4  D = vec4(0.0, 0.5, 1.0, 2.0);
+
+  vec3 i  = floor(v + dot(v, C.yyy) );
+  vec3 x0 =   v - i + dot(i, C.xxx) ;
+
+  vec3 g = step(x0.yzx, x0.xyz);
+  vec3 l = 1.0 - g;
+  vec3 i1 = min( g.xyz, l.zxy );
+  vec3 i2 = max( g.xyz, l.zxy );
+
+  vec3 x1 = x0 - i1 + 1.0 * C.xxx;
+  vec3 x2 = x0 - i2 + 2.0 * C.xxx;
+  vec3 x3 = x0 - 1. + 3.0 * C.xxx;
+
+  i = mod(i, 289.0 ); 
+  vec4 p = permute( permute( permute( 
+             i.z + vec4(0.0, i1.z, i2.z, 1.0 ))
+           + i.y + vec4(0.0, i1.y, i2.y, 1.0 )) 
+           + i.x + vec4(0.0, i1.x, i2.x, 1.0 ));
+
+  float n_ = 1.0/7.0;
+  vec3  ns = n_ * D.wyz - D.xzx;
+
+  vec4 j = p - 49.0 * floor(p * ns.z *ns.z);
+
+  vec4 x_ = floor(j * ns.z);
+  vec4 y_ = floor(j - 7.0 * x_ );
+
+  vec4 x = x_ *ns.x + ns.yyyy;
+  vec4 y = y_ *ns.x + ns.yyyy;
+  vec4 h = 1.0 - abs(x) - abs(y);
+
+  vec4 b0 = vec4( x.xy, y.xy );
+  vec4 b1 = vec4( x.zw, y.zw );
+
+  vec4 s0 = floor(b0)*2.0 + 1.0;
+  vec4 s1 = floor(b1)*2.0 + 1.0;
+  vec4 sh = -step(h, vec4(0.0));
+
+  vec4 a0 = b0.xzyw + s0.xzyw*sh.xxyy ;
+  vec4 a1 = b1.xzyw + s1.xzyw*sh.zzww ;
+
+  vec3 p0 = vec3(a0.xy,h.x);
+  vec3 p1 = vec3(a0.zw,h.y);
+  vec3 p2 = vec3(a1.xy,h.z);
+  vec3 p3 = vec3(a1.zw,h.w);
+
+  vec4 norm = taylorInvSqrt(vec4(dot(p0,p0), dot(p1,p1), dot(p2, p2), dot(p3,p3)));
+  p0 *= norm.x;
+  p1 *= norm.y;
+  p2 *= norm.z;
+  p3 *= norm.w;
+
+  vec4 m = max(0.6 - vec4(dot(x0,x0), dot(x1,x1), dot(x2,x2), dot(x3,x3)), 0.0);
+  m = m * m;
+  return 42.0 * dot( m*m, vec4( dot(p0,x0), dot(p1,x1), 
+                                dot(p2,x2), dot(p3,x3) ) );
+}
+
+vec3 palette( in float t, in vec3 a, in vec3 b, in vec3 c, in vec3 d )
+{
+    return a + b*cos( 6.28318*(c*t+d) );
+}
+
+void mainImage( out vec4 fragColor, in vec2 fragCoord )
+{
+    vec2 uv = (fragCoord-.5*iResolution.xy)/iResolution.y;
+
+    vec3 col = vec3(0.0);
+    
+    col = vec3(sin(uv.y*900. + snoise(vec3(uv.x*3.0,uv.y,iTime*0.69)) * 5.));
+    col = step(snoise(vec3(uv.x*2.,uv.y+iTime*2.0, iTime*0.)),col);
+    col = palette(col.x *0.4 + iTime*0.5+uv.y*0.5,
+    vec3(0.5),
+    vec3(0.5),
+    vec3(0.5),
+    vec3(0.5, cos(iTime), 0.0));
+   
+    float d = length(uv);
+    d = step(0.5,d);
+    d = 1.-d;
+    col *= vec3(d);
+
+    fragColor = vec4(col,1.0);
+}
+
+    void main() {
+      mainImage(gl_FragColor, gl_FragCoord.xy);
+    }
+  `;
+
+  var program = webglUtils.createProgramFromSources(gl, [vs, fs]);
+
+  var positionAttributeLocation = gl.getAttribLocation(program, "a_position");
+
+  var resolutionLocation = gl.getUniformLocation(program, "iResolution");
+  var timeLocation = gl.getUniformLocation(program, "iTime");
+
+  var positionBuffer = gl.createBuffer();
+
+  gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
+
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([
+    -1, -1,
+     1, -1,
+    -1,  1,
+    -1,  1,
+     1, -1,
+     1,  1,
+  ]), gl.STATIC_DRAW);
+
+  var playpauseElem = document.querySelector('.playpause');
+  var inputElem = document.querySelector('.divcanvas');
+
+  let requestId;
+  function requestFrame() {
+    if (!requestId) {
+      requestId = requestAnimationFrame(render);
+    }
+  }
+  function cancelFrame() {
+    if (requestId) {
+      cancelAnimationFrame(requestId);
+      requestId = undefined;
+    }
+  }
+
+  setInterval(requestFrame, 10);       
+
+  let then = 0;
+  let time = 0;
+  function render(now) {
+    requestId = undefined;
+    now *= 0.001;
+    var elapsedTime = Math.min(now - then, 0.1);
+    time += elapsedTime;
+    then = now;
+
+    webglUtils.resizeCanvasToDisplaySize(gl.canvas);
+
+    gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
+
+    gl.useProgram(program);
+
+    gl.enableVertexAttribArray(positionAttributeLocation);
+
+    gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
+
+    gl.vertexAttribPointer(
+        positionAttributeLocation,
+        2,
+        gl.FLOAT,
+        false,
+        0,
+        0,
+    );
+
+    gl.uniform2f(resolutionLocation, gl.canvas.width, gl.canvas.height);    
+    gl.uniform1f(timeLocation, time);
+
+    gl.drawArrays(
+        gl.TRIANGLES,
+        0,
+        6,
+    );
+
+    requestFrame();
+  }
+
+  requestFrame();
+  requestAnimationFrame(cancelFrame);
+}
+
+main();
+
+</script>
+</body>
+</html>
