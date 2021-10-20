@@ -1,0 +1,19 @@
+<html>
+<body style="margin:auto; background:#E3E3E3;">        
+<div style="position:relative; top: 100px;">
+    <select id="selector" onchange="changeclock(this)" style="position: relative; left: 30%; font-size: 30px; margin-bottom: 40px;">
+    <option>Shapes</option>
+    <option>Colours</option>
+    <option>Hyperspace</option>
+    <option>Pattern1</option>
+    </select>
+    <iframe id="clockframe" src="shapes.min.html" width="80%" style="margin: auto; display: block; border: none; height:calc(100% - 100px);"></iframe>
+</div>
+<script>
+    function changeclock(val) {
+        var clockframe = document.getElementById("clockframe");        
+        clockframe.src = val.value + ".min.html";            
+    }
+</script>
+</body>
+</html>
