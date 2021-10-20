@@ -65,7 +65,7 @@ function main() {
     #define t iTime
     #define r iResolution.xy
 
-     void mainImage( out vec4 fragColor, in vec2 fragCoord )
+ void mainImage( out vec4 fragColor, in vec2 fragCoord )
     {           
         vec3 col;
          vec2 uv,p = fragCoord.xy/r;
@@ -73,33 +73,35 @@ function main() {
             p -=.5;
             p.x *= r.x/r.y;
     
-        float d,z=t+1.;
+        float d,z=t+160.;
         d=length(p);
         for(int i=0;i<3;i++) {       
             z+=.07;                
-            uv+=p/d*abs(sin(d*0.5-z*0.005));                
-            col[i] = .01/length(abs(mod(uv,0.33)-.5)) * 5.;          
+            uv+=p/d*abs(sin(d*0.5-z*0.015));                
+            col[i] = .01/length(abs(mod(uv,0.33)-.5)) +0.01;  
         }    
         
-         float lum = (col[0] * 0.3 + (col[1] * 0.59) + (col[2]* 0.11));
-      //if (lum  < 0.1)
-      //{
-         col.rgb = col.rgb*0.2;
-      //}
-      if (col[0] * 0.6 > 0.015)
+         vec3 pixelColor = col;
+  
+      float lum = (pixelColor[0] * 0.3 + (pixelColor[1] * 0.59) + (pixelColor[2]* 0.11));
+      if (lum  < 0.035)
       {
-         col.rgb = col.rgb*vec3(5.0,1.,1.);
+         pixelColor.rgb = pixelColor.rgb*0.7;
       }
-      if (col[1] * 0.6> 0.015)
+      if (pixelColor[0] * 0.4 > 0.015)
       {
-         col.rgb = col.rgb*vec3(1.,5.0,1.);
+         pixelColor.rgb = pixelColor.rgb*vec3(2.0,1.,1.);
       }
-      if (col[2] * 0.6 > 0.015)
+      if (pixelColor[1] * 0.4> 0.015)
       {
-         col.rgb = col.rgb*vec3(1.,1.,5.0);
+         pixelColor.rgb = pixelColor.rgb*vec3(1.,2.0,1.);
       }
-      
-        fragColor = vec4(col/d,t);
+      if (pixelColor[2] * 0.7 > 0.015)
+      {
+         pixelColor.rgb = pixelColor.rgb*vec3(1.,1.,2.0);
+      }
+
+      fragColor = vec4(pixelColor/d,t);  
     }
 
     void main() {
