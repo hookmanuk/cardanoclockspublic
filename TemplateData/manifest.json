@@ -1,7 +1,7 @@
 {
   "short_name": "Cardano Clock",
   "name": "Cardano Clock",
-  "start_url": "https:\/\/cardanoclocks.hookman.co.uk\/shaderwrapper.html",
+  "start_url": "https:\/\/cardanoclocks.hookman.co.uk\/",
   "background_color": "#000000",
   "display": "standalone",
   "scope": "\/",
