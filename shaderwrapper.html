@@ -18,7 +18,7 @@
 <script>
     function changeclock(val) {
         var clockframe = document.getElementById("clockframe");        
-        clockframe.src = val.value + ".min.html";            
+        clockframe.src = val.value.toLowerCase() + ".min.html";            
     }
     
     function toggleselect() {
