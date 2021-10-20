@@ -3,7 +3,7 @@
   "name": "Cardano Clock",
   "start_url": "https:\/\/cardanoclocks.hookman.co.uk\/",
   "background_color": "#000000",
-  "display": "standalone",
+  "display": "fullscreen",
   "scope": "\/",
   "theme_color": "#000000",
   "icons": [   
