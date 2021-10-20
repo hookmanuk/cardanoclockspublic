@@ -79,12 +79,12 @@ function main() {
             p -=.5;
             p.x *= r.x/r.y;
     
-        float d,z=t+100.;
+        float d,z=t+10.;
         d=length(p);
         for(int i=0;i<3;i++) {       
             z+=.07;                
-            uv+=p/d*abs(sin(d*0.5-z*0.025));                
-            col[i] = .01/length(abs(mod(uv,1.)-.5));          
+            uv+=p/d*abs(sin(d*1.-z*0.1));                
+            col[i] = .01/length(abs(mod(uv,1.)-.2)) - 0.01;        
         }    
         fragColor = vec4(col/d,t);
     }

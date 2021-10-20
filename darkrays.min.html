@@ -65,20 +65,20 @@ function main() {
     #define t iTime
     #define r iResolution.xy
 
-    void mainImage( out vec4 fragColor, in vec2 fragCoord )
+  void mainImage( out vec4 fragColor, in vec2 fragCoord )
     {           
         vec3 col;
-        vec2 uv,p = fragCoord.xy/r;
-        uv=p;
-        p -=.5;
-        p.x *= r.x/r.y;
-
+         vec2 uv,p = fragCoord.xy/r;
+            uv=p;
+            p -=.5;
+            p.x *= r.x/r.y;
+    
         float d,z=t+20.;
         d=length(p);
         for(int i=0;i<3;i++) {       
             z+=.07;                
-            uv+=p/d*abs(sin(d*1.-z*0.01));                
-            col[i] = .05/length(abs(mod(uv,1.)-.2));          
+            uv+=p/d*abs(sin(d*0.5-z*0.025));                
+            col[i] = .01/length(abs(mod(uv,0.33)-.5)) ;  
         }    
         fragColor = vec4(col/d,t);
     }
