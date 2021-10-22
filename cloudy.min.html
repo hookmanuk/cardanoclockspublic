@@ -127,8 +127,8 @@ vec3 normal(vec2 st) {
 void mainImage( out vec4 fragColor, in vec2 fragCoord ) {
     vec2 st = fragCoord.xy / iResolution.xy;
     st.x *= iResolution.x / iResolution.y;
-    st.x += cos(t*0.003);
-    st.y += sin(t*0.003);
+    st.x += cos(t*0.009);
+    st.y += sin(t*0.009);
     
     vec3 greyScale = vec3(.5, .5, .5);
     vec3 col = vec3(dot( normal(st).rgb, greyScale));
