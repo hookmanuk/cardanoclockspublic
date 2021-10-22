@@ -7,7 +7,7 @@
 
     
     <script>
-class renderclocksampleclock{constructor(){this.canvas=document.getElementById("canvasclock"),this.backgroundColour="rgba(0,0,0,0)",this.clockColour="#FDFFFC",this.handsColour="#000000",this.numbersType="none",this.secondHandType="handscolour",this.handsEndType="rounded",this.handsWidthType="thin",this.handsCentreType="circle",this.handsLengthType="extended",this.backgroundType="webgl",this.borderType="nothing",this.dimensionType="3d",this.hourHandType="standard",this.fps=60,this.renderframe(),this.canvasgl=document.getElementById("canvas"),this.canvasgl.width=this.ss,this.canvasgl.height=this.ss,setInterval(this.renderframe.bind(this),1e3)}drawStaticBackground(){this.ctx.fillStyle=this.backgroundColour,this.ctx.fillRect(-this.ss,-this.ss,2*this.ss,2*this.ss),this.ctx.restore()}renderframe(){this.body=document.querySelector("body");var t=this.ss;this.ss=.8*(this.body.clientWidth<this.body.clientHeight?this.body.clientWidth:this.body.clientHeight),this.ss!=t&&(this.canvas.width=this.ss,this.canvas.height=this.ss,this.ctx=this.canvas.getContext("2d"),this.radius=this.canvas.height/2,this.ctx.translate(this.radius,this.radius)),this.ctx.clearRect(-this.ss,-this.ss,2*this.ss,2*this.ss),this.drawStaticBackground(),this.drawTime()}formatNumber(t){return t.toString().padStart(2,"0")}drawTime(){var t=new Date,s=t.getHours(),i=t.getMinutes(),h=t.getSeconds();s=(s%=12)*Math.PI/6+i*Math.PI/360+h*Math.PI/21600;t.getHours(),t.getMinutes();this.ctx.save(),"3d"==this.dimensionType&&(this.ctx.shadowBlur=5,this.ctx.shadowColor="#222222",this.ctx.shadowOffsetX=-4,this.ctx.shadowOffsetY=3),"circle"!=this.handsCentreType&&"circle"!=this.handsCentreType||(this.ctx.beginPath(),this.ctx.arc(0,0,.05*this.radius,0,2*Math.PI),this.ctx.fillStyle="cutout"==this.hourHandType?this.clockColour:this.handsColour,this.ctx.fill());var e=0;"extended"!=this.handsLengthType&&"extended"!=this.handsLengthType||(e=.1*this.radius);"cutout"!=this.hourHandType,i=i*Math.PI/30+h*Math.PI/1800,this.drawHand(this.ctx,i,.7*this.radius*0.5,.02*this.radius,0,"cutout"==this.hourHandType?this.clockColour:this.handsColour,e),h=h*Math.PI/30}drawHand(t,s,i,h,e,a,r){if(null==a&&(a=this.handsColour),e>0)this.strokestyle=this.ctx.createRadialGradient(0,0,0,0,0,this.radius),this.strokestyle.addColorStop(0,"rgba(255, 255, 255, 0)"),this.strokestyle.addColorStop(e,"rgba(255, 255, 255, 0)"),this.strokestyle.addColorStop(e,a),this.strokestyle.addColorStop(1,a),this.ctx.strokeStyle=this.strokestyle,this.ctx.lineCap="butt";else switch(this.ctx.strokeStyle=a,"rounded"==this.handsEndType&&(this.ctx.lineCap="round"),this.handsWidthType){case"thin":h*=.5;break;case"medium":break;case"thick":h*=2}this.ctx.beginPath(),this.ctx.lineWidth=h,this.ctx.moveTo(0,0),this.ctx.rotate(s),this.ctx.lineTo(0,-i),this.ctx.stroke(),this.ctx.rotate(-s),r>0&&(this.ctx.beginPath(),this.ctx.moveTo(0,0),this.ctx.rotate(s),this.ctx.lineTo(0,r),this.ctx.stroke(),this.ctx.rotate(-s))}}new renderclocksampleclock;
+class renderclocksampleclock{constructor(){this.canvas=document.getElementById("canvasclock"),this.backgroundColour="rgba(0,0,0,0)",this.clockColour="#FDFFFC",this.handsColour="#000000",this.numbersType="none",this.secondHandType="handscolour",this.handsEndType="rounded",this.handsWidthType="thin",this.handsCentreType="circle",this.handsLengthType="extended",this.backgroundType="webgl",this.borderType="nothing",this.dimensionType="3d",this.hourHandType="standard",this.fps=60,this.renderframe(),this.canvasgl=document.getElementById("canvas"),this.canvasgl.width=this.ss,this.canvasgl.height=this.ss,setInterval(this.renderframe.bind(this),1e3)}drawStaticBackground(){this.ctx.fillStyle=this.backgroundColour,this.ctx.fillRect(-this.ss,-this.ss,2*this.ss,2*this.ss),this.ctx.restore()}renderframe(){this.body=document.querySelector("body");var t=this.ss;this.ss=.8*(this.body.clientWidth<this.body.clientHeight?this.body.clientWidth:this.body.clientHeight),this.ss!=t&&(this.canvas.width=this.ss,this.canvas.height=this.ss,this.ctx=this.canvas.getContext("2d"),this.radius=this.canvas.height/2,this.ctx.translate(this.radius,this.radius)),this.ctx.clearRect(-this.ss,-this.ss,2*this.ss,2*this.ss),this.drawStaticBackground(),this.drawTime()}formatNumber(t){return t.toString().padStart(2,"0")}drawTime(){var t=new Date,s=t.getHours(),i=t.getMinutes(),h=t.getSeconds();s=(s%=12)*Math.PI/6+i*Math.PI/360+h*Math.PI/21600;t.getHours(),t.getMinutes();this.ctx.save(),"3d"==this.dimensionType&&(this.ctx.shadowBlur=5,this.ctx.shadowColor="#222222",this.ctx.shadowOffsetX=-4,this.ctx.shadowOffsetY=3),"circle"!=this.handsCentreType&&"circle"!=this.handsCentreType||(this.ctx.beginPath(),this.ctx.arc(0,0,.02*this.radius,0,2*Math.PI),this.ctx.fillStyle="cutout"==this.hourHandType?this.clockColour:this.handsColour,this.ctx.fill());var e=0;"extended"!=this.handsLengthType&&"extended"!=this.handsLengthType||(e=.1*this.radius);"cutout"!=this.hourHandType,i=i*Math.PI/30+h*Math.PI/1800,this.drawHand(this.ctx,i,.7*this.radius*0.4,.015*this.radius,0,"cutout"==this.hourHandType?this.clockColour:this.handsColour,0),h=h*Math.PI/30}drawHand(t,s,i,h,e,a,r){if(null==a&&(a=this.handsColour),e>0)this.strokestyle=this.ctx.createRadialGradient(0,0,0,0,0,this.radius),this.strokestyle.addColorStop(0,"rgba(255, 255, 255, 0)"),this.strokestyle.addColorStop(e,"rgba(255, 255, 255, 0)"),this.strokestyle.addColorStop(e,a),this.strokestyle.addColorStop(1,a),this.ctx.strokeStyle=this.strokestyle,this.ctx.lineCap="butt";else switch(this.ctx.strokeStyle=a,"rounded"==this.handsEndType&&(this.ctx.lineCap="round"),this.handsWidthType){case"thin":h*=.5;break;case"medium":break;case"thick":h*=2}this.ctx.beginPath(),this.ctx.lineWidth=h,this.ctx.moveTo(0,0),this.ctx.rotate(s),this.ctx.lineTo(0,-i),this.ctx.stroke(),this.ctx.rotate(-s),r>0&&(this.ctx.beginPath(),this.ctx.moveTo(0,0),this.ctx.rotate(s),this.ctx.lineTo(0,r),this.ctx.stroke(),this.ctx.rotate(-s))}}new renderclocksampleclock;
     </script>    
 
 <script>
@@ -63,84 +63,79 @@ function main() {
     uniform float iTime;    
     uniform vec4 iDate;
 
-   float n1; //Power 1
-float n2; //Power 2
-const float iterations = 100.;
+    float n1; //Power 1
+    float n2; //Power 2
+    const float iterations = 100.;
 
-vec2 Scale(vec2 p){
-		return ((2.*p-iResolution.xy)/iResolution.y*2.)*0.85;
-}
+    vec2 Scale(vec2 p){
+		    return ((2.*p-iResolution.xy)/iResolution.y*2.)*0.85;
+    }
 
-float frame;
+    float frame;
 
-float mandelbrot(vec2 c){
-    vec2 z = vec2(0);
+    float mandelbrot(vec2 c){
+        vec2 z = vec2(0);
     
-    float t = frame*.5+.5;
+        float t = frame*.5+.5;
     
-	for (float i=0.;i<iterations;i++){
-		//to (r,a)
-		float rad = length(z);
-		float phi = atan(z.y,z.x);
+	    for (float i=0.;i<iterations;i++){
+		    //to (r,a)
+		    float rad = length(z);
+		    float phi = atan(z.y,z.x);
 		
-		//escaped?
-		if (rad>5.) return i;
+		    //escaped?
+		    if (rad>5.) return i;
 		
-		//calculation1
-		float rad1 = pow(rad,n1);
-		float phi1 = phi*n1;
+		    //calculation1
+		    float rad1 = pow(rad,n1);
+		    float phi1 = phi*n1;
         
-        //calculation2
-		float rad2 = pow(rad,n2);
-		float phi2 = phi*n2;
+            //calculation2
+		    float rad2 = pow(rad,n2);
+		    float phi2 = phi*n2;
 		
-		//to (x,y)
-		z = vec2(
-			cos(phi1)*rad1,
-			sin(phi1)*rad1
-		)*t+
-        vec2(
-			cos(phi2)*rad2,
-			sin(phi2)*rad2
-		)*(1.-t)
-        +c;
-	}	
-	return iterations;
-}
+		    //to (x,y)
+		    z = vec2(
+			    cos(phi1)*rad1,
+			    sin(phi1)*rad1
+		    )*t+
+            vec2(
+			    cos(phi2)*rad2,
+			    sin(phi2)*rad2
+		    )*(1.-t)
+            +c;
+	    }	
+	    return iterations;
+    }
 
-void mainImage( out vec4 fragColor, in vec2 fragCoord ){
-	vec2 scaledp = Scale(fragCoord.xy);
+    void mainImage( out vec4 fragColor, in vec2 fragCoord ){
+	    vec2 scaledp = Scale(fragCoord.xy);
     
-    float mils = fract(iDate.w);
-    float secs = mod( floor(iDate.w),        60.0 );
-	float mins = mod( floor(iDate.w/60.0),   60.0 );
-	float hours = mod( floor(iDate.w/3600.0), 12.0 );
-    
-    //float secs = mod( floor(iDate.w),        60.0 );
-	//float mins = mod( floor(iDate.w),   60.0 );
-	//float hours = mod( floor(iDate.w/60.0), 12.0 );
-    secs += mils;
+        float mils = fract(iDate.w);
+        float secs = mod( floor(iDate.w),        60.0 );
+	    float mins = mod( floor(iDate.w/60.0),   60.0 );
+	    float hours = mod( floor(iDate.w/3600.0), 12.0 );
+        secs += mils;
 
-    if (hours == 0.)
-    {
-        hours = 5.;
-    }    
+        if (hours == 0.)
+        {
+            hours = 5.;
+        }    
         
-    n1 = hours + 1.;
-    n2 = n1;
-    frame = 1.;
+        n1 = hours + 1.;
+        n2 = n1;
+        frame = 1.;
     
-    if (mins >= 59.0          
-    )
-    {
-        frame = 1. - (2. * ((secs)/60.));        
-        n2 = hours + 2.;        
-    }            
+        if (mins >= 59.0)
+        {
+            frame = 1. - (2. * ((secs)/60.));        
+            n2 = hours + 2.;        
+        }            
 
-	vec3 color = vec3(mandelbrot(scaledp)/iterations);
+	    vec3 color = vec3(mandelbrot(scaledp)/iterations);
     
-	fragColor = vec4(color, 1.0);
-}
+	    fragColor = vec4(color, 1.0);
+    }
 
     void main() {
       mainImage(gl_FragColor, gl_FragCoord.xy);
