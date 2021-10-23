@@ -1,0 +1,45 @@
+<html>
+<body style="margin:0;">            
+
+<div class="clockdiv" style="width:80%; margin:auto;">
+    
+        <canvas id="c" width="256" height="256" style="top:0;left:0;width:100%;height:100%; border-radius:50%;"></canvas>                
+    
+    <canvas style="padding: 0; position:relative; top:-100%; left:0;" id="canvas6"></canvas>                  
+    
+</div>
+    <script>
+        var canvasc = document.querySelector(".clockdiv");
+            
+        var body = document.querySelector("body"); 
+        var ss = (body.clientWidth < body.clientHeight ? body.clientWidth : body.clientHeight) *0.8; 
+        canvasc.style.width = ss;
+        canvasc.style.height = ss;   
+    </script>
+    <script>!function(){"use strict";var w=.5*(Math.sqrt(3)-1),c=(3-Math.sqrt(3))/6,N=1/6;function r(r){r="function"==typeof r?r:r?alea(r):Math.random,this.p=e(r),this.perm=new Uint8Array(512),this.permMod12=new Uint8Array(512);for(var t=0;t<512;t++)this.perm[t]=this.p[255&t],this.permMod12[t]=this.perm[t]%12}function e(r){for(var t=new Uint8Array(256),e=0;e<256;e++)t[e]=e;for(e=0;e<255;e++){var o=e+~~(r()*(256-e)),n=t[e];t[e]=t[o],t[o]=n}return t}Math.sqrt(5),Math.sqrt(5),r.prototype={grad3:new Float32Array([1,1,0,-1,1,0,1,-1,0,-1,-1,0,1,0,1,-1,0,1,1,0,-1,-1,0,-1,0,1,1,0,-1,1,0,1,-1,0,-1,-1]),grad4:new Float32Array([0,1,1,1,0,1,1,-1,0,1,-1,1,0,1,-1,-1,0,-1,1,1,0,-1,1,-1,0,-1,-1,1,0,-1,-1,-1,1,0,1,1,1,0,1,-1,1,0,-1,1,1,0,-1,-1,-1,0,1,1,-1,0,1,-1,-1,0,-1,1,-1,0,-1,-1,1,1,0,1,1,1,0,-1,1,-1,0,1,1,-1,0,-1,-1,1,0,1,-1,1,0,-1,-1,-1,0,1,-1,-1,0,-1,1,1,1,0,1,1,-1,0,1,-1,1,0,1,-1,-1,0,-1,1,1,0,-1,1,-1,0,-1,-1,1,0,-1,-1,-1,0]),noise2D:function(r,t){var e,o=this.permMod12,n=this.perm,i=this.grad3,a=0,f=0,s=0,h=(r+t)*w,d=Math.floor(r+h),p=Math.floor(t+h),u=r-(d-(y=(d+p)*c)),m=t-(p-y),M=m<u?(e=1,0):(e=0,1),l=u-e+c,h=m-M+c,r=u-1+2*c,t=m-1+2*c,y=255&d,d=255&p;return 70*((a=0<=(p=.5-u*u-m*m)?(p*=p)*p*(i[p=3*o[y+n[d]]]*u+i[1+p]*m):a)+(f=0<=(m=.5-l*l-h*h)?(m*=m)*m*(i[M=3*o[y+e+n[d+M]]]*l+i[1+M]*h):f)+(s=0<=(h=.5-r*r-t*t)?(h*=h)*h*(i[d=3*o[1+y+n[1+d]]]*r+i[1+d]*t):s))},noise3D:function(r,t,e){var o,n,i,a,f,s=this.permMod12,h=this.perm,d=this.grad3,p=(r+t+e)*(1/3),u=((b=Math.floor(r+p))+(D=Math.floor(t+p))+(F=Math.floor(e+p)))*N,m=r-(b-u),M=t-(D-u),l=e-(F-u),y=M<=m?l<=M?(a=i=o=1,f=n=0):i=l<=m?(a=f=n=0,o=1):(a=n=o=0,f=1):M<l?(i=n=o=0,a=f=1):m<l?(i=f=o=0,a=n=1):(a=i=n=1,f=o=0),w=m-o+N,c=M-n+N,v=l-f+N,A=m-i+2*N,g=M-a+2*N,q=l-y+2*N,x=m-1+.5,U=M-1+.5,r=255&b,t=255&D,e=255&F,b=.6-w*w-c*c-v*v,D=.6-A*A-g*g-q*q,F=.6-x*x-U*U-(p=l-1+.5)*p;return 32*(((u=.6-m*m-M*M-l*l)<0?0:(u*=u)*u*(d[u=3*s[r+h[t+h[e]]]]*m+d[1+u]*M+d[2+u]*l))+(b<0?0:(b*=b)*b*(d[f=3*s[r+o+h[t+n+h[e+f]]]]*w+d[1+f]*c+d[2+f]*v))+(D<0?0:(D*=D)*D*(d[y=3*s[r+i+h[t+a+h[e+y]]]]*A+d[1+y]*g+d[2+y]*q))+(F<0?0:(F*=F)*F*(d[e=3*s[1+r+h[1+t+h[1+e]]]]*x+d[1+e]*U+d[2+e]*p)))}},r._buildPermutationTable=e,"undefined"!=typeof define&&define.amd&&define(function(){return r}),"undefined"!=typeof exports?exports.SimplexNoise=r:"undefined"!=typeof window&&(window.SimplexNoise=r)}()</script>
+    <script>var simplex=new SimplexNoise,canvas=document.getElementById("c"),ctx=canvas.getContext("2d"),imgdata=ctx.getImageData(0,0,256,256),data=imgdata.data,t=0,dna1=377,dna2=619,dna3=355,dna4=113,dna5=3.7,dna6=45,dna7=.48,dna8=.93,dna9=416,dna10=666,dna11=77,dna12=71,dna13=207,void1=115,void2=258,void3=.5506283492497344;window.setInterval(function(){for(var a=0;a<256;a++)for(var d=0;d<256;d++){var n=simplex.noise3D(a/dna1,d/dna2,t/dna9)*dna5+dna7,e=simplex.noise3D(a/dna3,d/dna4,t/dna10)*dna6+dna8,i=0,i=10<dna12?n*dna11:n*e*dna11,o=0,o=0===dna11||0===dna12?n*e*dna13:dna13,v=0,v=void3<.01?800*simplex.noise3D(a/void1,d/void2,t/dna9)+dna7:255;data[4*(a+256*d)+0]=i,data[4*(a+256*d)+1]=n*e*dna12,data[4*(a+256*d)+2]=o,data[4*(a+256*d)+3]=v}t++,ctx.putImageData(imgdata,0,0)},1e3/60)</script>
+    <script>class renderclocksample6{constructor(){this.canvas=document.getElementById("canvas6");this.backgroundColour='rgba(0,0,0,0)';this.clockColour='#FDFFFC';this.handsColour='#FDFFFC';this.numbersType='roman';this.secondHandType='handscolour';this.handsEndType='rounded';this.handsWidthType='tapered';this.handsCentreType='circle';this.handsLengthType='extended';this.backgroundType='therefresh';this.borderType='nothing';this.dimensionType='3d';this.hourHandType='standard';this.fps=60;this.renderframe();setInterval(this.renderframe.bind(this),1000)}
+drawStaticBackground(){this.ctx.fillStyle=this.backgroundColour;this.ctx.fillRect(-this.ss,-this.ss,this.ss*2,this.ss*2);this.ctx.restore();this.drawFace();this.drawNumbers()}
+renderframe(){this.body=document.querySelector("body");var oldss=this.ss;this.ss=(this.body.clientWidth<this.body.clientHeight?this.body.clientWidth:this.body.clientHeight)*0.8;if(this.ss!=oldss){this.canvas.width=this.ss;this.canvas.height=this.ss;this.ctx=this.canvas.getContext("2d");this.radius=this.canvas.height/2;this.ctx.translate(this.radius,this.radius);this.canvasc=document.querySelector(".clockdiv");this.canvasc.style.width=this.ss;this.canvasc.style.height=this.ss}
+this.ctx.clearRect(-this.ss,-this.ss,this.ss*2,this.ss*2);this.drawStaticBackground();this.drawTime()}
+formatNumber(n){return n.toString().padStart(2,"0")}
+drawFace(){var grad;if(this.backgroundType!="fractal"&&this.backgroundType!="therefresh"){this.ctx.beginPath();this.ctx.arc(0,0,this.radius,0,2*Math.PI);this.ctx.fillStyle=this.clockColour;this.ctx.fill()}
+if(this.borderType!="nothing"){if(this.borderType=="gradient"){grad=this.ctx.createRadialGradient(0,0,this.radius*0.9,0,0,this.radius*1);grad.addColorStop(0,this.clockColour);grad.addColorStop(0.5,this.handsColour);grad.addColorStop(1,this.clockColour);this.ctx.strokeStyle=grad}else{this.ctx.strokeStyle=this.handsColour}
+this.ctx.lineWidth=this.radius*0.03;this.ctx.stroke()}}
+drawNumbers(){var ang;var num;this.ctx.font=this.radius*0.15+"px arial";this.ctx.textBaseline="middle";this.ctx.textAlign="center";this.ctx.fillStyle=this.handsColour;switch(this.numbersType){case "roman":this.ctx.font=this.radius*0.25+"px times new roman";for(num=1;num<13;num++){ang=num*Math.PI/6;this.ctx.rotate(ang);this.ctx.translate(0,-this.radius*0.85);var text="";switch(num){case 3:text="III";break;case 6:text="VI";break;case 9:text="IX";break;case 12:text="XII";break;default:break}
+this.ctx.fillText(text,0,0,35);this.ctx.rotate(-ang);this.ctx.rotate(ang);this.ctx.translate(0,this.radius*0.85);this.ctx.rotate(-ang)}
+break;case "nothing":break}}
+drawTime(){var now=new Date();var hour=now.getHours();var minute=now.getMinutes();var second=now.getSeconds();hour=hour%12;hour=(hour*Math.PI/6)+(minute*Math.PI/(6*60))+(second*Math.PI/(360*60));var ang=now.getHours()%12*30+(now.getMinutes()*0.5)-90;this.ctx.save();if(this.dimensionType=="3d"){this.ctx.shadowBlur=5;this.ctx.shadowColor='#222222';this.ctx.shadowOffsetX=-4;this.ctx.shadowOffsetY=3}
+if(this.handsCentreType=="circle"||this.handsCentreType=="circle"){this.ctx.beginPath();this.ctx.arc(0,0,this.radius*0.05,0,2*Math.PI);this.ctx.fillStyle=(this.hourHandType=="cutout"?this.clockColour:this.handsColour);this.ctx.fill()}
+var extension=0;if(this.handsLengthType=="extended"||this.handsLengthType=="extended"){extension=this.radius*0.1}
+var lengthratio=1;if(this.handsLengthType=="short"){lengthratio=0.7}
+if(this.hourHandType!="cutout"){this.drawHand(this.ctx,hour,this.radius*0.5*lengthratio,this.radius*0.03,0,null,extension)}
+minute=(minute*Math.PI/30)+(second*Math.PI/(30*60));this.drawHand(this.ctx,minute,this.radius*0.7*lengthratio,this.radius*0.02,0,(this.hourHandType=="cutout"?this.clockColour:this.handsColour),extension);second=(second*Math.PI/30);switch(this.secondHandType){case 'nothing':break;case 'handscolour':this.drawHand(this.ctx,second,this.radius*0.9,this.radius*0.01,0,null,this.radius*0.2);break;case 'red':this.drawHand(this.ctx,second,this.radius*0.9,this.radius*0.01,0,'#C71013',this.radius*0.2);this.ctx.beginPath();this.ctx.arc(0,0,this.radius*0.015,0,2*Math.PI);this.ctx.fillStyle='#C71013';this.ctx.fill();break;default:break}}
+drawHand(ctx,pos,length,width,transparentratio,colour,neglength){if(colour==null){colour=this.handsColour}
+if(transparentratio>0){this.strokestyle=this.ctx.createRadialGradient(0,0,0,0,0,this.radius);this.strokestyle.addColorStop(0,'rgba(255, 255, 255, 0)');this.strokestyle.addColorStop(transparentratio,'rgba(255, 255, 255, 0)');this.strokestyle.addColorStop(transparentratio,colour);this.strokestyle.addColorStop(1,colour);this.ctx.strokeStyle=this.strokestyle;this.ctx.lineCap="butt"}else{this.ctx.strokeStyle=colour;if(this.handsEndType=='rounded'){this.ctx.lineCap="round"}
+switch(this.handsWidthType){case "thin":width=width*0.5;break;case "medium":break;case "thick":width=width*2;break;default:break}}
+this.ctx.beginPath();this.ctx.lineWidth=width;this.ctx.moveTo(0,0);this.ctx.rotate(pos);this.ctx.lineTo(0,-length);this.ctx.stroke();this.ctx.rotate(-pos);if(neglength>0){this.ctx.beginPath();this.ctx.moveTo(0,0);this.ctx.rotate(pos);this.ctx.lineTo(0,neglength);this.ctx.stroke();this.ctx.rotate(-pos)}}}
+new renderclocksample6()       
+    </script>        
+</body>
+</html>
