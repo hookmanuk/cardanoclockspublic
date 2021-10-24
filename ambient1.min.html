@@ -163,14 +163,14 @@
                 uv.y += noise(abs(vec2(cos(iTime * 0.1))))*0.1 ; //bend the pattern slowly over time
 
                 float speed;
-                speed = noise(uv.xy) * 0.5;
+                speed = noise(uv.xy) * 0.5 * abs(1.5 - cos(iTime*0.05)) * 50.;
 
                 float saturation = 1.;
 
                 vec3 rgb;
-                rgb.x=uv.x * cos(iTime*speed) * saturation; //calc red from noise pos
-                rgb.y=uv.y * cos(iTime*speed) * saturation; //calc green from noise pos
-                rgb.z=(uv.x + uv.y) * cos(iTime*speed) * saturation * 0.1; //no 3rd pos dim to use, just use x+y at 0.1 to vary blue slightly
+                rgb.x=uv.x * cos(speed) * saturation; //calc red from noise pos
+                rgb.y=uv.y * cos(speed) * saturation; //calc green from noise pos
+                rgb.z=(uv.x + uv.y) * cos(speed) * saturation * 0.1; //no 3rd pos dim to use, just use x+y at 0.1 to vary blue slightly
 
                 rgb += 0.5; //add to all colour channels to ensure bright pixels
 
