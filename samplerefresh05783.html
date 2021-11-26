@@ -485,7 +485,7 @@
 
         var c = document.getElementById("myCanvas");
         var ctx = c.getContext("2d");
-        var grd = ctx.createLinearGradient(0, 0, Math.floor(Math.random() * 550), Math.floor(Math.random() * 550));
+        var grd = ctx.createLinearGradient(0, 0, Math.floor(Math.random() * this.ss), Math.floor(Math.random() * this.ss));
         grd.addColorStop(Math.random(), "#f50c0c");
         grd.addColorStop(Math.random(), "#ef5c0c");
         grd.addColorStop(Math.random(), "#eb7c08");

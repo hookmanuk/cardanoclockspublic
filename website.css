@@ -43,9 +43,16 @@ body {
     justify-content: center;
 }
 
+.clockicon {
+    width:220px;
+    color: white;
+    margin:auto;
+}
+
 @media (min-width: 1107px) {
     .clockscontainer {
         flex-direction: row-reverse;
+        height: 300px;
     }
 }
 
