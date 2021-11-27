@@ -103,971 +103,1061 @@
                 Some special NFTs will be minted as tokens allowing the owner to request a background of their own The Refresh or Aw0k3n algorithm!
             </p>
         </div>
-        <img src="images\stamp-solid.svg" class="clockicon"/>
-    </div>   
+        <div class="clockdiv" style="width: 260px; height: 260px; margin: auto; border-radius: 50%; background:white;">
+            <img src="images\yournfthere.png" class="clockicon" />
+            <canvas style="padding: 0; position: relative; top: -224px;" id="canvas7"></canvas>
+        </div>
+        </div>
 
-    <div class="footericons">
-        <a href="https://twitter.com/hookman1979" target="_blank"><img src="images\twitter-brands.svg" style="width:42px;"></a>
-        <a href="https://discord.gg/9SQw9CxDDH" target="_blank"><img src="images\discord-brands.svg"></a>
-    </div>
+        <div class="footericons">
+            <a href="https://twitter.com/hookman1979" target="_blank"><img src="images\twitter-brands.svg" style="width:42px;"></a>
+            <a href="https://discord.gg/9SQw9CxDDH" target="_blank"><img src="images\discord-brands.svg"></a>
+        </div>
 
-    <script>
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker
-                .register('sw.js')
-                .then(function () { console.log("Service Worker Registered"); });
-        }
-    </script>
-    <script>
-        class renderclocksample1 { constructor() { this.canvas = document.getElementById("canvas1"), this.ss = 300, this.backgroundColour = "rgba(0,0,0,0)", this.clockColour = "#FDFFFC", this.handsColour = "#222222", this.numbersType = "somedashes", this.secondHandType = "red", this.handsEndType = "rounded", this.handsWidthType = "thick", this.handsCentreType = "circle", this.handsLengthType = "standard", this.backgroundType = "cardano", this.borderType = "nothing", this.dimensionType = "3d", this.hourHandType = "standard", this.fps = 60, this.canvas.width = this.ss, this.canvas.height = this.ss, this.ctx = this.canvas.getContext("2d"), this.radius = this.canvas.height / 2, this.ctx.translate(this.radius, this.radius), this.radius = .85 * this.radius, setInterval(this.renderframe.bind(this), 500) } drawStaticBackground() { this.ctx.fillStyle = this.backgroundColour, this.ctx.fillRect(-this.ss, -this.ss, 2 * this.ss, 2 * this.ss), this.ctx.restore(), this.drawFace(), this.drawNumbers() } renderframe() { this.ctx.clearRect(-this.ss, -this.ss, this.ss * 2, this.ss * 2); this.drawStaticBackground(), this.drawTime() } formatNumber(t) { return t.toString().padStart(2, "0") } drawFace() { this.ctx.beginPath(), this.ctx.arc(0, 0, this.radius, 0, 2 * Math.PI), this.ctx.fillStyle = this.clockColour, this.ctx.fill(), "cardano" == this.backgroundType && this.drawCardanoLogo() } drawNumbers() { var t, s; for (this.ctx.font = .15 * this.radius + "px arial", this.ctx.textBaseline = "middle", this.ctx.textAlign = "center", this.ctx.fillStyle = this.handsColour, s = 0; s < 12; s++)t = s * Math.PI / 6, this.drawHand(this.ctx, t, .95 * this.radius, .02 * this.radius, s % 3 ? .91 : .87) } drawTime() { var t = new Date, s = t.getHours(), i = t.getMinutes(), h = t.getSeconds(); s = (s %= 12) * Math.PI / 6 + i * Math.PI / 360 + h * Math.PI / 21600; t.getHours(), t.getMinutes(); this.ctx.save(), this.ctx.shadowBlur = 5, this.ctx.shadowColor = "#222222", this.ctx.shadowOffsetX = -4, this.ctx.shadowOffsetY = 3, this.ctx.beginPath(), this.ctx.arc(0, 0, .05 * this.radius, 0, 2 * Math.PI), this.ctx.fillStyle = "cutout" == this.hourHandType ? this.clockColour : this.handsColour, this.ctx.fill(); var a = 0; "extended" != this.handsLengthType && "extended" != this.handsLengthType || (a = .1 * this.radius); var r = 1; "short" == this.handsLengthType && (r = .7), "cutout" != this.hourHandType && this.drawHand(this.ctx, s, .5 * this.radius * r, .03 * this.radius, 0, null, a), i = i * Math.PI / 30 + h * Math.PI / 1800, this.drawHand(this.ctx, i, .7 * this.radius * r, .02 * this.radius, 0, "cutout" == this.hourHandType ? this.clockColour : this.handsColour, a), h = h * Math.PI / 30, this.drawHand(this.ctx, h, .9 * this.radius, .01 * this.radius, 0, "#C71013", .2 * this.radius), this.ctx.beginPath(), this.ctx.arc(0, 0, .015 * this.radius, 0, 2 * Math.PI), this.ctx.fillStyle = "#C71013", this.ctx.fill() } drawHand(t, s, i, h, a, r, e) { null == r && (r = this.handsColour), a > 0 ? (this.strokestyle = this.ctx.createRadialGradient(0, 0, 0, 0, 0, this.radius), this.strokestyle.addColorStop(0, "rgba(255, 255, 255, 0)"), this.strokestyle.addColorStop(a, "rgba(255, 255, 255, 0)"), this.strokestyle.addColorStop(a, r), this.strokestyle.addColorStop(1, r), this.ctx.strokeStyle = this.strokestyle, this.ctx.lineCap = "butt") : (this.ctx.strokeStyle = r, this.ctx.lineCap = "round", h *= 2), this.ctx.beginPath(), this.ctx.lineWidth = h, this.ctx.moveTo(0, 0), this.ctx.rotate(s), this.ctx.lineTo(0, -i), this.ctx.stroke(), this.ctx.rotate(-s), e > 0 && (this.ctx.beginPath(), this.ctx.moveTo(0, 0), this.ctx.rotate(s), this.ctx.lineTo(0, e), this.ctx.stroke(), this.ctx.rotate(-s)) } drawCardanoLogo() { this.drawCardanoRing(0, .3 * this.radius, .116 * this.radius), this.drawCardanoRing(90, .42 * this.radius, .05 * this.radius), this.drawCardanoRing(0, .52 * this.radius, .04 * this.radius), this.drawCardanoRing(90, .6 * this.radius, .033 * this.radius), this.drawCardanoRing(0, .65 * this.radius, .024 * this.radius) } drawCardanoRing(t, s, i) { for (let h = 0; h < 6; h++)this.x = 0 + Math.cos(t * Math.PI / 180) * s, this.y = 0 + Math.sin(t * Math.PI / 180) * s, t += 60, this.ctx.beginPath(), this.ctx.arc(this.x, this.y, i, 0, 2 * Math.PI), this.ctx.fillStyle = "#1F61BA", this.ctx.fill() } } new renderclocksample1;
-    </script>
-
-    <script>
-        class renderclocksample2 { constructor() { this.canvas = document.getElementById("canvas2"), this.ss = 300, this.backgroundColour = "rgba(0,0,0,0)", this.clockColour = "#FDFFFC", this.handsColour = "#222222", this.numbersType = "numbers", this.secondHandType = "red", this.handsEndType = "rounded", this.handsWidthType = "thick", this.handsCentreType = "point", this.handsLengthType = "extended", this.backgroundType = "plain", this.borderType = "nothing", this.dimensionType = "3d", this.hourHandType = "cutout", this.fps = 60, this.canvas.width = this.ss, this.canvas.height = this.ss, this.ctx = this.canvas.getContext("2d"), this.radius = this.canvas.height / 2, this.ctx.translate(this.radius, this.radius), this.radius = .85 * this.radius, setInterval(this.renderframe.bind(this), 500) } drawStaticBackground() { this.ctx.fillStyle = this.backgroundColour, this.ctx.fillRect(-this.ss, -this.ss, 2 * this.ss, 2 * this.ss), this.ctx.restore(), this.drawFace(), this.drawNumbers() } renderframe() { this.ctx.clearRect(-this.ss, -this.ss, this.ss * 2, this.ss * 2); this.drawStaticBackground(), this.drawTime() } formatNumber(t) { return t.toString().padStart(2, "0") } drawFace() { var t; this.ctx.beginPath(), this.ctx.arc(0, 0, this.radius, 0, 2 * Math.PI), this.ctx.fillStyle = this.clockColour, this.ctx.fill(), "nothing" != this.borderType && ("gradient" == this.borderType ? ((t = this.ctx.createRadialGradient(0, 0, .9 * this.radius, 0, 0, 1 * this.radius)).addColorStop(0, this.clockColour), t.addColorStop(.5, this.handsColour), t.addColorStop(1, this.clockColour), this.ctx.strokeStyle = t) : this.ctx.strokeStyle = this.handsColour, this.ctx.lineWidth = .03 * this.radius, this.ctx.stroke()), "cardano" == this.backgroundType && this.drawCardanoLogo() } drawNumbers() { var t, s; switch (this.ctx.font = .15 * this.radius + "px arial", this.ctx.textBaseline = "middle", this.ctx.textAlign = "center", this.ctx.fillStyle = this.handsColour, this.numbersType) { case "numbers": for (s = 1; s < 13; s++)t = s * Math.PI / 6, this.ctx.rotate(t), this.ctx.translate(0, .85 * -this.radius), this.ctx.rotate(-t), this.ctx.fillText(s.toString(), 0, 0), this.ctx.rotate(t), this.ctx.translate(0, .85 * this.radius), this.ctx.rotate(-t); break; case "somedashes": for (s = 0; s < 12; s++)t = s * Math.PI / 6, this.drawHand(this.ctx, t, .95 * this.radius, .02 * this.radius, s % 3 ? .91 : .87); break; case "alldashes": for (s = 0; s < 60; s++)t = s * Math.PI / 30, this.startdashratio = s % 15 == 0 ? .85 : s % 5 == 0 ? .88 : .92, this.drawHand(this.ctx, t, .95 * this.radius, .02 * this.radius, this.startdashratio); break; case "numbersdashes": for (s = 0; s < 60; s++)t = s * Math.PI / 30, this.startdashratio = s % 15 == .85 ? 0 : s % 5 == 0 ? .88 : .92, this.drawHand(this.ctx, t, .95 * this.radius, .02 * this.radius, this.startdashratio), .88 == this.startdashratio && (this.ctx.rotate(t), this.ctx.translate(0, .77 * -this.radius), this.ctx.rotate(-t), this.ctx.fillText(0 == s ? 12 : s.toString() / 5, 0, 0), this.ctx.rotate(t), this.ctx.translate(0, .77 * this.radius), this.ctx.rotate(-t)); break; case "bits": for (s = 1; s < 13; s++)t = s * Math.PI / 6, this.ctx.rotate(t), this.ctx.translate(0, .82 * -this.radius), this.ctx.rotate(-t), this.ctx.fillText(s.toString(2).replaceAll("1", "I").padStart(4, "0"), 0, 0), this.ctx.rotate(t), this.ctx.translate(0, .82 * this.radius), this.ctx.rotate(-t) } } drawTime() { var t = new Date, s = t.getHours(), i = t.getMinutes(), h = t.getSeconds(); s = (s %= 12) * Math.PI / 6 + i * Math.PI / 360 + h * Math.PI / 21600; var a = t.getHours() % 12 * 30 + .5 * t.getMinutes() - 90; if (this.ctx.save(), "3d" == this.dimensionType && (this.ctx.shadowBlur = 5, this.ctx.shadowColor = "#222222", this.ctx.shadowOffsetX = -4, this.ctx.shadowOffsetY = 3), "cutout" == this.hourHandType && (this.ctx.beginPath(), this.ctx.rotate(a * Math.PI / 180), this.ctx.arc(0, 0, this.radius, .09 * Math.PI, 1.91 * Math.PI), this.ctx.lineTo(0, 0), this.ctx.closePath(), this.ctx.fillStyle = this.handsColour, this.ctx.fill(), this.ctx.rotate(-a * Math.PI / 180)), "circle" != this.handsCentreType && "circle" != this.handsCentreType || (this.ctx.beginPath(), this.ctx.arc(0, 0, .05 * this.radius, 0, 2 * Math.PI), this.ctx.fillStyle = "cutout" == this.hourHandType ? this.clockColour : this.handsColour, this.ctx.fill()), "circle" == this.hourHandType) { this.x = Math.cos(a * Math.PI / 180) * this.radius * .6, this.y = Math.sin(a * Math.PI / 180) * this.radius * .6; var r = this.ctx.createRadialGradient(this.x + .025 * this.radius, this.y - .02 * this.radius, .01 * this.radius, this.x, this.y, .1 * this.radius); r.addColorStop(0, "white"), r.addColorStop(1, this.handsColour), this.ctx.beginPath(), this.ctx.arc(this.x, this.y, .08 * this.radius, 0, 2 * Math.PI), this.ctx.fillStyle = r, this.ctx.fill() } else { var e = 0; "extended" != this.handsLengthType && "extended" != this.handsLengthType || (e = .1 * this.radius); var d = 1; switch ("short" == this.handsLengthType && (d = .7), "cutout" != this.hourHandType && this.drawHand(this.ctx, s, .5 * this.radius * d, .03 * this.radius, 0, null, e), i = i * Math.PI / 30 + h * Math.PI / 1800, this.drawHand(this.ctx, i, .7 * this.radius * d, .02 * this.radius, 0, "cutout" == this.hourHandType ? this.clockColour : this.handsColour, e), h = h * Math.PI / 30, this.secondHandType) { case "nothing": break; case "handscolour": this.drawHand(this.ctx, h, .9 * this.radius, .01 * this.radius, 0, null, .2 * this.radius); break; case "red": this.drawHand(this.ctx, h, .9 * this.radius, .01 * this.radius, 0, "#C71013", .2 * this.radius), this.ctx.beginPath(), this.ctx.arc(0, 0, .015 * this.radius, 0, 2 * Math.PI), this.ctx.fillStyle = "#C71013", this.ctx.fill() } } } drawHand(t, s, i, h, a, r, e) { if (null == r && (r = this.handsColour), a > 0) this.strokestyle = this.ctx.createRadialGradient(0, 0, 0, 0, 0, this.radius), this.strokestyle.addColorStop(0, "rgba(255, 255, 255, 0)"), this.strokestyle.addColorStop(a, "rgba(255, 255, 255, 0)"), this.strokestyle.addColorStop(a, r), this.strokestyle.addColorStop(1, r), this.ctx.strokeStyle = this.strokestyle, this.ctx.lineCap = "butt"; else switch (this.ctx.strokeStyle = r, "rounded" == this.handsEndType && (this.ctx.lineCap = "round"), this.handsWidthType) { case "thin": h *= .5; break; case "medium": break; case "thick": h *= 2 }this.ctx.beginPath(), this.ctx.lineWidth = h, this.ctx.moveTo(0, 0), this.ctx.rotate(s), this.ctx.lineTo(0, -i), this.ctx.stroke(), this.ctx.rotate(-s), e > 0 && (this.ctx.beginPath(), this.ctx.moveTo(0, 0), this.ctx.rotate(s), this.ctx.lineTo(0, e), this.ctx.stroke(), this.ctx.rotate(-s)) } drawCardanoLogo() { this.drawCardanoRing(0, .3 * this.radius, .116 * this.radius), this.drawCardanoRing(90, .42 * this.radius, .05 * this.radius), this.drawCardanoRing(0, .52 * this.radius, .04 * this.radius), this.drawCardanoRing(90, .6 * this.radius, .033 * this.radius), this.drawCardanoRing(0, .65 * this.radius, .024 * this.radius) } drawCardanoRing(t, s, i) { for (let h = 0; h < 6; h++)this.x = 0 + Math.cos(t * Math.PI / 180) * s, this.y = 0 + Math.sin(t * Math.PI / 180) * s, t += 60, this.ctx.beginPath(), this.ctx.arc(this.x, this.y, i, 0, 2 * Math.PI), this.ctx.fillStyle = "#1F61BA", this.ctx.fill() } } new renderclocksample2;
-    </script>
-
-    <script>
-        class renderclocksample3 { constructor() { this.canvas = document.getElementById("canvas3"), this.ss = 300, this.backgroundColour = "rgba(0,0,0,0)", this.clockColour = "#FDFFFC", this.handsColour = "#222222", this.numbersType = "bits", this.secondHandType = "nothing", this.handsEndType = "corners", this.handsWidthType = "circle", this.handsCentreType = "point", this.handsLengthType = "standard", this.backgroundType = "plain", this.borderType = "solid", this.dimensionType = "3d", this.hourHandType = "circle", this.fps = 60, this.canvas.width = this.ss, this.canvas.height = this.ss, this.ctx = this.canvas.getContext("2d"), this.radius = this.canvas.height / 2, this.ctx.translate(this.radius, this.radius), this.radius = .85 * this.radius, setInterval(this.renderframe.bind(this), 500) } drawStaticBackground() { this.ctx.fillStyle = this.backgroundColour, this.ctx.fillRect(-this.ss, -this.ss, 2 * this.ss, 2 * this.ss), this.ctx.restore(), this.drawFace(), this.drawNumbers() } renderframe() { this.ctx.clearRect(-this.ss, -this.ss, this.ss * 2, this.ss * 2); this.drawStaticBackground(), this.drawTime() } formatNumber(t) { return t.toString().padStart(2, "0") } drawFace() { var t; this.ctx.beginPath(), this.ctx.arc(0, 0, this.radius, 0, 2 * Math.PI), this.ctx.fillStyle = this.clockColour, this.ctx.fill(), "nothing" != this.borderType && ("gradient" == this.borderType ? ((t = this.ctx.createRadialGradient(0, 0, .9 * this.radius, 0, 0, 1 * this.radius)).addColorStop(0, this.clockColour), t.addColorStop(.5, this.handsColour), t.addColorStop(1, this.clockColour), this.ctx.strokeStyle = t) : this.ctx.strokeStyle = this.handsColour, this.ctx.lineWidth = .03 * this.radius, this.ctx.stroke()), "cardano" == this.backgroundType && this.drawCardanoLogo() } drawNumbers() { var t, s; switch (this.ctx.font = .15 * this.radius + "px arial", this.ctx.textBaseline = "middle", this.ctx.textAlign = "center", this.ctx.fillStyle = this.handsColour, this.numbersType) { case "numbers": for (s = 1; s < 13; s++)t = s * Math.PI / 6, this.ctx.rotate(t), this.ctx.translate(0, .85 * -this.radius), this.ctx.rotate(-t), this.ctx.fillText(s.toString(), 0, 0), this.ctx.rotate(t), this.ctx.translate(0, .85 * this.radius), this.ctx.rotate(-t); break; case "somedashes": for (s = 0; s < 12; s++)t = s * Math.PI / 6, this.drawHand(this.ctx, t, .95 * this.radius, .02 * this.radius, s % 3 ? .91 : .87); break; case "alldashes": for (s = 0; s < 60; s++)t = s * Math.PI / 30, this.startdashratio = s % 15 == 0 ? .85 : s % 5 == 0 ? .88 : .92, this.drawHand(this.ctx, t, .95 * this.radius, .02 * this.radius, this.startdashratio); break; case "numbersdashes": for (s = 0; s < 60; s++)t = s * Math.PI / 30, this.startdashratio = s % 15 == .85 ? 0 : s % 5 == 0 ? .88 : .92, this.drawHand(this.ctx, t, .95 * this.radius, .02 * this.radius, this.startdashratio), .88 == this.startdashratio && (this.ctx.rotate(t), this.ctx.translate(0, .77 * -this.radius), this.ctx.rotate(-t), this.ctx.fillText(0 == s ? 12 : s.toString() / 5, 0, 0), this.ctx.rotate(t), this.ctx.translate(0, .77 * this.radius), this.ctx.rotate(-t)); break; case "bits": for (s = 1; s < 13; s++)t = s * Math.PI / 6, this.ctx.rotate(t), this.ctx.translate(0, .82 * -this.radius), this.ctx.rotate(-t), this.ctx.fillText(s.toString(2).replaceAll("1", "I").padStart(4, "0"), 0, 0), this.ctx.rotate(t), this.ctx.translate(0, .82 * this.radius), this.ctx.rotate(-t) } } drawTime() { var t = new Date, s = t.getHours(), i = t.getMinutes(), h = t.getSeconds(); s = (s %= 12) * Math.PI / 6 + i * Math.PI / 360 + h * Math.PI / 21600; var a = t.getHours() % 12 * 30 + .5 * t.getMinutes() - 90; if (this.ctx.save(), "3d" == this.dimensionType && (this.ctx.shadowBlur = 5, this.ctx.shadowColor = "#222222", this.ctx.shadowOffsetX = -4, this.ctx.shadowOffsetY = 3), "cutout" == this.hourHandType && (this.ctx.beginPath(), this.ctx.rotate(a * Math.PI / 180), this.ctx.arc(0, 0, this.radius, .09 * Math.PI, 1.91 * Math.PI), this.ctx.lineTo(0, 0), this.ctx.closePath(), this.ctx.fillStyle = this.handsColour, this.ctx.fill(), this.ctx.rotate(-a * Math.PI / 180)), "circle" != this.handsCentreType && "circle" != this.handsCentreType || (this.ctx.beginPath(), this.ctx.arc(0, 0, .05 * this.radius, 0, 2 * Math.PI), this.ctx.fillStyle = "cutout" == this.hourHandType ? this.clockColour : this.handsColour, this.ctx.fill()), "circle" == this.hourHandType) { this.x = Math.cos(a * Math.PI / 180) * this.radius * .6, this.y = Math.sin(a * Math.PI / 180) * this.radius * .6; var r = this.ctx.createRadialGradient(this.x + .025 * this.radius, this.y - .02 * this.radius, .01 * this.radius, this.x, this.y, .1 * this.radius); r.addColorStop(0, "white"), r.addColorStop(1, this.handsColour), this.ctx.beginPath(), this.ctx.arc(this.x, this.y, .08 * this.radius, 0, 2 * Math.PI), this.ctx.fillStyle = r, this.ctx.fill() } else { var e = 0; "extended" != this.handsLengthType && "extended" != this.handsLengthType || (e = .1 * this.radius); var d = 1; switch ("short" == this.handsLengthType && (d = .7), "cutout" != this.hourHandType && this.drawHand(this.ctx, s, .5 * this.radius * d, .03 * this.radius, 0, null, e), i = i * Math.PI / 30 + h * Math.PI / 1800, this.drawHand(this.ctx, i, .7 * this.radius * d, .02 * this.radius, 0, "cutout" == this.hourHandType ? this.clockColour : this.handsColour, e), h = h * Math.PI / 30, this.secondHandType) { case "nothing": break; case "handscolour": this.drawHand(this.ctx, h, .9 * this.radius, .01 * this.radius, 0, null, .2 * this.radius); break; case "red": this.drawHand(this.ctx, h, .9 * this.radius, .01 * this.radius, 0, "#C71013", .2 * this.radius), this.ctx.beginPath(), this.ctx.arc(0, 0, .015 * this.radius, 0, 2 * Math.PI), this.ctx.fillStyle = "#C71013", this.ctx.fill() } } } drawHand(t, s, i, h, a, r, e) { if (null == r && (r = this.handsColour), a > 0) this.strokestyle = this.ctx.createRadialGradient(0, 0, 0, 0, 0, this.radius), this.strokestyle.addColorStop(0, "rgba(255, 255, 255, 0)"), this.strokestyle.addColorStop(a, "rgba(255, 255, 255, 0)"), this.strokestyle.addColorStop(a, r), this.strokestyle.addColorStop(1, r), this.ctx.strokeStyle = this.strokestyle, this.ctx.lineCap = "butt"; else switch (this.ctx.strokeStyle = r, "rounded" == this.handsEndType && (this.ctx.lineCap = "round"), this.handsWidthType) { case "thin": h *= .5; break; case "medium": break; case "thick": h *= 2 }this.ctx.beginPath(), this.ctx.lineWidth = h, this.ctx.moveTo(0, 0), this.ctx.rotate(s), this.ctx.lineTo(0, -i), this.ctx.stroke(), this.ctx.rotate(-s), e > 0 && (this.ctx.beginPath(), this.ctx.moveTo(0, 0), this.ctx.rotate(s), this.ctx.lineTo(0, e), this.ctx.stroke(), this.ctx.rotate(-s)) } drawCardanoLogo() { this.drawCardanoRing(0, .3 * this.radius, .116 * this.radius), this.drawCardanoRing(90, .42 * this.radius, .05 * this.radius), this.drawCardanoRing(0, .52 * this.radius, .04 * this.radius), this.drawCardanoRing(90, .6 * this.radius, .033 * this.radius), this.drawCardanoRing(0, .65 * this.radius, .024 * this.radius) } drawCardanoRing(t, s, i) { for (let h = 0; h < 6; h++)this.x = 0 + Math.cos(t * Math.PI / 180) * s, this.y = 0 + Math.sin(t * Math.PI / 180) * s, t += 60, this.ctx.beginPath(), this.ctx.arc(this.x, this.y, i, 0, 2 * Math.PI), this.ctx.fillStyle = "#1F61BA", this.ctx.fill() } } new renderclocksample3;
-    </script>
-
-    <script>
-        class renderclocksample4 {
-            constructor() { this.canvas = document.getElementById("canvas4"); this.backgroundColour = 'rgba(0,0,0,0)'; this.clockColour = '#FDFFFC'; this.handsColour = '#DDDDDD'; this.numbersType = 'roman'; this.secondHandType = 'handscolour'; this.handsEndType = 'rounded'; this.handsWidthType = 'tapered'; this.handsCentreType = 'circle'; this.handsLengthType = 'extended'; this.backgroundType = 'therefresh'; this.borderType = 'nothing'; this.dimensionType = '3d'; this.hourHandType = 'standard'; this.fps = 60; this.renderframe(); setInterval(this.renderframe.bind(this), 1000) }
-            drawStaticBackground() { this.ctx.fillStyle = this.backgroundColour; this.ctx.fillRect(-this.ss, -this.ss, this.ss * 2, this.ss * 2); this.ctx.restore(); this.drawFace(); this.drawNumbers() }
-            renderframe() {
-                this.body = document.querySelector("body");
-                var oldss = this.ss;
-                //this.ss = (this.body.clientWidth < this.body.clientHeight ? this.body.clientWidth : this.body.clientHeight) * 0.8;
-                this.ss = "260";
-                if (this.ss != oldss) { this.canvas.width = this.ss; this.canvas.height = this.ss; this.ctx = this.canvas.getContext("2d"); this.radius = this.canvas.height / 2; this.ctx.translate(this.radius, this.radius); this.canvasc = document.querySelector(".clockdiv"); this.canvasc.style.width = this.ss; this.canvasc.style.height = this.ss }
-                this.ctx.clearRect(-this.ss, -this.ss, this.ss * 2, this.ss * 2); this.drawStaticBackground(); this.drawTime()
+        <script>
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker
+                    .register('sw.js')
+                    .then(function () { console.log("Service Worker Registered"); });
             }
-            formatNumber(n) { return n.toString().padStart(2, "0") }
-            drawFace() {
-                var grad; if (this.backgroundType != "fractal" && this.backgroundType != "therefresh") { this.ctx.beginPath(); this.ctx.arc(0, 0, this.radius, 0, 2 * Math.PI); this.ctx.fillStyle = this.clockColour; this.ctx.fill() }
-                if (this.borderType != "nothing") {
-                    if (this.borderType == "gradient") { grad = this.ctx.createRadialGradient(0, 0, this.radius * 0.9, 0, 0, this.radius * 1); grad.addColorStop(0, this.clockColour); grad.addColorStop(0.5, this.handsColour); grad.addColorStop(1, this.clockColour); this.ctx.strokeStyle = grad } else { this.ctx.strokeStyle = this.handsColour }
-                    this.ctx.lineWidth = this.radius * 0.03; this.ctx.stroke()
+        </script>
+        <script>
+            class renderclocksample1 { constructor() { this.canvas = document.getElementById("canvas1"), this.ss = 300, this.backgroundColour = "rgba(0,0,0,0)", this.clockColour = "#FDFFFC", this.handsColour = "#222222", this.numbersType = "somedashes", this.secondHandType = "red", this.handsEndType = "rounded", this.handsWidthType = "thick", this.handsCentreType = "circle", this.handsLengthType = "standard", this.backgroundType = "cardano", this.borderType = "nothing", this.dimensionType = "3d", this.hourHandType = "standard", this.fps = 60, this.canvas.width = this.ss, this.canvas.height = this.ss, this.ctx = this.canvas.getContext("2d"), this.radius = this.canvas.height / 2, this.ctx.translate(this.radius, this.radius), this.radius = .85 * this.radius, setInterval(this.renderframe.bind(this), 500) } drawStaticBackground() { this.ctx.fillStyle = this.backgroundColour, this.ctx.fillRect(-this.ss, -this.ss, 2 * this.ss, 2 * this.ss), this.ctx.restore(), this.drawFace(), this.drawNumbers() } renderframe() { this.ctx.clearRect(-this.ss, -this.ss, this.ss * 2, this.ss * 2); this.drawStaticBackground(), this.drawTime() } formatNumber(t) { return t.toString().padStart(2, "0") } drawFace() { this.ctx.beginPath(), this.ctx.arc(0, 0, this.radius, 0, 2 * Math.PI), this.ctx.fillStyle = this.clockColour, this.ctx.fill(), "cardano" == this.backgroundType && this.drawCardanoLogo() } drawNumbers() { var t, s; for (this.ctx.font = .15 * this.radius + "px arial", this.ctx.textBaseline = "middle", this.ctx.textAlign = "center", this.ctx.fillStyle = this.handsColour, s = 0; s < 12; s++)t = s * Math.PI / 6, this.drawHand(this.ctx, t, .95 * this.radius, .02 * this.radius, s % 3 ? .91 : .87) } drawTime() { var t = new Date, s = t.getHours(), i = t.getMinutes(), h = t.getSeconds(); s = (s %= 12) * Math.PI / 6 + i * Math.PI / 360 + h * Math.PI / 21600; t.getHours(), t.getMinutes(); this.ctx.save(), this.ctx.shadowBlur = 5, this.ctx.shadowColor = "#222222", this.ctx.shadowOffsetX = -4, this.ctx.shadowOffsetY = 3, this.ctx.beginPath(), this.ctx.arc(0, 0, .05 * this.radius, 0, 2 * Math.PI), this.ctx.fillStyle = "cutout" == this.hourHandType ? this.clockColour : this.handsColour, this.ctx.fill(); var a = 0; "extended" != this.handsLengthType && "extended" != this.handsLengthType || (a = .1 * this.radius); var r = 1; "short" == this.handsLengthType && (r = .7), "cutout" != this.hourHandType && this.drawHand(this.ctx, s, .5 * this.radius * r, .03 * this.radius, 0, null, a), i = i * Math.PI / 30 + h * Math.PI / 1800, this.drawHand(this.ctx, i, .7 * this.radius * r, .02 * this.radius, 0, "cutout" == this.hourHandType ? this.clockColour : this.handsColour, a), h = h * Math.PI / 30, this.drawHand(this.ctx, h, .9 * this.radius, .01 * this.radius, 0, "#C71013", .2 * this.radius), this.ctx.beginPath(), this.ctx.arc(0, 0, .015 * this.radius, 0, 2 * Math.PI), this.ctx.fillStyle = "#C71013", this.ctx.fill() } drawHand(t, s, i, h, a, r, e) { null == r && (r = this.handsColour), a > 0 ? (this.strokestyle = this.ctx.createRadialGradient(0, 0, 0, 0, 0, this.radius), this.strokestyle.addColorStop(0, "rgba(255, 255, 255, 0)"), this.strokestyle.addColorStop(a, "rgba(255, 255, 255, 0)"), this.strokestyle.addColorStop(a, r), this.strokestyle.addColorStop(1, r), this.ctx.strokeStyle = this.strokestyle, this.ctx.lineCap = "butt") : (this.ctx.strokeStyle = r, this.ctx.lineCap = "round", h *= 2), this.ctx.beginPath(), this.ctx.lineWidth = h, this.ctx.moveTo(0, 0), this.ctx.rotate(s), this.ctx.lineTo(0, -i), this.ctx.stroke(), this.ctx.rotate(-s), e > 0 && (this.ctx.beginPath(), this.ctx.moveTo(0, 0), this.ctx.rotate(s), this.ctx.lineTo(0, e), this.ctx.stroke(), this.ctx.rotate(-s)) } drawCardanoLogo() { this.drawCardanoRing(0, .3 * this.radius, .116 * this.radius), this.drawCardanoRing(90, .42 * this.radius, .05 * this.radius), this.drawCardanoRing(0, .52 * this.radius, .04 * this.radius), this.drawCardanoRing(90, .6 * this.radius, .033 * this.radius), this.drawCardanoRing(0, .65 * this.radius, .024 * this.radius) } drawCardanoRing(t, s, i) { for (let h = 0; h < 6; h++)this.x = 0 + Math.cos(t * Math.PI / 180) * s, this.y = 0 + Math.sin(t * Math.PI / 180) * s, t += 60, this.ctx.beginPath(), this.ctx.arc(this.x, this.y, i, 0, 2 * Math.PI), this.ctx.fillStyle = "#1F61BA", this.ctx.fill() } } new renderclocksample1;
+        </script>
+
+        <script>
+            class renderclocksample2 { constructor() { this.canvas = document.getElementById("canvas2"), this.ss = 300, this.backgroundColour = "rgba(0,0,0,0)", this.clockColour = "#FDFFFC", this.handsColour = "#222222", this.numbersType = "numbers", this.secondHandType = "red", this.handsEndType = "rounded", this.handsWidthType = "thick", this.handsCentreType = "point", this.handsLengthType = "extended", this.backgroundType = "plain", this.borderType = "nothing", this.dimensionType = "3d", this.hourHandType = "cutout", this.fps = 60, this.canvas.width = this.ss, this.canvas.height = this.ss, this.ctx = this.canvas.getContext("2d"), this.radius = this.canvas.height / 2, this.ctx.translate(this.radius, this.radius), this.radius = .85 * this.radius, setInterval(this.renderframe.bind(this), 500) } drawStaticBackground() { this.ctx.fillStyle = this.backgroundColour, this.ctx.fillRect(-this.ss, -this.ss, 2 * this.ss, 2 * this.ss), this.ctx.restore(), this.drawFace(), this.drawNumbers() } renderframe() { this.ctx.clearRect(-this.ss, -this.ss, this.ss * 2, this.ss * 2); this.drawStaticBackground(), this.drawTime() } formatNumber(t) { return t.toString().padStart(2, "0") } drawFace() { var t; this.ctx.beginPath(), this.ctx.arc(0, 0, this.radius, 0, 2 * Math.PI), this.ctx.fillStyle = this.clockColour, this.ctx.fill(), "nothing" != this.borderType && ("gradient" == this.borderType ? ((t = this.ctx.createRadialGradient(0, 0, .9 * this.radius, 0, 0, 1 * this.radius)).addColorStop(0, this.clockColour), t.addColorStop(.5, this.handsColour), t.addColorStop(1, this.clockColour), this.ctx.strokeStyle = t) : this.ctx.strokeStyle = this.handsColour, this.ctx.lineWidth = .03 * this.radius, this.ctx.stroke()), "cardano" == this.backgroundType && this.drawCardanoLogo() } drawNumbers() { var t, s; switch (this.ctx.font = .15 * this.radius + "px arial", this.ctx.textBaseline = "middle", this.ctx.textAlign = "center", this.ctx.fillStyle = this.handsColour, this.numbersType) { case "numbers": for (s = 1; s < 13; s++)t = s * Math.PI / 6, this.ctx.rotate(t), this.ctx.translate(0, .85 * -this.radius), this.ctx.rotate(-t), this.ctx.fillText(s.toString(), 0, 0), this.ctx.rotate(t), this.ctx.translate(0, .85 * this.radius), this.ctx.rotate(-t); break; case "somedashes": for (s = 0; s < 12; s++)t = s * Math.PI / 6, this.drawHand(this.ctx, t, .95 * this.radius, .02 * this.radius, s % 3 ? .91 : .87); break; case "alldashes": for (s = 0; s < 60; s++)t = s * Math.PI / 30, this.startdashratio = s % 15 == 0 ? .85 : s % 5 == 0 ? .88 : .92, this.drawHand(this.ctx, t, .95 * this.radius, .02 * this.radius, this.startdashratio); break; case "numbersdashes": for (s = 0; s < 60; s++)t = s * Math.PI / 30, this.startdashratio = s % 15 == .85 ? 0 : s % 5 == 0 ? .88 : .92, this.drawHand(this.ctx, t, .95 * this.radius, .02 * this.radius, this.startdashratio), .88 == this.startdashratio && (this.ctx.rotate(t), this.ctx.translate(0, .77 * -this.radius), this.ctx.rotate(-t), this.ctx.fillText(0 == s ? 12 : s.toString() / 5, 0, 0), this.ctx.rotate(t), this.ctx.translate(0, .77 * this.radius), this.ctx.rotate(-t)); break; case "bits": for (s = 1; s < 13; s++)t = s * Math.PI / 6, this.ctx.rotate(t), this.ctx.translate(0, .82 * -this.radius), this.ctx.rotate(-t), this.ctx.fillText(s.toString(2).replaceAll("1", "I").padStart(4, "0"), 0, 0), this.ctx.rotate(t), this.ctx.translate(0, .82 * this.radius), this.ctx.rotate(-t) } } drawTime() { var t = new Date, s = t.getHours(), i = t.getMinutes(), h = t.getSeconds(); s = (s %= 12) * Math.PI / 6 + i * Math.PI / 360 + h * Math.PI / 21600; var a = t.getHours() % 12 * 30 + .5 * t.getMinutes() - 90; if (this.ctx.save(), "3d" == this.dimensionType && (this.ctx.shadowBlur = 5, this.ctx.shadowColor = "#222222", this.ctx.shadowOffsetX = -4, this.ctx.shadowOffsetY = 3), "cutout" == this.hourHandType && (this.ctx.beginPath(), this.ctx.rotate(a * Math.PI / 180), this.ctx.arc(0, 0, this.radius, .09 * Math.PI, 1.91 * Math.PI), this.ctx.lineTo(0, 0), this.ctx.closePath(), this.ctx.fillStyle = this.handsColour, this.ctx.fill(), this.ctx.rotate(-a * Math.PI / 180)), "circle" != this.handsCentreType && "circle" != this.handsCentreType || (this.ctx.beginPath(), this.ctx.arc(0, 0, .05 * this.radius, 0, 2 * Math.PI), this.ctx.fillStyle = "cutout" == this.hourHandType ? this.clockColour : this.handsColour, this.ctx.fill()), "circle" == this.hourHandType) { this.x = Math.cos(a * Math.PI / 180) * this.radius * .6, this.y = Math.sin(a * Math.PI / 180) * this.radius * .6; var r = this.ctx.createRadialGradient(this.x + .025 * this.radius, this.y - .02 * this.radius, .01 * this.radius, this.x, this.y, .1 * this.radius); r.addColorStop(0, "white"), r.addColorStop(1, this.handsColour), this.ctx.beginPath(), this.ctx.arc(this.x, this.y, .08 * this.radius, 0, 2 * Math.PI), this.ctx.fillStyle = r, this.ctx.fill() } else { var e = 0; "extended" != this.handsLengthType && "extended" != this.handsLengthType || (e = .1 * this.radius); var d = 1; switch ("short" == this.handsLengthType && (d = .7), "cutout" != this.hourHandType && this.drawHand(this.ctx, s, .5 * this.radius * d, .03 * this.radius, 0, null, e), i = i * Math.PI / 30 + h * Math.PI / 1800, this.drawHand(this.ctx, i, .7 * this.radius * d, .02 * this.radius, 0, "cutout" == this.hourHandType ? this.clockColour : this.handsColour, e), h = h * Math.PI / 30, this.secondHandType) { case "nothing": break; case "handscolour": this.drawHand(this.ctx, h, .9 * this.radius, .01 * this.radius, 0, null, .2 * this.radius); break; case "red": this.drawHand(this.ctx, h, .9 * this.radius, .01 * this.radius, 0, "#C71013", .2 * this.radius), this.ctx.beginPath(), this.ctx.arc(0, 0, .015 * this.radius, 0, 2 * Math.PI), this.ctx.fillStyle = "#C71013", this.ctx.fill() } } } drawHand(t, s, i, h, a, r, e) { if (null == r && (r = this.handsColour), a > 0) this.strokestyle = this.ctx.createRadialGradient(0, 0, 0, 0, 0, this.radius), this.strokestyle.addColorStop(0, "rgba(255, 255, 255, 0)"), this.strokestyle.addColorStop(a, "rgba(255, 255, 255, 0)"), this.strokestyle.addColorStop(a, r), this.strokestyle.addColorStop(1, r), this.ctx.strokeStyle = this.strokestyle, this.ctx.lineCap = "butt"; else switch (this.ctx.strokeStyle = r, "rounded" == this.handsEndType && (this.ctx.lineCap = "round"), this.handsWidthType) { case "thin": h *= .5; break; case "medium": break; case "thick": h *= 2 }this.ctx.beginPath(), this.ctx.lineWidth = h, this.ctx.moveTo(0, 0), this.ctx.rotate(s), this.ctx.lineTo(0, -i), this.ctx.stroke(), this.ctx.rotate(-s), e > 0 && (this.ctx.beginPath(), this.ctx.moveTo(0, 0), this.ctx.rotate(s), this.ctx.lineTo(0, e), this.ctx.stroke(), this.ctx.rotate(-s)) } drawCardanoLogo() { this.drawCardanoRing(0, .3 * this.radius, .116 * this.radius), this.drawCardanoRing(90, .42 * this.radius, .05 * this.radius), this.drawCardanoRing(0, .52 * this.radius, .04 * this.radius), this.drawCardanoRing(90, .6 * this.radius, .033 * this.radius), this.drawCardanoRing(0, .65 * this.radius, .024 * this.radius) } drawCardanoRing(t, s, i) { for (let h = 0; h < 6; h++)this.x = 0 + Math.cos(t * Math.PI / 180) * s, this.y = 0 + Math.sin(t * Math.PI / 180) * s, t += 60, this.ctx.beginPath(), this.ctx.arc(this.x, this.y, i, 0, 2 * Math.PI), this.ctx.fillStyle = "#1F61BA", this.ctx.fill() } } new renderclocksample2;
+        </script>
+
+        <script>
+            class renderclocksample3 { constructor() { this.canvas = document.getElementById("canvas3"), this.ss = 300, this.backgroundColour = "rgba(0,0,0,0)", this.clockColour = "#FDFFFC", this.handsColour = "#222222", this.numbersType = "bits", this.secondHandType = "nothing", this.handsEndType = "corners", this.handsWidthType = "circle", this.handsCentreType = "point", this.handsLengthType = "standard", this.backgroundType = "plain", this.borderType = "solid", this.dimensionType = "3d", this.hourHandType = "circle", this.fps = 60, this.canvas.width = this.ss, this.canvas.height = this.ss, this.ctx = this.canvas.getContext("2d"), this.radius = this.canvas.height / 2, this.ctx.translate(this.radius, this.radius), this.radius = .85 * this.radius, setInterval(this.renderframe.bind(this), 500) } drawStaticBackground() { this.ctx.fillStyle = this.backgroundColour, this.ctx.fillRect(-this.ss, -this.ss, 2 * this.ss, 2 * this.ss), this.ctx.restore(), this.drawFace(), this.drawNumbers() } renderframe() { this.ctx.clearRect(-this.ss, -this.ss, this.ss * 2, this.ss * 2); this.drawStaticBackground(), this.drawTime() } formatNumber(t) { return t.toString().padStart(2, "0") } drawFace() { var t; this.ctx.beginPath(), this.ctx.arc(0, 0, this.radius, 0, 2 * Math.PI), this.ctx.fillStyle = this.clockColour, this.ctx.fill(), "nothing" != this.borderType && ("gradient" == this.borderType ? ((t = this.ctx.createRadialGradient(0, 0, .9 * this.radius, 0, 0, 1 * this.radius)).addColorStop(0, this.clockColour), t.addColorStop(.5, this.handsColour), t.addColorStop(1, this.clockColour), this.ctx.strokeStyle = t) : this.ctx.strokeStyle = this.handsColour, this.ctx.lineWidth = .03 * this.radius, this.ctx.stroke()), "cardano" == this.backgroundType && this.drawCardanoLogo() } drawNumbers() { var t, s; switch (this.ctx.font = .15 * this.radius + "px arial", this.ctx.textBaseline = "middle", this.ctx.textAlign = "center", this.ctx.fillStyle = this.handsColour, this.numbersType) { case "numbers": for (s = 1; s < 13; s++)t = s * Math.PI / 6, this.ctx.rotate(t), this.ctx.translate(0, .85 * -this.radius), this.ctx.rotate(-t), this.ctx.fillText(s.toString(), 0, 0), this.ctx.rotate(t), this.ctx.translate(0, .85 * this.radius), this.ctx.rotate(-t); break; case "somedashes": for (s = 0; s < 12; s++)t = s * Math.PI / 6, this.drawHand(this.ctx, t, .95 * this.radius, .02 * this.radius, s % 3 ? .91 : .87); break; case "alldashes": for (s = 0; s < 60; s++)t = s * Math.PI / 30, this.startdashratio = s % 15 == 0 ? .85 : s % 5 == 0 ? .88 : .92, this.drawHand(this.ctx, t, .95 * this.radius, .02 * this.radius, this.startdashratio); break; case "numbersdashes": for (s = 0; s < 60; s++)t = s * Math.PI / 30, this.startdashratio = s % 15 == .85 ? 0 : s % 5 == 0 ? .88 : .92, this.drawHand(this.ctx, t, .95 * this.radius, .02 * this.radius, this.startdashratio), .88 == this.startdashratio && (this.ctx.rotate(t), this.ctx.translate(0, .77 * -this.radius), this.ctx.rotate(-t), this.ctx.fillText(0 == s ? 12 : s.toString() / 5, 0, 0), this.ctx.rotate(t), this.ctx.translate(0, .77 * this.radius), this.ctx.rotate(-t)); break; case "bits": for (s = 1; s < 13; s++)t = s * Math.PI / 6, this.ctx.rotate(t), this.ctx.translate(0, .82 * -this.radius), this.ctx.rotate(-t), this.ctx.fillText(s.toString(2).replaceAll("1", "I").padStart(4, "0"), 0, 0), this.ctx.rotate(t), this.ctx.translate(0, .82 * this.radius), this.ctx.rotate(-t) } } drawTime() { var t = new Date, s = t.getHours(), i = t.getMinutes(), h = t.getSeconds(); s = (s %= 12) * Math.PI / 6 + i * Math.PI / 360 + h * Math.PI / 21600; var a = t.getHours() % 12 * 30 + .5 * t.getMinutes() - 90; if (this.ctx.save(), "3d" == this.dimensionType && (this.ctx.shadowBlur = 5, this.ctx.shadowColor = "#222222", this.ctx.shadowOffsetX = -4, this.ctx.shadowOffsetY = 3), "cutout" == this.hourHandType && (this.ctx.beginPath(), this.ctx.rotate(a * Math.PI / 180), this.ctx.arc(0, 0, this.radius, .09 * Math.PI, 1.91 * Math.PI), this.ctx.lineTo(0, 0), this.ctx.closePath(), this.ctx.fillStyle = this.handsColour, this.ctx.fill(), this.ctx.rotate(-a * Math.PI / 180)), "circle" != this.handsCentreType && "circle" != this.handsCentreType || (this.ctx.beginPath(), this.ctx.arc(0, 0, .05 * this.radius, 0, 2 * Math.PI), this.ctx.fillStyle = "cutout" == this.hourHandType ? this.clockColour : this.handsColour, this.ctx.fill()), "circle" == this.hourHandType) { this.x = Math.cos(a * Math.PI / 180) * this.radius * .6, this.y = Math.sin(a * Math.PI / 180) * this.radius * .6; var r = this.ctx.createRadialGradient(this.x + .025 * this.radius, this.y - .02 * this.radius, .01 * this.radius, this.x, this.y, .1 * this.radius); r.addColorStop(0, "white"), r.addColorStop(1, this.handsColour), this.ctx.beginPath(), this.ctx.arc(this.x, this.y, .08 * this.radius, 0, 2 * Math.PI), this.ctx.fillStyle = r, this.ctx.fill() } else { var e = 0; "extended" != this.handsLengthType && "extended" != this.handsLengthType || (e = .1 * this.radius); var d = 1; switch ("short" == this.handsLengthType && (d = .7), "cutout" != this.hourHandType && this.drawHand(this.ctx, s, .5 * this.radius * d, .03 * this.radius, 0, null, e), i = i * Math.PI / 30 + h * Math.PI / 1800, this.drawHand(this.ctx, i, .7 * this.radius * d, .02 * this.radius, 0, "cutout" == this.hourHandType ? this.clockColour : this.handsColour, e), h = h * Math.PI / 30, this.secondHandType) { case "nothing": break; case "handscolour": this.drawHand(this.ctx, h, .9 * this.radius, .01 * this.radius, 0, null, .2 * this.radius); break; case "red": this.drawHand(this.ctx, h, .9 * this.radius, .01 * this.radius, 0, "#C71013", .2 * this.radius), this.ctx.beginPath(), this.ctx.arc(0, 0, .015 * this.radius, 0, 2 * Math.PI), this.ctx.fillStyle = "#C71013", this.ctx.fill() } } } drawHand(t, s, i, h, a, r, e) { if (null == r && (r = this.handsColour), a > 0) this.strokestyle = this.ctx.createRadialGradient(0, 0, 0, 0, 0, this.radius), this.strokestyle.addColorStop(0, "rgba(255, 255, 255, 0)"), this.strokestyle.addColorStop(a, "rgba(255, 255, 255, 0)"), this.strokestyle.addColorStop(a, r), this.strokestyle.addColorStop(1, r), this.ctx.strokeStyle = this.strokestyle, this.ctx.lineCap = "butt"; else switch (this.ctx.strokeStyle = r, "rounded" == this.handsEndType && (this.ctx.lineCap = "round"), this.handsWidthType) { case "thin": h *= .5; break; case "medium": break; case "thick": h *= 2 }this.ctx.beginPath(), this.ctx.lineWidth = h, this.ctx.moveTo(0, 0), this.ctx.rotate(s), this.ctx.lineTo(0, -i), this.ctx.stroke(), this.ctx.rotate(-s), e > 0 && (this.ctx.beginPath(), this.ctx.moveTo(0, 0), this.ctx.rotate(s), this.ctx.lineTo(0, e), this.ctx.stroke(), this.ctx.rotate(-s)) } drawCardanoLogo() { this.drawCardanoRing(0, .3 * this.radius, .116 * this.radius), this.drawCardanoRing(90, .42 * this.radius, .05 * this.radius), this.drawCardanoRing(0, .52 * this.radius, .04 * this.radius), this.drawCardanoRing(90, .6 * this.radius, .033 * this.radius), this.drawCardanoRing(0, .65 * this.radius, .024 * this.radius) } drawCardanoRing(t, s, i) { for (let h = 0; h < 6; h++)this.x = 0 + Math.cos(t * Math.PI / 180) * s, this.y = 0 + Math.sin(t * Math.PI / 180) * s, t += 60, this.ctx.beginPath(), this.ctx.arc(this.x, this.y, i, 0, 2 * Math.PI), this.ctx.fillStyle = "#1F61BA", this.ctx.fill() } } new renderclocksample3;
+        </script>
+
+        <script>
+            class renderclocksample4 {
+                constructor() { this.canvas = document.getElementById("canvas4"); this.backgroundColour = 'rgba(0,0,0,0)'; this.clockColour = '#FDFFFC'; this.handsColour = '#DDDDDD'; this.numbersType = 'roman'; this.secondHandType = 'handscolour'; this.handsEndType = 'rounded'; this.handsWidthType = 'tapered'; this.handsCentreType = 'circle'; this.handsLengthType = 'extended'; this.backgroundType = 'therefresh'; this.borderType = 'nothing'; this.dimensionType = '3d'; this.hourHandType = 'standard'; this.fps = 60; this.renderframe(); setInterval(this.renderframe.bind(this), 1000) }
+                drawStaticBackground() { this.ctx.fillStyle = this.backgroundColour; this.ctx.fillRect(-this.ss, -this.ss, this.ss * 2, this.ss * 2); this.ctx.restore(); this.drawFace(); this.drawNumbers() }
+                renderframe() {
+                    this.body = document.querySelector("body");
+                    var oldss = this.ss;
+                    //this.ss = (this.body.clientWidth < this.body.clientHeight ? this.body.clientWidth : this.body.clientHeight) * 0.8;
+                    this.ss = "260";
+                    if (this.ss != oldss) { this.canvas.width = this.ss; this.canvas.height = this.ss; this.ctx = this.canvas.getContext("2d"); this.radius = this.canvas.height / 2; this.ctx.translate(this.radius, this.radius); this.canvasc = document.querySelector(".clockdiv"); this.canvasc.style.width = this.ss; this.canvasc.style.height = this.ss }
+                    this.ctx.clearRect(-this.ss, -this.ss, this.ss * 2, this.ss * 2); this.drawStaticBackground(); this.drawTime()
                 }
-            }
-            drawNumbers() {
-                var ang; var num; this.ctx.font = this.radius * 0.15 + "px arial"; this.ctx.textBaseline = "middle"; this.ctx.textAlign = "center"; this.ctx.fillStyle = "#CDCDCD"; switch (this.numbersType) {
-                    case "roman": this.ctx.font = this.radius * 0.25 + "px times new roman"; for (num = 1; num < 13; num++) {
-                        ang = num * Math.PI / 6; this.ctx.rotate(ang); this.ctx.translate(0, -this.radius * 0.85); var text = ""; var width = 0.11; switch (num) {
-                            case 1:
-                                text = " I ";
-                                break;
-                            case 2:
-                                text = "II ";
-                                break;
-                            case 3:
-                                text = "III";
-                                break;
-                            case 4:
-                                text = "IV";
-                                break;
-                            case 5:
-                                text = " V ";
-                                break;
-                            case 6:
-                                text = "VI";
-                                break;
-                            case 7:
-                                text = "VII";
-                                break;
-                            case 8:
-                                text = "VIII";
-                                width = 0.15;
-                                break;
-                            case 9:
-                                text = "IX ";
-                                break;
-                            case 10:
-                                text = " X ";
-                                break;
-                            case 11:
-                                text = "XI ";
-                                break;
-                            case 12:
-                                text = "XII";
-                                break;
-                            default:
-                                break;
-                        }
-                        this.ctx.fillText(text, 0, 0, this.radius * width); this.ctx.rotate(-ang); this.ctx.rotate(ang); this.ctx.translate(0, this.radius * 0.85); this.ctx.rotate(-ang)
+                formatNumber(n) { return n.toString().padStart(2, "0") }
+                drawFace() {
+                    var grad; if (this.backgroundType != "fractal" && this.backgroundType != "therefresh") { this.ctx.beginPath(); this.ctx.arc(0, 0, this.radius, 0, 2 * Math.PI); this.ctx.fillStyle = this.clockColour; this.ctx.fill() }
+                    if (this.borderType != "nothing") {
+                        if (this.borderType == "gradient") { grad = this.ctx.createRadialGradient(0, 0, this.radius * 0.9, 0, 0, this.radius * 1); grad.addColorStop(0, this.clockColour); grad.addColorStop(0.5, this.handsColour); grad.addColorStop(1, this.clockColour); this.ctx.strokeStyle = grad } else { this.ctx.strokeStyle = this.handsColour }
+                        this.ctx.lineWidth = this.radius * 0.03; this.ctx.stroke()
                     }
-                        break; case "nothing": break
+                }
+                drawNumbers() {
+                    var ang; var num; this.ctx.font = this.radius * 0.15 + "px arial"; this.ctx.textBaseline = "middle"; this.ctx.textAlign = "center"; this.ctx.fillStyle = "#CDCDCD"; switch (this.numbersType) {
+                        case "roman": this.ctx.font = this.radius * 0.25 + "px times new roman"; for (num = 1; num < 13; num++) {
+                            ang = num * Math.PI / 6; this.ctx.rotate(ang); this.ctx.translate(0, -this.radius * 0.85); var text = ""; var width = 0.11; switch (num) {
+                                case 1:
+                                    text = " I ";
+                                    break;
+                                case 2:
+                                    text = "II ";
+                                    break;
+                                case 3:
+                                    text = "III";
+                                    break;
+                                case 4:
+                                    text = "IV";
+                                    break;
+                                case 5:
+                                    text = " V ";
+                                    break;
+                                case 6:
+                                    text = "VI";
+                                    break;
+                                case 7:
+                                    text = "VII";
+                                    break;
+                                case 8:
+                                    text = "VIII";
+                                    width = 0.15;
+                                    break;
+                                case 9:
+                                    text = "IX ";
+                                    break;
+                                case 10:
+                                    text = " X ";
+                                    break;
+                                case 11:
+                                    text = "XI ";
+                                    break;
+                                case 12:
+                                    text = "XII";
+                                    break;
+                                default:
+                                    break;
+                            }
+                            this.ctx.fillText(text, 0, 0, this.radius * width); this.ctx.rotate(-ang); this.ctx.rotate(ang); this.ctx.translate(0, this.radius * 0.85); this.ctx.rotate(-ang)
+                        }
+                            break; case "nothing": break
+                    }
+                }
+                drawTime() {
+                    var now = new Date(); var hour = now.getHours(); var minute = now.getMinutes(); var second = now.getSeconds(); hour = hour % 12; hour = (hour * Math.PI / 6) + (minute * Math.PI / (6 * 60)) + (second * Math.PI / (360 * 60)); var ang = now.getHours() % 12 * 30 + (now.getMinutes() * 0.5) - 90; this.ctx.save(); if (this.dimensionType == "3d") { this.ctx.shadowBlur = 5; this.ctx.shadowColor = '#222222'; this.ctx.shadowOffsetX = -4; this.ctx.shadowOffsetY = 3 }
+                    if (this.handsCentreType == "circle" || this.handsCentreType == "circle") { this.ctx.beginPath(); this.ctx.arc(0, 0, this.radius * 0.05, 0, 2 * Math.PI); this.ctx.fillStyle = (this.hourHandType == "cutout" ? this.clockColour : this.handsColour); this.ctx.fill() }
+                    var extension = 0; if (this.handsLengthType == "extended" || this.handsLengthType == "extended") { extension = this.radius * 0.1 }
+                    var lengthratio = 1; if (this.handsLengthType == "short") { lengthratio = 0.7 }
+                    if (this.hourHandType != "cutout") { this.drawHand(this.ctx, hour, this.radius * 0.5 * lengthratio, this.radius * 0.03, 0, null, extension) }
+                    minute = (minute * Math.PI / 30) + (second * Math.PI / (30 * 60)); this.drawHand(this.ctx, minute, this.radius * 0.7 * lengthratio, this.radius * 0.02, 0, (this.hourHandType == "cutout" ? this.clockColour : this.handsColour), extension); second = (second * Math.PI / 30); switch (this.secondHandType) { case 'nothing': break; case 'handscolour': this.drawHand(this.ctx, second, this.radius * 0.8, this.radius * 0.01, 0, '#DDDDDD', this.radius * 0.2); this.ctx.beginPath(); this.ctx.arc(0, 0, this.radius * 0.015, 0, 2 * Math.PI); this.ctx.fillStyle = '#DDDDDD'; this.ctx.fill(); break; case 'red': this.drawHand(this.ctx, second, this.radius * 0.9, this.radius * 0.01, 0, '#C71013', this.radius * 0.2); this.ctx.beginPath(); this.ctx.arc(0, 0, this.radius * 0.015, 0, 2 * Math.PI); this.ctx.fillStyle = '#C71013'; this.ctx.fill(); break; default: break }
+                }
+                drawHand(ctx, pos, length, width, transparentratio, colour, neglength) {
+                    if (colour == null) { colour = this.handsColour }
+                    if (transparentratio > 0) { this.strokestyle = this.ctx.createRadialGradient(0, 0, 0, 0, 0, this.radius); this.strokestyle.addColorStop(0, 'rgba(255, 255, 255, 0)'); this.strokestyle.addColorStop(transparentratio, 'rgba(255, 255, 255, 0)'); this.strokestyle.addColorStop(transparentratio, colour); this.strokestyle.addColorStop(1, colour); this.ctx.strokeStyle = this.strokestyle; this.ctx.lineCap = "butt" } else {
+                        this.ctx.strokeStyle = colour; if (this.handsEndType == 'rounded') { this.ctx.lineCap = "round" }
+                        switch (this.handsWidthType) { case "thin": width = width * 0.5; break; case "medium": break; case "thick": width = width * 2; break; default: break }
+                    }
+                    this.ctx.beginPath(); this.ctx.lineWidth = width; this.ctx.moveTo(0, 0); this.ctx.rotate(pos); this.ctx.lineTo(0, -length); this.ctx.stroke(); this.ctx.rotate(-pos); if (neglength > 0) { this.ctx.beginPath(); this.ctx.moveTo(0, 0); this.ctx.rotate(pos); this.ctx.lineTo(0, neglength); this.ctx.stroke(); this.ctx.rotate(-pos) }
                 }
             }
-            drawTime() {
-                var now = new Date(); var hour = now.getHours(); var minute = now.getMinutes(); var second = now.getSeconds(); hour = hour % 12; hour = (hour * Math.PI / 6) + (minute * Math.PI / (6 * 60)) + (second * Math.PI / (360 * 60)); var ang = now.getHours() % 12 * 30 + (now.getMinutes() * 0.5) - 90; this.ctx.save(); if (this.dimensionType == "3d") { this.ctx.shadowBlur = 5; this.ctx.shadowColor = '#222222'; this.ctx.shadowOffsetX = -4; this.ctx.shadowOffsetY = 3 }
-                if (this.handsCentreType == "circle" || this.handsCentreType == "circle") { this.ctx.beginPath(); this.ctx.arc(0, 0, this.radius * 0.05, 0, 2 * Math.PI); this.ctx.fillStyle = (this.hourHandType == "cutout" ? this.clockColour : this.handsColour); this.ctx.fill() }
-                var extension = 0; if (this.handsLengthType == "extended" || this.handsLengthType == "extended") { extension = this.radius * 0.1 }
-                var lengthratio = 1; if (this.handsLengthType == "short") { lengthratio = 0.7 }
-                if (this.hourHandType != "cutout") { this.drawHand(this.ctx, hour, this.radius * 0.5 * lengthratio, this.radius * 0.03, 0, null, extension) }
-                minute = (minute * Math.PI / 30) + (second * Math.PI / (30 * 60)); this.drawHand(this.ctx, minute, this.radius * 0.7 * lengthratio, this.radius * 0.02, 0, (this.hourHandType == "cutout" ? this.clockColour : this.handsColour), extension); second = (second * Math.PI / 30); switch (this.secondHandType) { case 'nothing': break; case 'handscolour': this.drawHand(this.ctx, second, this.radius * 0.8, this.radius * 0.01, 0, '#DDDDDD', this.radius * 0.2); this.ctx.beginPath(); this.ctx.arc(0, 0, this.radius * 0.015, 0, 2 * Math.PI); this.ctx.fillStyle = '#DDDDDD'; this.ctx.fill(); break; case 'red': this.drawHand(this.ctx, second, this.radius * 0.9, this.radius * 0.01, 0, '#C71013', this.radius * 0.2); this.ctx.beginPath(); this.ctx.arc(0, 0, this.radius * 0.015, 0, 2 * Math.PI); this.ctx.fillStyle = '#C71013'; this.ctx.fill(); break; default: break }
-            }
-            drawHand(ctx, pos, length, width, transparentratio, colour, neglength) {
-                if (colour == null) { colour = this.handsColour }
-                if (transparentratio > 0) { this.strokestyle = this.ctx.createRadialGradient(0, 0, 0, 0, 0, this.radius); this.strokestyle.addColorStop(0, 'rgba(255, 255, 255, 0)'); this.strokestyle.addColorStop(transparentratio, 'rgba(255, 255, 255, 0)'); this.strokestyle.addColorStop(transparentratio, colour); this.strokestyle.addColorStop(1, colour); this.ctx.strokeStyle = this.strokestyle; this.ctx.lineCap = "butt" } else {
-                    this.ctx.strokeStyle = colour; if (this.handsEndType == 'rounded') { this.ctx.lineCap = "round" }
-                    switch (this.handsWidthType) { case "thin": width = width * 0.5; break; case "medium": break; case "thick": width = width * 2; break; default: break }
+            new renderclocksample4()
+        </script>
+
+        <script>
+            "use strict";
+
+            function createShader(gl, type, source) {
+                var shader = gl.createShader(type);
+                gl.shaderSource(shader, source);
+                gl.compileShader(shader);
+                var success = gl.getShaderParameter(shader, gl.COMPILE_STATUS);
+                if (success) {
+                    return shader;
                 }
-                this.ctx.beginPath(); this.ctx.lineWidth = width; this.ctx.moveTo(0, 0); this.ctx.rotate(pos); this.ctx.lineTo(0, -length); this.ctx.stroke(); this.ctx.rotate(-pos); if (neglength > 0) { this.ctx.beginPath(); this.ctx.moveTo(0, 0); this.ctx.rotate(pos); this.ctx.lineTo(0, neglength); this.ctx.stroke(); this.ctx.rotate(-pos) }
-            }
-        }
-        new renderclocksample4()
-    </script>
 
-    <script>
-        "use strict";
-
-        function createShader(gl, type, source) {
-            var shader = gl.createShader(type);
-            gl.shaderSource(shader, source);
-            gl.compileShader(shader);
-            var success = gl.getShaderParameter(shader, gl.COMPILE_STATUS);
-            if (success) {
-                return shader;
+                console.log(gl.getShaderInfoLog(shader));
+                gl.deleteShader(shader);
             }
 
-            console.log(gl.getShaderInfoLog(shader));
-            gl.deleteShader(shader);
-        }
-
-        function createProgramFromSources(gl, vertexShader, fragmentShader) {
-            var program = gl.createProgram();
-            gl.attachShader(program, vertexShader);
-            gl.attachShader(program, fragmentShader);
-            gl.linkProgram(program);
-            var success = gl.getProgramParameter(program, gl.LINK_STATUS);
-            if (success) {
-                return program;
-            }
-
-            console.log(gl.getProgramInfoLog(program));
-            gl.deleteProgram(program);
-        }
-
-        function main() {
-            const canvas = document.querySelector("#canvas4shader");
-            const gl = canvas.getContext("webgl");
-            if (!gl) {
-                return;
-            }
-
-            const vs = `
-                                            attribute vec4 a_position;
-
-                                            void main() {
-                                              gl_Position = a_position;
-                                            }
-                                          `;
-
-            const fs = `
-                                            precision highp float;
-
-                                            uniform vec2 iResolution;
-                                            uniform vec2 iMouse;
-                                            uniform float iTime;
-
-                                            #define t iTime
-                                            #define r iResolution.xy
-
-                                            highp float rand(vec2 co)
-                                            {
-                                                highp float a = 12.9898;
-                                                highp float b = 78.233;
-                                                highp float c = 43758.5453;
-                                                highp float dt= dot(co.xy ,vec2(a,b));
-                                                highp float sn= mod(dt,3.14);
-                                                return fract(sin(sn) * c);
-                                            }
-
-                                            const float animSpeed = 0.06;
-
-                                            float getWaveHeight(int waveIndex)
-                                            {
-                                                return 1.0;
-                                            }
-
-                                            float getWaveLength(int waveIndex)
-                                            {
-                                                const float minWavelength = 1.0;
-                                                const float maxWavelength = 25.0;
-
-                                                return minWavelength + ((maxWavelength-minWavelength) * rand(vec2(float(waveIndex), 42.0)));
-                                            }
-
-                                            float getSpeed(int waveIndex)
-                                            {
-                                                const float minSpeed = 0.01;
-                                                const float maxSpeed = 0.16;
-
-                                                return (minSpeed + ((maxSpeed-minSpeed) * rand(vec2(float(waveIndex), 420.0))))*animSpeed;
-                                            }
-
-                                            float getAngle(int waveIndex)
-                                            {
-                                                if(waveIndex == 0) // just makes it look a little nicer.
-                                                {
-                                                    return 0.0;
-                                                }
-
-                                                return rand(vec2(float(waveIndex), 69.0)) * 3.14 * 2.0;
-                                            }
-
-                                            float getHeightAtPoint(int waveIndex,vec2 uv)
-                                            {
-                                                float angle = getAngle(waveIndex);
-                                                float speed = getSpeed(waveIndex);
-
-                                                float xMag = cos(angle);
-                                                float yMag = sin(angle);
-
-                                                float height = cos(((xMag*uv.x)+(yMag*uv.y)+(iTime*speed))*getWaveLength(waveIndex)) + 1.0;
-
-                                                return (height/2.0)*getWaveHeight(waveIndex);
-                                            }
-
-                                            void mainImage( out vec4 fragColor, in vec2 fragCoord )
-                                            {
-                                                // Number of layers (cos waves on top of each other).
-                                                const int numLayers = 9;
-
-                                                // For calculating the normal, which adjust all lighting.
-                                                const float heightMulti = 100.0;
-                                                const float xyMulti = 60.0;
-
-                                                // Lighting Params.
-                                                const float specularPower = 2.0;
-                                                const vec3 ambient = vec3(0.1, 0.1, 0.1);
-                                                const vec3 light = vec3(0.1, 0.2, 0.5);
-                                                const vec3 spec = vec3(1.0, 1.0, 1.0);
-
-
-                                                vec2 uv = fragCoord/iResolution.xy;
-
-                                                float height = 0.0;
-
-                                                float distToSample = 0.01;
-                                                vec4 surroundingHeight = vec4(0.0,0.0,0.0,0.0);
-
-                                                for(int layer = 0; layer < numLayers; ++layer)
-                                                {
-                                                    height += getHeightAtPoint(layer, uv);
-
-                                                    surroundingHeight.x += getHeightAtPoint(layer, uv + vec2(distToSample,0.0));
-                                                    surroundingHeight.y += getHeightAtPoint(layer, uv + vec2(-distToSample,0.0));
-                                                    surroundingHeight.z += getHeightAtPoint(layer, uv + vec2(0.0,distToSample));
-                                                    surroundingHeight.w += getHeightAtPoint(layer, uv + vec2(0.0,-distToSample));
-                                                }
-
-                                                surroundingHeight /= float(numLayers);
-
-                                                float sampleDeltaPosInWorldSpace = xyMulti * distToSample;
-
-                                                vec3 lightDir = normalize(vec3(0.2, 0.1, 0.6));
-                                                vec3 cameraDir = normalize(vec3(-0.2, -0.1, 0.6));
-
-
-                                                vec3 p0 = vec3(sampleDeltaPosInWorldSpace, 0.0, surroundingHeight.x * heightMulti);
-                                                vec3 p1 = vec3(-sampleDeltaPosInWorldSpace, 0.0, surroundingHeight.y * heightMulti);
-                                                vec3 p2 = vec3(0.0, sampleDeltaPosInWorldSpace, surroundingHeight.z * heightMulti);
-
-                                                vec3 normal = normalize(cross(p2-p0, p1-p0));
-
-                                                vec3 lightReflect = normalize(-reflect(lightDir, normal));
-
-
-
-                                                float lightStrength = clamp(dot(lightDir, normal), 0.0, 1.0);
-                                                float specStrength = pow(clamp(dot(lightReflect, cameraDir),0.0,1.0),specularPower);
-
-                                                specStrength = clamp(specStrength, 0.0, 1.0);
-
-
-                                                fragColor.rgb = ambient + (light*lightStrength) + (spec*specStrength);
-
-
-                                                //Debug Vars!
-                                                //fragColor = vec4(height, height, height, 1.0);
-                                                //fragColor = vec4(normal.x, normal.y, normal.z, 1.0);
-                                                //fragColor = vec4(surroundingHeight.x, surroundingHeight.y, surroundingHeight.z, 1.0);
-                                            }
-
-                                            void main() {
-                                              mainImage(gl_FragColor, gl_FragCoord.xy);
-                                            }
-                                          `;
-
-            var vertexShader = createShader(gl, gl.VERTEX_SHADER, vs);
-            var fragmentShader = createShader(gl, gl.FRAGMENT_SHADER, fs);
-
-            const program = createProgramFromSources(gl, vertexShader, fragmentShader);
-
-            const positionAttributeLocation = gl.getAttribLocation(program, "a_position");
-
-            const resolutionLocation = gl.getUniformLocation(program, "iResolution");
-            const mouseLocation = gl.getUniformLocation(program, "iMouse");
-            const timeLocation = gl.getUniformLocation(program, "iTime");
-
-            const positionBuffer = gl.createBuffer();
-
-            gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
-
-            gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([
-                -1, -1,
-                1, -1,
-                -1, 1,
-                -1, 1,
-                1, -1,
-                1, 1,
-            ]), gl.STATIC_DRAW);
-
-            let requestId;
-            function requestFrame() {
-                if (!requestId) {
-                    requestId = requestAnimationFrame(render);
+            function createProgramFromSources(gl, vertexShader, fragmentShader) {
+                var program = gl.createProgram();
+                gl.attachShader(program, vertexShader);
+                gl.attachShader(program, fragmentShader);
+                gl.linkProgram(program);
+                var success = gl.getProgramParameter(program, gl.LINK_STATUS);
+                if (success) {
+                    return program;
                 }
+
+                console.log(gl.getProgramInfoLog(program));
+                gl.deleteProgram(program);
             }
-            function cancelFrame() {
-                if (requestId) {
-                    cancelAnimationFrame(requestId);
-                    requestId = undefined;
+
+            function main() {
+                const canvas = document.querySelector("#canvas4shader");
+                const gl = canvas.getContext("webgl");
+                if (!gl) {
+                    return;
                 }
-            }
 
-            setInterval(requestFrame, 10);
+                const vs = `
+                                                        attribute vec4 a_position;
 
-            let then = 0;
-            let time = 0;
-            function render(now) {
-                requestId = undefined;
-                now *= 0.001;
-                const elapsedTime = Math.min(now - then, 0.1);
-                time += elapsedTime;
-                then = now;
+                                                        void main() {
+                                                          gl_Position = a_position;
+                                                        }
+                                                      `;
 
-                //webglUtils.resizeCanvasToDisplaySize(gl.canvas);
+                const fs = `
+                                                        precision highp float;
 
-                gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
+                                                        uniform vec2 iResolution;
+                                                        uniform vec2 iMouse;
+                                                        uniform float iTime;
 
-                gl.useProgram(program);
+                                                        #define t iTime
+                                                        #define r iResolution.xy
 
-                gl.enableVertexAttribArray(positionAttributeLocation);
+                                                        highp float rand(vec2 co)
+                                                        {
+                                                            highp float a = 12.9898;
+                                                            highp float b = 78.233;
+                                                            highp float c = 43758.5453;
+                                                            highp float dt= dot(co.xy ,vec2(a,b));
+                                                            highp float sn= mod(dt,3.14);
+                                                            return fract(sin(sn) * c);
+                                                        }
+
+                                                        const float animSpeed = 0.06;
+
+                                                        float getWaveHeight(int waveIndex)
+                                                        {
+                                                            return 1.0;
+                                                        }
+
+                                                        float getWaveLength(int waveIndex)
+                                                        {
+                                                            const float minWavelength = 1.0;
+                                                            const float maxWavelength = 25.0;
+
+                                                            return minWavelength + ((maxWavelength-minWavelength) * rand(vec2(float(waveIndex), 42.0)));
+                                                        }
+
+                                                        float getSpeed(int waveIndex)
+                                                        {
+                                                            const float minSpeed = 0.01;
+                                                            const float maxSpeed = 0.16;
+
+                                                            return (minSpeed + ((maxSpeed-minSpeed) * rand(vec2(float(waveIndex), 420.0))))*animSpeed;
+                                                        }
+
+                                                        float getAngle(int waveIndex)
+                                                        {
+                                                            if(waveIndex == 0) // just makes it look a little nicer.
+                                                            {
+                                                                return 0.0;
+                                                            }
+
+                                                            return rand(vec2(float(waveIndex), 69.0)) * 3.14 * 2.0;
+                                                        }
+
+                                                        float getHeightAtPoint(int waveIndex,vec2 uv)
+                                                        {
+                                                            float angle = getAngle(waveIndex);
+                                                            float speed = getSpeed(waveIndex);
+
+                                                            float xMag = cos(angle);
+                                                            float yMag = sin(angle);
+
+                                                            float height = cos(((xMag*uv.x)+(yMag*uv.y)+(iTime*speed))*getWaveLength(waveIndex)) + 1.0;
+
+                                                            return (height/2.0)*getWaveHeight(waveIndex);
+                                                        }
+
+                                                        void mainImage( out vec4 fragColor, in vec2 fragCoord )
+                                                        {
+                                                            // Number of layers (cos waves on top of each other).
+                                                            const int numLayers = 9;
+
+                                                            // For calculating the normal, which adjust all lighting.
+                                                            const float heightMulti = 100.0;
+                                                            const float xyMulti = 60.0;
+
+                                                            // Lighting Params.
+                                                            const float specularPower = 2.0;
+                                                            const vec3 ambient = vec3(0.1, 0.1, 0.1);
+                                                            const vec3 light = vec3(0.1, 0.2, 0.5);
+                                                            const vec3 spec = vec3(1.0, 1.0, 1.0);
+
+
+                                                            vec2 uv = fragCoord/iResolution.xy;
+
+                                                            float height = 0.0;
+
+                                                            float distToSample = 0.01;
+                                                            vec4 surroundingHeight = vec4(0.0,0.0,0.0,0.0);
+
+                                                            for(int layer = 0; layer < numLayers; ++layer)
+                                                            {
+                                                                height += getHeightAtPoint(layer, uv);
+
+                                                                surroundingHeight.x += getHeightAtPoint(layer, uv + vec2(distToSample,0.0));
+                                                                surroundingHeight.y += getHeightAtPoint(layer, uv + vec2(-distToSample,0.0));
+                                                                surroundingHeight.z += getHeightAtPoint(layer, uv + vec2(0.0,distToSample));
+                                                                surroundingHeight.w += getHeightAtPoint(layer, uv + vec2(0.0,-distToSample));
+                                                            }
+
+                                                            surroundingHeight /= float(numLayers);
+
+                                                            float sampleDeltaPosInWorldSpace = xyMulti * distToSample;
+
+                                                            vec3 lightDir = normalize(vec3(0.2, 0.1, 0.6));
+                                                            vec3 cameraDir = normalize(vec3(-0.2, -0.1, 0.6));
+
+
+                                                            vec3 p0 = vec3(sampleDeltaPosInWorldSpace, 0.0, surroundingHeight.x * heightMulti);
+                                                            vec3 p1 = vec3(-sampleDeltaPosInWorldSpace, 0.0, surroundingHeight.y * heightMulti);
+                                                            vec3 p2 = vec3(0.0, sampleDeltaPosInWorldSpace, surroundingHeight.z * heightMulti);
+
+                                                            vec3 normal = normalize(cross(p2-p0, p1-p0));
+
+                                                            vec3 lightReflect = normalize(-reflect(lightDir, normal));
+
+
+
+                                                            float lightStrength = clamp(dot(lightDir, normal), 0.0, 1.0);
+                                                            float specStrength = pow(clamp(dot(lightReflect, cameraDir),0.0,1.0),specularPower);
+
+                                                            specStrength = clamp(specStrength, 0.0, 1.0);
+
+
+                                                            fragColor.rgb = ambient + (light*lightStrength) + (spec*specStrength);
+
+
+                                                            //Debug Vars!
+                                                            //fragColor = vec4(height, height, height, 1.0);
+                                                            //fragColor = vec4(normal.x, normal.y, normal.z, 1.0);
+                                                            //fragColor = vec4(surroundingHeight.x, surroundingHeight.y, surroundingHeight.z, 1.0);
+                                                        }
+
+                                                        void main() {
+                                                          mainImage(gl_FragColor, gl_FragCoord.xy);
+                                                        }
+                                                      `;
+
+                var vertexShader = createShader(gl, gl.VERTEX_SHADER, vs);
+                var fragmentShader = createShader(gl, gl.FRAGMENT_SHADER, fs);
+
+                const program = createProgramFromSources(gl, vertexShader, fragmentShader);
+
+                const positionAttributeLocation = gl.getAttribLocation(program, "a_position");
+
+                const resolutionLocation = gl.getUniformLocation(program, "iResolution");
+                const mouseLocation = gl.getUniformLocation(program, "iMouse");
+                const timeLocation = gl.getUniformLocation(program, "iTime");
+
+                const positionBuffer = gl.createBuffer();
 
                 gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
 
-                gl.vertexAttribPointer(
-                    positionAttributeLocation,
-                    2,
-                    gl.FLOAT,
-                    false,
-                    0,
-                    0,
-                );
+                gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([
+                    -1, -1,
+                    1, -1,
+                    -1, 1,
+                    -1, 1,
+                    1, -1,
+                    1, 1,
+                ]), gl.STATIC_DRAW);
 
-                gl.uniform2f(resolutionLocation, gl.canvas.width, gl.canvas.height);
-                gl.uniform1f(timeLocation, time);
+                let requestId;
+                function requestFrame() {
+                    if (!requestId) {
+                        requestId = requestAnimationFrame(render);
+                    }
+                }
+                function cancelFrame() {
+                    if (requestId) {
+                        cancelAnimationFrame(requestId);
+                        requestId = undefined;
+                    }
+                }
 
-                gl.drawArrays(
-                    gl.TRIANGLES,
-                    0,
-                    6,
-                );
+                setInterval(requestFrame, 10);
+
+                let then = 0;
+                let time = 0;
+                function render(now) {
+                    requestId = undefined;
+                    now *= 0.001;
+                    const elapsedTime = Math.min(now - then, 0.1);
+                    time += elapsedTime;
+                    then = now;
+
+                    //webglUtils.resizeCanvasToDisplaySize(gl.canvas);
+
+                    gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
+
+                    gl.useProgram(program);
+
+                    gl.enableVertexAttribArray(positionAttributeLocation);
+
+                    gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
+
+                    gl.vertexAttribPointer(
+                        positionAttributeLocation,
+                        2,
+                        gl.FLOAT,
+                        false,
+                        0,
+                        0,
+                    );
+
+                    gl.uniform2f(resolutionLocation, gl.canvas.width, gl.canvas.height);
+                    gl.uniform1f(timeLocation, time);
+
+                    gl.drawArrays(
+                        gl.TRIANGLES,
+                        0,
+                        6,
+                    );
+
+                    requestFrame();
+                }
 
                 requestFrame();
+                requestAnimationFrame(cancelFrame);
             }
 
-            requestFrame();
-            requestAnimationFrame(cancelFrame);
-        }
+            main();
 
-        main();
+        </script>
 
-    </script>
+        <script>
+            class renderclocksample5 {
+                constructor() {
 
-    <script>
-        class renderclocksample5 {
-            constructor() {
+                    this.canvas = document.getElementById("canvas5");
 
-                this.canvas = document.getElementById("canvas5");
+                    this.backgroundColour = 'rgba(0,0,0,0)';
+                    this.clockColour = '#FDFFFC';
+                    this.handsColour = '#FDFFFC';
+                    this.numbersType = 'none';
+                    this.secondHandType = 'handscolour';
+                    this.handsEndType = 'rounded';
+                    this.handsWidthType = 'tapered';
+                    this.handsCentreType = 'circle';
+                    this.handsLengthType = 'extended';
+                    this.backgroundType = 'therefresh';
+                    this.borderType = 'nothing';
+                    this.dimensionType = '3d';
+                    this.hourHandType = 'standard';
 
-                this.backgroundColour = 'rgba(0,0,0,0)';
-                this.clockColour = '#FDFFFC';
-                this.handsColour = '#FDFFFC';
-                this.numbersType = 'none';
-                this.secondHandType = 'handscolour';
-                this.handsEndType = 'rounded';
-                this.handsWidthType = 'tapered';
-                this.handsCentreType = 'circle';
-                this.handsLengthType = 'extended';
-                this.backgroundType = 'therefresh';
-                this.borderType = 'nothing';
-                this.dimensionType = '3d';
-                this.hourHandType = 'standard';
+                    this.fps = 60;
 
-                this.fps = 60;
+                    //this.radius = this.radius * 0.85;
+                    this.renderframe();
 
-                //this.radius = this.radius * 0.85;
-                this.renderframe();
-
-                if (this.backgroundType == "therefresh") {
-                    this.updateTheRefresh();
-                    setInterval(this.renderframe.bind(this), 1000);
-                    setInterval(this.updateTheRefresh.bind(this), 10000);
-                }
-                else {
-                    setInterval(this.renderframe.bind(this), 1000);
-                }
-            }
-
-            drawStaticBackground() {
-                //ctx.arc(0, 0, radius, 0 , ss * Math.PI);
-                this.ctx.fillStyle = this.backgroundColour;
-                this.ctx.fillRect(-this.ss, -this.ss, this.ss * 2, this.ss * 2);
-                this.ctx.restore();
-                this.drawFace();
-                this.drawNumbers();
-            }
-
-            renderframe() {
-                this.body = document.querySelector("body");
-                var oldss = this.ss;
-                this.ss = "260";
-                if (this.ss != oldss) {
-                    this.canvas.width = this.ss;
-                    this.canvas.height = this.ss;
-                    this.ctx = this.canvas.getContext("2d");
-                    this.radius = this.canvas.height / 2;
-                    this.ctx.translate(this.radius, this.radius);
-
-                    //if (this.backgroundType = 'fractal')
-                    //{
-                    //    setTimeout(this.updateFractal.bind(this, 1), 1);
-                    //}
-                    if (this.backgroundType = 'therefresh') {
-                        setTimeout(this.updateTheRefresh.bind(this, 1), 1);
-                    }
-                }
-                //this.canvas.style.marginTop = "-" + this.ss * 0.8 + "px"; //account for 20% margin
-
-                this.ctx.clearRect(-this.ss, -this.ss, this.ss * 2, this.ss * 2);
-                this.drawStaticBackground();
-                this.drawTime();
-            }
-
-            formatNumber(n) {
-                return n.toString().padStart(2, "0");
-            }
-
-
-
-            drawFace() {
-                var grad;
-
-                //centre
-                if (this.backgroundType != "fractal" && this.backgroundType != "therefresh") {
-                    this.ctx.beginPath();
-                    this.ctx.arc(0, 0, this.radius, 0, 2 * Math.PI);
-                    this.ctx.fillStyle = this.clockColour;
-                    this.ctx.fill();
-                }
-
-
-                //border
-                if (this.borderType != "nothing") {
-                    if (this.borderType == "gradient") {
-                        grad = this.ctx.createRadialGradient(0, 0, this.radius * 0.9, 0, 0, this.radius * 1);
-                        grad.addColorStop(0, this.clockColour);
-                        grad.addColorStop(0.5, this.handsColour);
-                        grad.addColorStop(1, this.clockColour);
-                        this.ctx.strokeStyle = grad;
+                    if (this.backgroundType == "therefresh") {
+                        this.updateTheRefresh();
+                        setInterval(this.renderframe.bind(this), 1000);
+                        setInterval(this.updateTheRefresh.bind(this), 10000);
                     }
                     else {
-                        this.ctx.strokeStyle = this.handsColour;
+                        setInterval(this.renderframe.bind(this), 1000);
                     }
-                    this.ctx.lineWidth = this.radius * 0.03;
-                    this.ctx.stroke();
+                }
+
+                drawStaticBackground() {
+                    //ctx.arc(0, 0, radius, 0 , ss * Math.PI);
+                    this.ctx.fillStyle = this.backgroundColour;
+                    this.ctx.fillRect(-this.ss, -this.ss, this.ss * 2, this.ss * 2);
+                    this.ctx.restore();
+                    this.drawFace();
+                    this.drawNumbers();
+                }
+
+                renderframe() {
+                    this.body = document.querySelector("body");
+                    var oldss = this.ss;
+                    this.ss = "260";
+                    if (this.ss != oldss) {
+                        this.canvas.width = this.ss;
+                        this.canvas.height = this.ss;
+                        this.ctx = this.canvas.getContext("2d");
+                        this.radius = this.canvas.height / 2;
+                        this.ctx.translate(this.radius, this.radius);
+
+                        //if (this.backgroundType = 'fractal')
+                        //{
+                        //    setTimeout(this.updateFractal.bind(this, 1), 1);
+                        //}
+                        if (this.backgroundType = 'therefresh') {
+                            setTimeout(this.updateTheRefresh.bind(this, 1), 1);
+                        }
+                    }
+                    //this.canvas.style.marginTop = "-" + this.ss * 0.8 + "px"; //account for 20% margin
+
+                    this.ctx.clearRect(-this.ss, -this.ss, this.ss * 2, this.ss * 2);
+                    this.drawStaticBackground();
+                    this.drawTime();
+                }
+
+                formatNumber(n) {
+                    return n.toString().padStart(2, "0");
                 }
 
 
-                if (this.backgroundType == "cardano") {
-                    this.drawCardanoLogo();
+
+                drawFace() {
+                    var grad;
+
+                    //centre
+                    if (this.backgroundType != "fractal" && this.backgroundType != "therefresh") {
+                        this.ctx.beginPath();
+                        this.ctx.arc(0, 0, this.radius, 0, 2 * Math.PI);
+                        this.ctx.fillStyle = this.clockColour;
+                        this.ctx.fill();
+                    }
+
+
+                    //border
+                    if (this.borderType != "nothing") {
+                        if (this.borderType == "gradient") {
+                            grad = this.ctx.createRadialGradient(0, 0, this.radius * 0.9, 0, 0, this.radius * 1);
+                            grad.addColorStop(0, this.clockColour);
+                            grad.addColorStop(0.5, this.handsColour);
+                            grad.addColorStop(1, this.clockColour);
+                            this.ctx.strokeStyle = grad;
+                        }
+                        else {
+                            this.ctx.strokeStyle = this.handsColour;
+                        }
+                        this.ctx.lineWidth = this.radius * 0.03;
+                        this.ctx.stroke();
+                    }
+
+
+                    if (this.backgroundType == "cardano") {
+                        this.drawCardanoLogo();
+                    }
+
+                    //border
+                    //grad = ctx.createRadialGradient(0, 0 ,radius * 0.95, 0, 0, radius * 1.05);
+                    //grad.addColorStop(0, clockColour);
+                    //grad.addColorStop(0.5, 'white');
+                    //grad.addColorStop(1, clockColour);
+                    //ctx.strokeStyle = grad;
+                    //ctx.lineWidth = radius*0.1;
+                    //ctx.stroke();
+
+                    //ctx.beginPath();
+                    //ctx.arc(0, 0, radius * 0.1, 0, 2 * Math.PI);
+                    //ctx.fillStyle = clockColour;
+                    //ctx.fill();
                 }
 
-                //border
-                //grad = ctx.createRadialGradient(0, 0 ,radius * 0.95, 0, 0, radius * 1.05);
-                //grad.addColorStop(0, clockColour);
-                //grad.addColorStop(0.5, 'white');
-                //grad.addColorStop(1, clockColour);
-                //ctx.strokeStyle = grad;
-                //ctx.lineWidth = radius*0.1;
-                //ctx.stroke();
+                drawNumbers() {
+                    var ang;
+                    var num;
+                    this.ctx.font = this.radius * 0.15 + "px arial";
+                    this.ctx.textBaseline = "middle";
+                    this.ctx.textAlign = "center";
+                    this.ctx.fillStyle = this.handsColour;
 
-                //ctx.beginPath();
-                //ctx.arc(0, 0, radius * 0.1, 0, 2 * Math.PI);
-                //ctx.fillStyle = clockColour;
-                //ctx.fill();
-            }
-
-            drawNumbers() {
-                var ang;
-                var num;
-                this.ctx.font = this.radius * 0.15 + "px arial";
-                this.ctx.textBaseline = "middle";
-                this.ctx.textAlign = "center";
-                this.ctx.fillStyle = this.handsColour;
-
-                switch (this.numbersType) {
-                    case "numbers":
-                        for (num = 1; num < 13; num++) {
-                            ang = num * Math.PI / 6;
-                            this.ctx.rotate(ang);
-                            this.ctx.translate(0, -this.radius * 0.85);
-                            this.ctx.rotate(-ang);
-                            this.ctx.fillText(num.toString(), 0, 0);
-                            this.ctx.rotate(ang);
-                            this.ctx.translate(0, this.radius * 0.85);
-                            this.ctx.rotate(-ang);
-                        }
-                        break;
-                    case "somedashes":
-                        for (num = 0; num < 12; num++) {
-                            ang = num * Math.PI / 6;
-                            this.drawHand(this.ctx, ang, this.radius * 0.95, this.radius * 0.02, (num % 3 ? 0.91 : 0.87));
-                        }
-                        break;
-                    case "alldashes":
-                        for (num = 0; num < 60; num++) {
-                            ang = num * Math.PI / 30;
-                            this.startdashratio = (num % 15 == 0 ? 0.85 : (num % 5 == 0 ? 0.88 : 0.92));
-                            this.drawHand(this.ctx, ang, this.radius * 0.95, this.radius * 0.02, this.startdashratio);
-                        }
-                        break;
-                    case "numbersdashes":
-                        for (num = 0; num < 60; num++) {
-                            ang = num * Math.PI / 30;
-                            this.startdashratio = (num % 15 == 0.85 ? 0 : (num % 5 == 0 ? 0.88 : 0.92));
-
-                            this.drawHand(this.ctx, ang, this.radius * 0.95, this.radius * 0.02, this.startdashratio);
-                            if (this.startdashratio == 0.88) {
+                    switch (this.numbersType) {
+                        case "numbers":
+                            for (num = 1; num < 13; num++) {
+                                ang = num * Math.PI / 6;
                                 this.ctx.rotate(ang);
-                                this.ctx.translate(0, -this.radius * 0.77);
+                                this.ctx.translate(0, -this.radius * 0.85);
                                 this.ctx.rotate(-ang);
-                                this.ctx.fillText((num == 0 ? 12 : num.toString() / 5), 0, 0);
+                                this.ctx.fillText(num.toString(), 0, 0);
                                 this.ctx.rotate(ang);
-                                this.ctx.translate(0, this.radius * 0.77);
+                                this.ctx.translate(0, this.radius * 0.85);
                                 this.ctx.rotate(-ang);
                             }
+                            break;
+                        case "somedashes":
+                            for (num = 0; num < 12; num++) {
+                                ang = num * Math.PI / 6;
+                                this.drawHand(this.ctx, ang, this.radius * 0.95, this.radius * 0.02, (num % 3 ? 0.91 : 0.87));
+                            }
+                            break;
+                        case "alldashes":
+                            for (num = 0; num < 60; num++) {
+                                ang = num * Math.PI / 30;
+                                this.startdashratio = (num % 15 == 0 ? 0.85 : (num % 5 == 0 ? 0.88 : 0.92));
+                                this.drawHand(this.ctx, ang, this.radius * 0.95, this.radius * 0.02, this.startdashratio);
+                            }
+                            break;
+                        case "numbersdashes":
+                            for (num = 0; num < 60; num++) {
+                                ang = num * Math.PI / 30;
+                                this.startdashratio = (num % 15 == 0.85 ? 0 : (num % 5 == 0 ? 0.88 : 0.92));
+
+                                this.drawHand(this.ctx, ang, this.radius * 0.95, this.radius * 0.02, this.startdashratio);
+                                if (this.startdashratio == 0.88) {
+                                    this.ctx.rotate(ang);
+                                    this.ctx.translate(0, -this.radius * 0.77);
+                                    this.ctx.rotate(-ang);
+                                    this.ctx.fillText((num == 0 ? 12 : num.toString() / 5), 0, 0);
+                                    this.ctx.rotate(ang);
+                                    this.ctx.translate(0, this.radius * 0.77);
+                                    this.ctx.rotate(-ang);
+                                }
+                            }
+                            break;
+                        case "bits":
+                            for (num = 1; num < 13; num++) {
+                                ang = num * Math.PI / 6;
+                                this.ctx.rotate(ang);
+                                this.ctx.translate(0, -this.radius * 0.82);
+                                this.ctx.rotate(-ang);
+                                this.ctx.fillText(num.toString(2).replaceAll('1', 'I').padStart(4, '0'), 0, 0);
+                                this.ctx.rotate(ang);
+                                this.ctx.translate(0, this.radius * 0.82);
+                                this.ctx.rotate(-ang);
+                            }
+                            break;
+                        case "nothing":
+                            break;
+                    }
+                }
+
+                drawTime() {
+                    var now = new Date();
+                    var hour = now.getHours();
+                    var minute = now.getMinutes();
+                    var second = now.getSeconds();
+                    //hour
+                    hour = hour % 12;
+                    hour = (hour * Math.PI / 6) + (minute * Math.PI / (6 * 60)) + (second * Math.PI / (360 * 60));
+                    var ang = now.getHours() % 12 * 30 + (now.getMinutes() * 0.5) - 90;
+
+                    this.ctx.save();
+                    if (this.dimensionType == "3d") {
+                        this.ctx.shadowBlur = 5;
+                        this.ctx.shadowColor = '#222222';
+                        this.ctx.shadowOffsetX = -4;
+                        this.ctx.shadowOffsetY = 3;
+                    }
+
+                    if (this.hourHandType == "cutout") {
+                        this.ctx.beginPath();
+                        this.ctx.rotate(ang * Math.PI / 180);
+                        this.ctx.arc(0, 0, this.radius, 0.09 * Math.PI, 1.91 * Math.PI);
+                        this.ctx.lineTo(0, 0);
+                        this.ctx.closePath();
+                        this.ctx.fillStyle = this.handsColour;
+                        this.ctx.fill();
+                        this.ctx.rotate(-ang * Math.PI / 180);
+                    }
+
+                    //middle circle
+                    if (this.handsCentreType == "circle" || this.handsCentreType == "circle") {
+                        this.ctx.beginPath();
+                        this.ctx.arc(0, 0, this.radius * 0.05, 0, 2 * Math.PI);
+                        this.ctx.fillStyle = (this.hourHandType == "cutout" ? this.clockColour : this.handsColour);
+                        this.ctx.fill();
+                    }
+
+                    if (this.hourHandType == "circle") {
+                        this.x = Math.cos(ang * Math.PI / 180) * this.radius * 0.6;
+                        this.y = Math.sin(ang * Math.PI / 180) * this.radius * 0.6;
+
+                        var gradient = this.ctx.createRadialGradient(this.x + this.radius * 0.025, this.y - this.radius * 0.02, this.radius * 0.01, this.x, this.y, this.radius * 0.1);
+                        gradient.addColorStop(0, 'white');
+                        gradient.addColorStop(1, this.handsColour);
+                        this.ctx.beginPath();
+                        this.ctx.arc(this.x, this.y, this.radius * 0.08, 0, 2 * Math.PI);
+                        this.ctx.fillStyle = gradient;
+                        this.ctx.fill();
+
+
+                        //this.ctx.restore();
+                    }
+                    else {
+                        var extension = 0;
+                        if (this.handsLengthType == "extended" || this.handsLengthType == "extended") {
+                            extension = this.radius * 0.1;
                         }
-                        break;
-                    case "bits":
-                        for (num = 1; num < 13; num++) {
-                            ang = num * Math.PI / 6;
-                            this.ctx.rotate(ang);
-                            this.ctx.translate(0, -this.radius * 0.82);
-                            this.ctx.rotate(-ang);
-                            this.ctx.fillText(num.toString(2).replaceAll('1', 'I').padStart(4, '0'), 0, 0);
-                            this.ctx.rotate(ang);
-                            this.ctx.translate(0, this.radius * 0.82);
-                            this.ctx.rotate(-ang);
+                        var lengthratio = 1;
+                        if (this.handsLengthType == "short") {
+                            lengthratio = 0.7;
                         }
-                        break;
-                    case "nothing":
-                        break;
-                }
-            }
 
-            drawTime() {
-                var now = new Date();
-                var hour = now.getHours();
-                var minute = now.getMinutes();
-                var second = now.getSeconds();
-                //hour
-                hour = hour % 12;
-                hour = (hour * Math.PI / 6) + (minute * Math.PI / (6 * 60)) + (second * Math.PI / (360 * 60));
-                var ang = now.getHours() % 12 * 30 + (now.getMinutes() * 0.5) - 90;
-
-                this.ctx.save();
-                if (this.dimensionType == "3d") {
-                    this.ctx.shadowBlur = 5;
-                    this.ctx.shadowColor = '#222222';
-                    this.ctx.shadowOffsetX = -4;
-                    this.ctx.shadowOffsetY = 3;
-                }
-
-                if (this.hourHandType == "cutout") {
-                    this.ctx.beginPath();
-                    this.ctx.rotate(ang * Math.PI / 180);
-                    this.ctx.arc(0, 0, this.radius, 0.09 * Math.PI, 1.91 * Math.PI);
-                    this.ctx.lineTo(0, 0);
-                    this.ctx.closePath();
-                    this.ctx.fillStyle = this.handsColour;
-                    this.ctx.fill();
-                    this.ctx.rotate(-ang * Math.PI / 180);
-                }
-
-                //middle circle
-                if (this.handsCentreType == "circle" || this.handsCentreType == "circle") {
-                    this.ctx.beginPath();
-                    this.ctx.arc(0, 0, this.radius * 0.05, 0, 2 * Math.PI);
-                    this.ctx.fillStyle = (this.hourHandType == "cutout" ? this.clockColour : this.handsColour);
-                    this.ctx.fill();
-                }
-
-                if (this.hourHandType == "circle") {
-                    this.x = Math.cos(ang * Math.PI / 180) * this.radius * 0.6;
-                    this.y = Math.sin(ang * Math.PI / 180) * this.radius * 0.6;
-
-                    var gradient = this.ctx.createRadialGradient(this.x + this.radius * 0.025, this.y - this.radius * 0.02, this.radius * 0.01, this.x, this.y, this.radius * 0.1);
-                    gradient.addColorStop(0, 'white');
-                    gradient.addColorStop(1, this.handsColour);
-                    this.ctx.beginPath();
-                    this.ctx.arc(this.x, this.y, this.radius * 0.08, 0, 2 * Math.PI);
-                    this.ctx.fillStyle = gradient;
-                    this.ctx.fill();
-
-
-                    //this.ctx.restore();
-                }
-                else {
-                    var extension = 0;
-                    if (this.handsLengthType == "extended" || this.handsLengthType == "extended") {
-                        extension = this.radius * 0.1;
-                    }
-                    var lengthratio = 1;
-                    if (this.handsLengthType == "short") {
-                        lengthratio = 0.7;
-                    }
-
-                    if (this.hourHandType != "cutout") {
-                        this.drawHand(this.ctx, hour, this.radius * 0.5 * lengthratio, this.radius * 0.03, 0, null, extension);
-                    }
-
-                    //minute
-                    minute = (minute * Math.PI / 30) + (second * Math.PI / (30 * 60));
-                    this.drawHand(this.ctx, minute, this.radius * 0.7 * lengthratio, this.radius * 0.02, 0, (this.hourHandType == "cutout" ? this.clockColour : this.handsColour), extension);
-                    // second
-                    second = (second * Math.PI / 30);
-                    switch (this.secondHandType) {
-                        case 'nothing':
-                            break;
-                        case 'handscolour':
-                            this.drawHand(this.ctx, second, this.radius * 0.9, this.radius * 0.01, 0, null, this.radius * 0.2);
-                            break;
-                        case 'red':
-                            this.drawHand(this.ctx, second, this.radius * 0.9, this.radius * 0.01, 0, '#C71013', this.radius * 0.2);
-                            //middle circle
-                            this.ctx.beginPath();
-                            this.ctx.arc(0, 0, this.radius * 0.015, 0, 2 * Math.PI);
-                            this.ctx.fillStyle = '#C71013';
-                            this.ctx.fill();
-                            break;
-                        default:
-                            break;
-                    }
-                }
-            }
-
-            drawHand(ctx, pos, length, width, transparentratio, colour, neglength) {
-                //ctx.strokeStyle = getHandsColour();
-                //ctx.strokeStyle = "#FF0000";
-                if (colour == null) {
-                    colour = this.handsColour;
-                }
-                if (transparentratio > 0) {
-                    this.strokestyle = this.ctx.createRadialGradient(0, 0, 0, 0, 0, this.radius);
-                    this.strokestyle.addColorStop(0, 'rgba(255, 255, 255, 0)');
-                    this.strokestyle.addColorStop(transparentratio, 'rgba(255, 255, 255, 0)');
-                    this.strokestyle.addColorStop(transparentratio, colour);
-                    //strokestyle.addColorStop(0.5 , 'rgba(255, 255, 255, 0)');
-                    //strokestyle.addColorStop(0.5, 'rgba(255, 255, 255, 1)');
-                    this.strokestyle.addColorStop(1, colour);
-                    this.ctx.strokeStyle = this.strokestyle;
-                    this.ctx.lineCap = "butt";
-                }
-                else {
-                    this.ctx.strokeStyle = colour;
-                    if (this.handsEndType == 'rounded') {
-                        this.ctx.lineCap = "round";
-                    }
-                    switch (this.handsWidthType) {
-                        case "thin":
-                            width = width * 0.5;
-                            break;
-                        case "medium":
-                            break;
-                        case "thick":
-                            width = width * 2;
-                            break;
-                        default:
-                            break;
-                    }
-                }
-
-                this.ctx.beginPath();
-                this.ctx.lineWidth = width;
-                this.ctx.moveTo(0, 0);
-                this.ctx.rotate(pos);
-                this.ctx.lineTo(0, -length);
-                this.ctx.stroke();
-                this.ctx.rotate(-pos);
-
-                if (neglength > 0) {
-                    this.ctx.beginPath();
-                    this.ctx.moveTo(0, 0);
-                    this.ctx.rotate(pos);
-                    this.ctx.lineTo(0, neglength);
-                    this.ctx.stroke();
-                    this.ctx.rotate(-pos);
-                }
-
-            }
-
-            drawCardanoLogo() {
-                this.drawCardanoRing(0, this.radius * 0.3, this.radius * 0.116);
-                this.drawCardanoRing(90, this.radius * 0.42, this.radius * 0.05);
-                this.drawCardanoRing(0, this.radius * 0.52, this.radius * 0.04);
-                this.drawCardanoRing(90, this.radius * 0.60, this.radius * 0.033);
-                this.drawCardanoRing(0, this.radius * 0.65, this.radius * 0.024);
-            }
-
-            drawCardanoRing(startangle, distance, circlesize) {
-                //var x = Math.cos(-90 * Math.PI / 180) * distance;
-                //var y = Math.sin(-90 * Math.PI / 180) * distance;
-
-                for (let i = 0; i < 6; i++) {
-                    this.x = 0 + Math.cos(startangle * Math.PI / 180) * distance;
-                    this.y = 0 + Math.sin(startangle * Math.PI / 180) * distance;
-
-                    startangle = startangle + 60;
-
-                    this.ctx.beginPath();
-                    this.ctx.arc(this.x, this.y, circlesize, 0, 2 * Math.PI);
-                    this.ctx.fillStyle = '#1F61BA';
-                    this.ctx.fill();
-                }
-
-
-
-            }
-
-            initFractal() {
-                this.creal = -.8;
-                this.cimag = .156;
-                this.frame = Math.floor(Math.random() * 1000);
-
-                var x;
-                var y;
-                var color;
-                this.pallette = [];
-
-                for (x = 0; x < 9; x++) // this loop populates the color pallette array
-                {
-                    color = (31 * x).toString(16); // convert the number to hex
-                    if (color.length == 1) color = '0' + color;  // add a zero in front if only one hex digit
-
-                    var lowcolor = (279 - 31 * x).toString(16);
-                    if (lowcolor.length == 1) lowcolor = '0' + lowcolor;
-                    this.pallette[x] = '#' + lowcolor + lowcolor + 'ff'; // colors 0-8: the Red and Green components change, Blue=FF
-                    this.pallette[x + 8] = '#2299' + color;      // colors 8-16: the Blue component changes, Red and Green=FF
-                    this.pallette[17 + x] = "#" + color + '2299';  // colors 17-25: the Red component changes, Green and Blue=0
-                }
-            }
-
-            drawFractal() {
-                this.canvasfractal = document.getElementById("canvas5fractal");
-
-                this.canvasfractal.width = this.ss;
-                this.canvasfractal.height = this.ss;
-                this.ctxfractal = this.canvasfractal.getContext("2d");
-                var x = 0;
-                var y = 0;
-                var xt = 0;
-                var res = 2;
-
-                this.ctxfractal.clearRect(0, 0, this.ss, this.ss);
-                this.ctxfractal.beginPath();
-
-                for (y = 0; y < this.ss * res; y++) {
-                    for (x = 0; x < this.ss * res; x++) {
-                        var cx = -2 + x / (110 / 450 * this.ss) / res;
-                        var cy = -2 + y / (110 / 450 * this.ss) / res;
-                        var i = 0;
-
-                        do {
-                            xt = cx * cx - cy * cy + this.creal;
-                            cy = 2 * cx * cy + this.cimag;
-                            cx = xt;
-                            i++;
+                        if (this.hourHandType != "cutout") {
+                            this.drawHand(this.ctx, hour, this.radius * 0.5 * lengthratio, this.radius * 0.03, 0, null, extension);
                         }
-                        while ((cx * cx + cy * cy < 4) && i < 25);
 
-                        i = i.toString(16);
-
-                        this.ctxfractal.beginPath();
-                        this.ctxfractal.rect(x / res, y / res, 1 / res, 1 / res);
-
-                        this.ctxfractal.fillStyle = this.pallette[i];
-                        this.ctxfractal.fill();
-                    }
-                }
-            }
-
-            updateFractal(interval) {
-                this.frame = this.frame + interval;        // increase the number of the frame
-                this.creal = -.8 + .6 * Math.sin(this.frame / (3.14 * 20));    // calculate the new coordinates
-                this.cimag = .156 + .4 * Math.cos(this.frame / (3.14 * 40));   // of the c point
-                this.drawFractal();
-            }
-
-            updateTheRefresh() {
-                this.canvasrefresh = document.getElementById('canvas5refresh');
-                this.canvasrefresh.width = this.ss;
-                this.canvasrefresh.height = this.ss;
-                //canvas.width =550;
-                //canvas.height = 550;
-                //canvas.style.width = '100vw';
-                //canvas.style.height = '100vh';
-                this.canvasrefresh.getContext('2d').scale(2, 2);
-
-
-                var c = document.getElementById("canvas5refresh");
-                var ctx = c.getContext("2d");
-                var grd = ctx.createLinearGradient(0, 0, Math.floor(Math.random() * this.ss), Math.floor(Math.random() * this.ss));
-                grd.addColorStop(Math.random(), "#f50c0c");
-                grd.addColorStop(Math.random(), "#ef5c0c");
-                grd.addColorStop(Math.random(), "#eb7c08");
-                grd.addColorStop(Math.random(), "#edb404");
-                grd.addColorStop(Math.random(), "#ffdc77");
-
-                ctx.fillStyle = grd;
-                ctx.fillRect(-this.ss / 2, -this.ss / 2, this.ss, this.ss);
-
-                var c = document.getElementById("canvas5refresh");
-                var cxt = c.getContext("2d");
-                var centerX = Math.floor(Math.random() * 200 / 550 * this.ss);
-                var centerY = Math.floor(Math.random() * 350 / 550 * this.ss);
-                cxt.moveTo(centerX, centerY);
-
-                var gap = Math.floor(Math.random() * 1) + .005; // increase this for spacing between spiral lines also bigger smaller
-                var STEPS_PER_ROTATION = Math.floor(Math.random() * 500) + 1; // increasing this makes the curve smoother
-
-                var increment = Math.floor(Math.random() * 400) + .01 * Math.PI / STEPS_PER_ROTATION;//lower=darker
-                var theta = increment;
-                while (theta < Math.floor(Math.random() * 150) + 35000) {//bigger or smaller
-                    var newX = centerX + theta * Math.cos(theta) * gap;
-                    var newY = centerY + theta * Math.sin(theta) * gap;
-                    cxt.lineTo(newX, newY);
-                    theta = theta + increment;
-                }
-                ctx.strokeStyle = "#000000";
-                ctx.lineWidth = .5;
-                ctx.stroke(); // draw
-            }
-        }
-
-        new renderclocksample5();
-    </script>
-
-    <script>
-        var canvasc = document.querySelector(".clockdiv");
-
-        var body = document.querySelector("body");
-        var ss = "260";
-        canvasc.style.width = ss;
-        canvasc.style.height = ss;
-    </script>
-    <script>!function () { "use strict"; var w = .5 * (Math.sqrt(3) - 1), c = (3 - Math.sqrt(3)) / 6, N = 1 / 6; function r(r) { r = "function" == typeof r ? r : r ? alea(r) : Math.random, this.p = e(r), this.perm = new Uint8Array(512), this.permMod12 = new Uint8Array(512); for (var t = 0; t < 512; t++)this.perm[t] = this.p[255 & t], this.permMod12[t] = this.perm[t] % 12 } function e(r) { for (var t = new Uint8Array(256), e = 0; e < 256; e++)t[e] = e; for (e = 0; e < 255; e++) { var o = e + ~~(r() * (256 - e)), n = t[e]; t[e] = t[o], t[o] = n } return t } Math.sqrt(5), Math.sqrt(5), r.prototype = { grad3: new Float32Array([1, 1, 0, -1, 1, 0, 1, -1, 0, -1, -1, 0, 1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, -1, 0, 1, 1, 0, -1, 1, 0, 1, -1, 0, -1, -1]), grad4: new Float32Array([0, 1, 1, 1, 0, 1, 1, -1, 0, 1, -1, 1, 0, 1, -1, -1, 0, -1, 1, 1, 0, -1, 1, -1, 0, -1, -1, 1, 0, -1, -1, -1, 1, 0, 1, 1, 1, 0, 1, -1, 1, 0, -1, 1, 1, 0, -1, -1, -1, 0, 1, 1, -1, 0, 1, -1, -1, 0, -1, 1, -1, 0, -1, -1, 1, 1, 0, 1, 1, 1, 0, -1, 1, -1, 0, 1, 1, -1, 0, -1, -1, 1, 0, 1, -1, 1, 0, -1, -1, -1, 0, 1, -1, -1, 0, -1, 1, 1, 1, 0, 1, 1, -1, 0, 1, -1, 1, 0, 1, -1, -1, 0, -1, 1, 1, 0, -1, 1, -1, 0, -1, -1, 1, 0, -1, -1, -1, 0]), noise2D: function (r, t) { var e, o = this.permMod12, n = this.perm, i = this.grad3, a = 0, f = 0, s = 0, h = (r + t) * w, d = Math.floor(r + h), p = Math.floor(t + h), u = r - (d - (y = (d + p) * c)), m = t - (p - y), M = m < u ? (e = 1, 0) : (e = 0, 1), l = u - e + c, h = m - M + c, r = u - 1 + 2 * c, t = m - 1 + 2 * c, y = 255 & d, d = 255 & p; return 70 * ((a = 0 <= (p = .5 - u * u - m * m) ? (p *= p) * p * (i[p = 3 * o[y + n[d]]] * u + i[1 + p] * m) : a) + (f = 0 <= (m = .5 - l * l - h * h) ? (m *= m) * m * (i[M = 3 * o[y + e + n[d + M]]] * l + i[1 + M] * h) : f) + (s = 0 <= (h = .5 - r * r - t * t) ? (h *= h) * h * (i[d = 3 * o[1 + y + n[1 + d]]] * r + i[1 + d] * t) : s)) }, noise3D: function (r, t, e) { var o, n, i, a, f, s = this.permMod12, h = this.perm, d = this.grad3, p = (r + t + e) * (1 / 3), u = ((b = Math.floor(r + p)) + (D = Math.floor(t + p)) + (F = Math.floor(e + p))) * N, m = r - (b - u), M = t - (D - u), l = e - (F - u), y = M <= m ? l <= M ? (a = i = o = 1, f = n = 0) : i = l <= m ? (a = f = n = 0, o = 1) : (a = n = o = 0, f = 1) : M < l ? (i = n = o = 0, a = f = 1) : m < l ? (i = f = o = 0, a = n = 1) : (a = i = n = 1, f = o = 0), w = m - o + N, c = M - n + N, v = l - f + N, A = m - i + 2 * N, g = M - a + 2 * N, q = l - y + 2 * N, x = m - 1 + .5, U = M - 1 + .5, r = 255 & b, t = 255 & D, e = 255 & F, b = .6 - w * w - c * c - v * v, D = .6 - A * A - g * g - q * q, F = .6 - x * x - U * U - (p = l - 1 + .5) * p; return 32 * (((u = .6 - m * m - M * M - l * l) < 0 ? 0 : (u *= u) * u * (d[u = 3 * s[r + h[t + h[e]]]] * m + d[1 + u] * M + d[2 + u] * l)) + (b < 0 ? 0 : (b *= b) * b * (d[f = 3 * s[r + o + h[t + n + h[e + f]]]] * w + d[1 + f] * c + d[2 + f] * v)) + (D < 0 ? 0 : (D *= D) * D * (d[y = 3 * s[r + i + h[t + a + h[e + y]]]] * A + d[1 + y] * g + d[2 + y] * q)) + (F < 0 ? 0 : (F *= F) * F * (d[e = 3 * s[1 + r + h[1 + t + h[1 + e]]]] * x + d[1 + e] * U + d[2 + e] * p))) } }, r._buildPermutationTable = e, "undefined" != typeof define && define.amd && define(function () { return r }), "undefined" != typeof exports ? exports.SimplexNoise = r : "undefined" != typeof window && (window.SimplexNoise = r) }()</script>
-    <script>var simplex = new SimplexNoise, canvas = document.getElementById("canvas6awoken"), ctx = canvas.getContext("2d"), imgdata = ctx.getImageData(0, 0, 256, 256), data = imgdata.data, t = 0, dna1 = 377, dna2 = 619, dna3 = 355, dna4 = 113, dna5 = 3.7, dna6 = 45, dna7 = .48, dna8 = .93, dna9 = 416, dna10 = 666, dna11 = 77, dna12 = 71, dna13 = 207, void1 = 115, void2 = 258, void3 = .5506283492497344; window.setInterval(function () { for (var a = 0; a < 256; a++)for (var d = 0; d < 256; d++) { var n = simplex.noise3D(a / dna1, d / dna2, t / dna9) * dna5 + dna7, e = simplex.noise3D(a / dna3, d / dna4, t / dna10) * dna6 + dna8, i = 0, i = 10 < dna12 ? n * dna11 : n * e * dna11, o = 0, o = 0 === dna11 || 0 === dna12 ? n * e * dna13 : dna13, v = 0, v = void3 < .01 ? 800 * simplex.noise3D(a / void1, d / void2, t / dna9) + dna7 : 255; data[4 * (a + 256 * d) + 0] = i, data[4 * (a + 256 * d) + 1] = n * e * dna12, data[4 * (a + 256 * d) + 2] = o, data[4 * (a + 256 * d) + 3] = v } t++, ctx.putImageData(imgdata, 0, 0) }, 1e3 / 60)</script>
-    <script>
-        class renderclocksample6 {
-            constructor() { this.canvas = document.getElementById("canvas6"); this.backgroundColour = 'rgba(0,0,0,0)'; this.clockColour = '#FDFFFC'; this.handsColour = '#FFFFFF'; this.numbersType = 'roman'; this.secondHandType = 'handscolour'; this.handsEndType = 'rounded'; this.handsWidthType = 'tapered'; this.handsCentreType = 'circle'; this.handsLengthType = 'extended'; this.backgroundType = 'therefresh'; this.borderType = 'nothing'; this.dimensionType = '3d'; this.hourHandType = 'standard'; this.fps = 60; this.renderframe(); setInterval(this.renderframe.bind(this), 1000) }
-            drawStaticBackground() { this.ctx.fillStyle = this.backgroundColour; this.ctx.fillRect(-this.ss, -this.ss, this.ss * 2, this.ss * 2); this.ctx.restore(); this.drawFace(); this.drawNumbers() }
-            renderframe() {
-                this.body = document.querySelector("body");
-                var oldss = this.ss;
-                this.ss = "260";
-                if (this.ss != oldss) { this.canvas.width = this.ss; this.canvas.height = this.ss; this.ctx = this.canvas.getContext("2d"); this.radius = this.canvas.height / 2; this.ctx.translate(this.radius, this.radius); this.canvasc = document.querySelector(".clockdiv"); this.canvasc.style.width = this.ss; this.canvasc.style.height = this.ss }
-                this.ctx.clearRect(-this.ss, -this.ss, this.ss * 2, this.ss * 2); this.drawStaticBackground(); this.drawTime()
-            }
-            formatNumber(n) { return n.toString().padStart(2, "0") }
-            drawFace() {
-                var grad; if (this.backgroundType != "fractal" && this.backgroundType != "therefresh") { this.ctx.beginPath(); this.ctx.arc(0, 0, this.radius, 0, 2 * Math.PI); this.ctx.fillStyle = this.clockColour; this.ctx.fill() }
-                if (this.borderType != "nothing") {
-                    if (this.borderType == "gradient") { grad = this.ctx.createRadialGradient(0, 0, this.radius * 0.9, 0, 0, this.radius * 1); grad.addColorStop(0, this.clockColour); grad.addColorStop(0.5, this.handsColour); grad.addColorStop(1, this.clockColour); this.ctx.strokeStyle = grad } else { this.ctx.strokeStyle = this.handsColour }
-                    this.ctx.lineWidth = this.radius * 0.03; this.ctx.stroke()
-                }
-            }
-            drawNumbers() {
-                var ang; var num; this.ctx.font = this.radius * 0.15 + "px arial"; this.ctx.textBaseline = "middle"; this.ctx.textAlign = "center"; this.ctx.fillStyle = "#FFFFFF"; switch (this.numbersType) {
-                    case "roman": this.ctx.font = this.radius * 0.25 + "px times new roman"; for (num = 1; num < 13; num++) {
-                        ang = num * Math.PI / 6; this.ctx.rotate(ang); this.ctx.translate(0, -this.radius * 0.85); var text = ""; var width = 0.11; switch (num) {
-                            case 1:
-                                //text = " I ";
+                        //minute
+                        minute = (minute * Math.PI / 30) + (second * Math.PI / (30 * 60));
+                        this.drawHand(this.ctx, minute, this.radius * 0.7 * lengthratio, this.radius * 0.02, 0, (this.hourHandType == "cutout" ? this.clockColour : this.handsColour), extension);
+                        // second
+                        second = (second * Math.PI / 30);
+                        switch (this.secondHandType) {
+                            case 'nothing':
                                 break;
-                            case 2:
-                                //text = "II ";
+                            case 'handscolour':
+                                this.drawHand(this.ctx, second, this.radius * 0.9, this.radius * 0.01, 0, null, this.radius * 0.2);
                                 break;
-                            case 3:
-                                text = "III";
-                                break;
-                            case 4:
-                                //text = "IV";
-                                break;
-                            case 5:
-                                //text = " V ";
-                                break;
-                            case 6:
-                                text = "VI";
-                                break;
-                            case 7:
-                                //text = "VII";
-                                break;
-                            case 8:
-                                //text = "VIII";
-                                width = 0.15;
-                                break;
-                            case 9:
-                                text = "IX ";
-                                break;
-                            case 10:
-                                //text = " X ";
-                                break;
-                            case 11:
-                                //text = "XI ";
-                                break;
-                            case 12:
-                                text = "XII";
+                            case 'red':
+                                this.drawHand(this.ctx, second, this.radius * 0.9, this.radius * 0.01, 0, '#C71013', this.radius * 0.2);
+                                //middle circle
+                                this.ctx.beginPath();
+                                this.ctx.arc(0, 0, this.radius * 0.015, 0, 2 * Math.PI);
+                                this.ctx.fillStyle = '#C71013';
+                                this.ctx.fill();
                                 break;
                             default:
                                 break;
                         }
-                        this.ctx.fillText(text, 0, 0, this.radius * width); this.ctx.rotate(-ang); this.ctx.rotate(ang); this.ctx.translate(0, this.radius * 0.85); this.ctx.rotate(-ang)
                     }
-                        break; case "nothing": break
+                }
+
+                drawHand(ctx, pos, length, width, transparentratio, colour, neglength) {
+                    //ctx.strokeStyle = getHandsColour();
+                    //ctx.strokeStyle = "#FF0000";
+                    if (colour == null) {
+                        colour = this.handsColour;
+                    }
+                    if (transparentratio > 0) {
+                        this.strokestyle = this.ctx.createRadialGradient(0, 0, 0, 0, 0, this.radius);
+                        this.strokestyle.addColorStop(0, 'rgba(255, 255, 255, 0)');
+                        this.strokestyle.addColorStop(transparentratio, 'rgba(255, 255, 255, 0)');
+                        this.strokestyle.addColorStop(transparentratio, colour);
+                        //strokestyle.addColorStop(0.5 , 'rgba(255, 255, 255, 0)');
+                        //strokestyle.addColorStop(0.5, 'rgba(255, 255, 255, 1)');
+                        this.strokestyle.addColorStop(1, colour);
+                        this.ctx.strokeStyle = this.strokestyle;
+                        this.ctx.lineCap = "butt";
+                    }
+                    else {
+                        this.ctx.strokeStyle = colour;
+                        if (this.handsEndType == 'rounded') {
+                            this.ctx.lineCap = "round";
+                        }
+                        switch (this.handsWidthType) {
+                            case "thin":
+                                width = width * 0.5;
+                                break;
+                            case "medium":
+                                break;
+                            case "thick":
+                                width = width * 2;
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+
+                    this.ctx.beginPath();
+                    this.ctx.lineWidth = width;
+                    this.ctx.moveTo(0, 0);
+                    this.ctx.rotate(pos);
+                    this.ctx.lineTo(0, -length);
+                    this.ctx.stroke();
+                    this.ctx.rotate(-pos);
+
+                    if (neglength > 0) {
+                        this.ctx.beginPath();
+                        this.ctx.moveTo(0, 0);
+                        this.ctx.rotate(pos);
+                        this.ctx.lineTo(0, neglength);
+                        this.ctx.stroke();
+                        this.ctx.rotate(-pos);
+                    }
+
+                }
+
+                drawCardanoLogo() {
+                    this.drawCardanoRing(0, this.radius * 0.3, this.radius * 0.116);
+                    this.drawCardanoRing(90, this.radius * 0.42, this.radius * 0.05);
+                    this.drawCardanoRing(0, this.radius * 0.52, this.radius * 0.04);
+                    this.drawCardanoRing(90, this.radius * 0.60, this.radius * 0.033);
+                    this.drawCardanoRing(0, this.radius * 0.65, this.radius * 0.024);
+                }
+
+                drawCardanoRing(startangle, distance, circlesize) {
+                    //var x = Math.cos(-90 * Math.PI / 180) * distance;
+                    //var y = Math.sin(-90 * Math.PI / 180) * distance;
+
+                    for (let i = 0; i < 6; i++) {
+                        this.x = 0 + Math.cos(startangle * Math.PI / 180) * distance;
+                        this.y = 0 + Math.sin(startangle * Math.PI / 180) * distance;
+
+                        startangle = startangle + 60;
+
+                        this.ctx.beginPath();
+                        this.ctx.arc(this.x, this.y, circlesize, 0, 2 * Math.PI);
+                        this.ctx.fillStyle = '#1F61BA';
+                        this.ctx.fill();
+                    }
+
+
+
+                }
+
+                initFractal() {
+                    this.creal = -.8;
+                    this.cimag = .156;
+                    this.frame = Math.floor(Math.random() * 1000);
+
+                    var x;
+                    var y;
+                    var color;
+                    this.pallette = [];
+
+                    for (x = 0; x < 9; x++) // this loop populates the color pallette array
+                    {
+                        color = (31 * x).toString(16); // convert the number to hex
+                        if (color.length == 1) color = '0' + color;  // add a zero in front if only one hex digit
+
+                        var lowcolor = (279 - 31 * x).toString(16);
+                        if (lowcolor.length == 1) lowcolor = '0' + lowcolor;
+                        this.pallette[x] = '#' + lowcolor + lowcolor + 'ff'; // colors 0-8: the Red and Green components change, Blue=FF
+                        this.pallette[x + 8] = '#2299' + color;      // colors 8-16: the Blue component changes, Red and Green=FF
+                        this.pallette[17 + x] = "#" + color + '2299';  // colors 17-25: the Red component changes, Green and Blue=0
+                    }
+                }
+
+                drawFractal() {
+                    this.canvasfractal = document.getElementById("canvas5fractal");
+
+                    this.canvasfractal.width = this.ss;
+                    this.canvasfractal.height = this.ss;
+                    this.ctxfractal = this.canvasfractal.getContext("2d");
+                    var x = 0;
+                    var y = 0;
+                    var xt = 0;
+                    var res = 2;
+
+                    this.ctxfractal.clearRect(0, 0, this.ss, this.ss);
+                    this.ctxfractal.beginPath();
+
+                    for (y = 0; y < this.ss * res; y++) {
+                        for (x = 0; x < this.ss * res; x++) {
+                            var cx = -2 + x / (110 / 450 * this.ss) / res;
+                            var cy = -2 + y / (110 / 450 * this.ss) / res;
+                            var i = 0;
+
+                            do {
+                                xt = cx * cx - cy * cy + this.creal;
+                                cy = 2 * cx * cy + this.cimag;
+                                cx = xt;
+                                i++;
+                            }
+                            while ((cx * cx + cy * cy < 4) && i < 25);
+
+                            i = i.toString(16);
+
+                            this.ctxfractal.beginPath();
+                            this.ctxfractal.rect(x / res, y / res, 1 / res, 1 / res);
+
+                            this.ctxfractal.fillStyle = this.pallette[i];
+                            this.ctxfractal.fill();
+                        }
+                    }
+                }
+
+                updateFractal(interval) {
+                    this.frame = this.frame + interval;        // increase the number of the frame
+                    this.creal = -.8 + .6 * Math.sin(this.frame / (3.14 * 20));    // calculate the new coordinates
+                    this.cimag = .156 + .4 * Math.cos(this.frame / (3.14 * 40));   // of the c point
+                    this.drawFractal();
+                }
+
+                updateTheRefresh() {
+                    this.canvasrefresh = document.getElementById('canvas5refresh');
+                    this.canvasrefresh.width = this.ss;
+                    this.canvasrefresh.height = this.ss;
+                    //canvas.width =550;
+                    //canvas.height = 550;
+                    //canvas.style.width = '100vw';
+                    //canvas.style.height = '100vh';
+                    this.canvasrefresh.getContext('2d').scale(2, 2);
+
+
+                    var c = document.getElementById("canvas5refresh");
+                    var ctx = c.getContext("2d");
+                    var grd = ctx.createLinearGradient(0, 0, Math.floor(Math.random() * this.ss), Math.floor(Math.random() * this.ss));
+                    grd.addColorStop(Math.random(), "#f50c0c");
+                    grd.addColorStop(Math.random(), "#ef5c0c");
+                    grd.addColorStop(Math.random(), "#eb7c08");
+                    grd.addColorStop(Math.random(), "#edb404");
+                    grd.addColorStop(Math.random(), "#ffdc77");
+
+                    ctx.fillStyle = grd;
+                    ctx.fillRect(-this.ss / 2, -this.ss / 2, this.ss, this.ss);
+
+                    var c = document.getElementById("canvas5refresh");
+                    var cxt = c.getContext("2d");
+                    var centerX = Math.floor(Math.random() * 200 / 550 * this.ss);
+                    var centerY = Math.floor(Math.random() * 350 / 550 * this.ss);
+                    cxt.moveTo(centerX, centerY);
+
+                    var gap = Math.floor(Math.random() * 1) + .005; // increase this for spacing between spiral lines also bigger smaller
+                    var STEPS_PER_ROTATION = Math.floor(Math.random() * 500) + 1; // increasing this makes the curve smoother
+
+                    var increment = Math.floor(Math.random() * 400) + .01 * Math.PI / STEPS_PER_ROTATION;//lower=darker
+                    var theta = increment;
+                    while (theta < Math.floor(Math.random() * 150) + 35000) {//bigger or smaller
+                        var newX = centerX + theta * Math.cos(theta) * gap;
+                        var newY = centerY + theta * Math.sin(theta) * gap;
+                        cxt.lineTo(newX, newY);
+                        theta = theta + increment;
+                    }
+                    ctx.strokeStyle = "#000000";
+                    ctx.lineWidth = .5;
+                    ctx.stroke(); // draw
                 }
             }
-            drawTime() {
-                var now = new Date(); var hour = now.getHours(); var minute = now.getMinutes(); var second = now.getSeconds(); hour = hour % 12; hour = (hour * Math.PI / 6) + (minute * Math.PI / (6 * 60)) + (second * Math.PI / (360 * 60)); var ang = now.getHours() % 12 * 30 + (now.getMinutes() * 0.5) - 90; this.ctx.save(); if (this.dimensionType == "3d") { this.ctx.shadowBlur = 5; this.ctx.shadowColor = '#222222'; this.ctx.shadowOffsetX = -4; this.ctx.shadowOffsetY = 3 }
-                if (this.handsCentreType == "circle" || this.handsCentreType == "circle") { this.ctx.beginPath(); this.ctx.arc(0, 0, this.radius * 0.05, 0, 2 * Math.PI); this.ctx.fillStyle = (this.hourHandType == "cutout" ? this.clockColour : this.handsColour); this.ctx.fill() }
-                var extension = 0; if (this.handsLengthType == "extended" || this.handsLengthType == "extended") { extension = this.radius * 0.1 }
-                var lengthratio = 1; if (this.handsLengthType == "short") { lengthratio = 0.7 }
-                if (this.hourHandType != "cutout") { this.drawHand(this.ctx, hour, this.radius * 0.5 * lengthratio, this.radius * 0.03, 0, null, extension) }
-                minute = (minute * Math.PI / 30) + (second * Math.PI / (30 * 60)); this.drawHand(this.ctx, minute, this.radius * 0.7 * lengthratio, this.radius * 0.02, 0, (this.hourHandType == "cutout" ? this.clockColour : this.handsColour), extension); second = (second * Math.PI / 30); switch (this.secondHandType) { case 'nothing': break; case 'handscolour': this.drawHand(this.ctx, second, this.radius * 0.8, this.radius * 0.01, 0, '#DDDDDD', this.radius * 0.2); this.ctx.beginPath(); this.ctx.arc(0, 0, this.radius * 0.015, 0, 2 * Math.PI); this.ctx.fillStyle = '#DDDDDD'; this.ctx.fill(); break; case 'red': this.drawHand(this.ctx, second, this.radius * 0.9, this.radius * 0.01, 0, '#C71013', this.radius * 0.2); this.ctx.beginPath(); this.ctx.arc(0, 0, this.radius * 0.015, 0, 2 * Math.PI); this.ctx.fillStyle = '#C71013'; this.ctx.fill(); break; default: break }
-            }
-            drawHand(ctx, pos, length, width, transparentratio, colour, neglength) {
-                if (colour == null) { colour = this.handsColour }
-                if (transparentratio > 0) { this.strokestyle = this.ctx.createRadialGradient(0, 0, 0, 0, 0, this.radius); this.strokestyle.addColorStop(0, 'rgba(255, 255, 255, 0)'); this.strokestyle.addColorStop(transparentratio, 'rgba(255, 255, 255, 0)'); this.strokestyle.addColorStop(transparentratio, colour); this.strokestyle.addColorStop(1, colour); this.ctx.strokeStyle = this.strokestyle; this.ctx.lineCap = "butt" } else {
-                    this.ctx.strokeStyle = colour; if (this.handsEndType == 'rounded') { this.ctx.lineCap = "round" }
-                    switch (this.handsWidthType) { case "thin": width = width * 0.5; break; case "medium": break; case "thick": width = width * 2; break; default: break }
+
+            new renderclocksample5();
+        </script>
+
+        <script>
+            var canvasc = document.querySelector(".clockdiv");
+
+            var body = document.querySelector("body");
+            var ss = "260";
+            canvasc.style.width = ss;
+            canvasc.style.height = ss;
+        </script>
+        <script>!function () { "use strict"; var w = .5 * (Math.sqrt(3) - 1), c = (3 - Math.sqrt(3)) / 6, N = 1 / 6; function r(r) { r = "function" == typeof r ? r : r ? alea(r) : Math.random, this.p = e(r), this.perm = new Uint8Array(512), this.permMod12 = new Uint8Array(512); for (var t = 0; t < 512; t++)this.perm[t] = this.p[255 & t], this.permMod12[t] = this.perm[t] % 12 } function e(r) { for (var t = new Uint8Array(256), e = 0; e < 256; e++)t[e] = e; for (e = 0; e < 255; e++) { var o = e + ~~(r() * (256 - e)), n = t[e]; t[e] = t[o], t[o] = n } return t } Math.sqrt(5), Math.sqrt(5), r.prototype = { grad3: new Float32Array([1, 1, 0, -1, 1, 0, 1, -1, 0, -1, -1, 0, 1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, -1, 0, 1, 1, 0, -1, 1, 0, 1, -1, 0, -1, -1]), grad4: new Float32Array([0, 1, 1, 1, 0, 1, 1, -1, 0, 1, -1, 1, 0, 1, -1, -1, 0, -1, 1, 1, 0, -1, 1, -1, 0, -1, -1, 1, 0, -1, -1, -1, 1, 0, 1, 1, 1, 0, 1, -1, 1, 0, -1, 1, 1, 0, -1, -1, -1, 0, 1, 1, -1, 0, 1, -1, -1, 0, -1, 1, -1, 0, -1, -1, 1, 1, 0, 1, 1, 1, 0, -1, 1, -1, 0, 1, 1, -1, 0, -1, -1, 1, 0, 1, -1, 1, 0, -1, -1, -1, 0, 1, -1, -1, 0, -1, 1, 1, 1, 0, 1, 1, -1, 0, 1, -1, 1, 0, 1, -1, -1, 0, -1, 1, 1, 0, -1, 1, -1, 0, -1, -1, 1, 0, -1, -1, -1, 0]), noise2D: function (r, t) { var e, o = this.permMod12, n = this.perm, i = this.grad3, a = 0, f = 0, s = 0, h = (r + t) * w, d = Math.floor(r + h), p = Math.floor(t + h), u = r - (d - (y = (d + p) * c)), m = t - (p - y), M = m < u ? (e = 1, 0) : (e = 0, 1), l = u - e + c, h = m - M + c, r = u - 1 + 2 * c, t = m - 1 + 2 * c, y = 255 & d, d = 255 & p; return 70 * ((a = 0 <= (p = .5 - u * u - m * m) ? (p *= p) * p * (i[p = 3 * o[y + n[d]]] * u + i[1 + p] * m) : a) + (f = 0 <= (m = .5 - l * l - h * h) ? (m *= m) * m * (i[M = 3 * o[y + e + n[d + M]]] * l + i[1 + M] * h) : f) + (s = 0 <= (h = .5 - r * r - t * t) ? (h *= h) * h * (i[d = 3 * o[1 + y + n[1 + d]]] * r + i[1 + d] * t) : s)) }, noise3D: function (r, t, e) { var o, n, i, a, f, s = this.permMod12, h = this.perm, d = this.grad3, p = (r + t + e) * (1 / 3), u = ((b = Math.floor(r + p)) + (D = Math.floor(t + p)) + (F = Math.floor(e + p))) * N, m = r - (b - u), M = t - (D - u), l = e - (F - u), y = M <= m ? l <= M ? (a = i = o = 1, f = n = 0) : i = l <= m ? (a = f = n = 0, o = 1) : (a = n = o = 0, f = 1) : M < l ? (i = n = o = 0, a = f = 1) : m < l ? (i = f = o = 0, a = n = 1) : (a = i = n = 1, f = o = 0), w = m - o + N, c = M - n + N, v = l - f + N, A = m - i + 2 * N, g = M - a + 2 * N, q = l - y + 2 * N, x = m - 1 + .5, U = M - 1 + .5, r = 255 & b, t = 255 & D, e = 255 & F, b = .6 - w * w - c * c - v * v, D = .6 - A * A - g * g - q * q, F = .6 - x * x - U * U - (p = l - 1 + .5) * p; return 32 * (((u = .6 - m * m - M * M - l * l) < 0 ? 0 : (u *= u) * u * (d[u = 3 * s[r + h[t + h[e]]]] * m + d[1 + u] * M + d[2 + u] * l)) + (b < 0 ? 0 : (b *= b) * b * (d[f = 3 * s[r + o + h[t + n + h[e + f]]]] * w + d[1 + f] * c + d[2 + f] * v)) + (D < 0 ? 0 : (D *= D) * D * (d[y = 3 * s[r + i + h[t + a + h[e + y]]]] * A + d[1 + y] * g + d[2 + y] * q)) + (F < 0 ? 0 : (F *= F) * F * (d[e = 3 * s[1 + r + h[1 + t + h[1 + e]]]] * x + d[1 + e] * U + d[2 + e] * p))) } }, r._buildPermutationTable = e, "undefined" != typeof define && define.amd && define(function () { return r }), "undefined" != typeof exports ? exports.SimplexNoise = r : "undefined" != typeof window && (window.SimplexNoise = r) }()</script>
+        <script>var simplex = new SimplexNoise, canvas = document.getElementById("canvas6awoken"), ctx = canvas.getContext("2d"), imgdata = ctx.getImageData(0, 0, 256, 256), data = imgdata.data, t = 0, dna1 = 377, dna2 = 619, dna3 = 355, dna4 = 113, dna5 = 3.7, dna6 = 45, dna7 = .48, dna8 = .93, dna9 = 416, dna10 = 666, dna11 = 77, dna12 = 71, dna13 = 207, void1 = 115, void2 = 258, void3 = .5506283492497344; window.setInterval(function () { for (var a = 0; a < 256; a++)for (var d = 0; d < 256; d++) { var n = simplex.noise3D(a / dna1, d / dna2, t / dna9) * dna5 + dna7, e = simplex.noise3D(a / dna3, d / dna4, t / dna10) * dna6 + dna8, i = 0, i = 10 < dna12 ? n * dna11 : n * e * dna11, o = 0, o = 0 === dna11 || 0 === dna12 ? n * e * dna13 : dna13, v = 0, v = void3 < .01 ? 800 * simplex.noise3D(a / void1, d / void2, t / dna9) + dna7 : 255; data[4 * (a + 256 * d) + 0] = i, data[4 * (a + 256 * d) + 1] = n * e * dna12, data[4 * (a + 256 * d) + 2] = o, data[4 * (a + 256 * d) + 3] = v } t++, ctx.putImageData(imgdata, 0, 0) }, 1e3 / 60)</script>
+        <script>
+            class renderclocksample6 {
+                constructor() { this.canvas = document.getElementById("canvas6"); this.backgroundColour = 'rgba(0,0,0,0)'; this.clockColour = '#FDFFFC'; this.handsColour = '#FFFFFF'; this.numbersType = 'roman'; this.secondHandType = 'handscolour'; this.handsEndType = 'rounded'; this.handsWidthType = 'tapered'; this.handsCentreType = 'circle'; this.handsLengthType = 'extended'; this.backgroundType = 'therefresh'; this.borderType = 'nothing'; this.dimensionType = '3d'; this.hourHandType = 'standard'; this.fps = 60; this.renderframe(); setInterval(this.renderframe.bind(this), 1000) }
+                drawStaticBackground() { this.ctx.fillStyle = this.backgroundColour; this.ctx.fillRect(-this.ss, -this.ss, this.ss * 2, this.ss * 2); this.ctx.restore(); this.drawFace(); this.drawNumbers() }
+                renderframe() {
+                    this.body = document.querySelector("body");
+                    var oldss = this.ss;
+                    this.ss = "260";
+                    if (this.ss != oldss) { this.canvas.width = this.ss; this.canvas.height = this.ss; this.ctx = this.canvas.getContext("2d"); this.radius = this.canvas.height / 2; this.ctx.translate(this.radius, this.radius); this.canvasc = document.querySelector(".clockdiv"); this.canvasc.style.width = this.ss; this.canvasc.style.height = this.ss }
+                    this.ctx.clearRect(-this.ss, -this.ss, this.ss * 2, this.ss * 2); this.drawStaticBackground(); this.drawTime()
                 }
-                this.ctx.beginPath(); this.ctx.lineWidth = width; this.ctx.moveTo(0, 0); this.ctx.rotate(pos); this.ctx.lineTo(0, -length); this.ctx.stroke(); this.ctx.rotate(-pos); if (neglength > 0) { this.ctx.beginPath(); this.ctx.moveTo(0, 0); this.ctx.rotate(pos); this.ctx.lineTo(0, neglength); this.ctx.stroke(); this.ctx.rotate(-pos) }
+                formatNumber(n) { return n.toString().padStart(2, "0") }
+                drawFace() {
+                    var grad; if (this.backgroundType != "fractal" && this.backgroundType != "therefresh") { this.ctx.beginPath(); this.ctx.arc(0, 0, this.radius, 0, 2 * Math.PI); this.ctx.fillStyle = this.clockColour; this.ctx.fill() }
+                    if (this.borderType != "nothing") {
+                        if (this.borderType == "gradient") { grad = this.ctx.createRadialGradient(0, 0, this.radius * 0.9, 0, 0, this.radius * 1); grad.addColorStop(0, this.clockColour); grad.addColorStop(0.5, this.handsColour); grad.addColorStop(1, this.clockColour); this.ctx.strokeStyle = grad } else { this.ctx.strokeStyle = this.handsColour }
+                        this.ctx.lineWidth = this.radius * 0.03; this.ctx.stroke()
+                    }
+                }
+                drawNumbers() {
+                    var ang; var num; this.ctx.font = this.radius * 0.15 + "px arial"; this.ctx.textBaseline = "middle"; this.ctx.textAlign = "center"; this.ctx.fillStyle = "#FFFFFF"; switch (this.numbersType) {
+                        case "roman": this.ctx.font = this.radius * 0.25 + "px times new roman"; for (num = 1; num < 13; num++) {
+                            ang = num * Math.PI / 6; this.ctx.rotate(ang); this.ctx.translate(0, -this.radius * 0.85); var text = ""; var width = 0.11; switch (num) {
+                                case 1:
+                                    //text = " I ";
+                                    break;
+                                case 2:
+                                    //text = "II ";
+                                    break;
+                                case 3:
+                                    text = "III";
+                                    break;
+                                case 4:
+                                    //text = "IV";
+                                    break;
+                                case 5:
+                                    //text = " V ";
+                                    break;
+                                case 6:
+                                    text = "VI";
+                                    break;
+                                case 7:
+                                    //text = "VII";
+                                    break;
+                                case 8:
+                                    //text = "VIII";
+                                    width = 0.15;
+                                    break;
+                                case 9:
+                                    text = "IX ";
+                                    break;
+                                case 10:
+                                    //text = " X ";
+                                    break;
+                                case 11:
+                                    //text = "XI ";
+                                    break;
+                                case 12:
+                                    text = "XII";
+                                    break;
+                                default:
+                                    break;
+                            }
+                            this.ctx.fillText(text, 0, 0, this.radius * width); this.ctx.rotate(-ang); this.ctx.rotate(ang); this.ctx.translate(0, this.radius * 0.85); this.ctx.rotate(-ang)
+                        }
+                            break; case "nothing": break
+                    }
+                }
+                drawTime() {
+                    var now = new Date(); var hour = now.getHours(); var minute = now.getMinutes(); var second = now.getSeconds(); hour = hour % 12; hour = (hour * Math.PI / 6) + (minute * Math.PI / (6 * 60)) + (second * Math.PI / (360 * 60)); var ang = now.getHours() % 12 * 30 + (now.getMinutes() * 0.5) - 90; this.ctx.save(); if (this.dimensionType == "3d") { this.ctx.shadowBlur = 5; this.ctx.shadowColor = '#222222'; this.ctx.shadowOffsetX = -4; this.ctx.shadowOffsetY = 3 }
+                    if (this.handsCentreType == "circle" || this.handsCentreType == "circle") { this.ctx.beginPath(); this.ctx.arc(0, 0, this.radius * 0.05, 0, 2 * Math.PI); this.ctx.fillStyle = (this.hourHandType == "cutout" ? this.clockColour : this.handsColour); this.ctx.fill() }
+                    var extension = 0; if (this.handsLengthType == "extended" || this.handsLengthType == "extended") { extension = this.radius * 0.1 }
+                    var lengthratio = 1; if (this.handsLengthType == "short") { lengthratio = 0.7 }
+                    if (this.hourHandType != "cutout") { this.drawHand(this.ctx, hour, this.radius * 0.5 * lengthratio, this.radius * 0.03, 0, null, extension) }
+                    minute = (minute * Math.PI / 30) + (second * Math.PI / (30 * 60)); this.drawHand(this.ctx, minute, this.radius * 0.7 * lengthratio, this.radius * 0.02, 0, (this.hourHandType == "cutout" ? this.clockColour : this.handsColour), extension); second = (second * Math.PI / 30); switch (this.secondHandType) { case 'nothing': break; case 'handscolour': this.drawHand(this.ctx, second, this.radius * 0.8, this.radius * 0.01, 0, '#DDDDDD', this.radius * 0.2); this.ctx.beginPath(); this.ctx.arc(0, 0, this.radius * 0.015, 0, 2 * Math.PI); this.ctx.fillStyle = '#DDDDDD'; this.ctx.fill(); break; case 'red': this.drawHand(this.ctx, second, this.radius * 0.9, this.radius * 0.01, 0, '#C71013', this.radius * 0.2); this.ctx.beginPath(); this.ctx.arc(0, 0, this.radius * 0.015, 0, 2 * Math.PI); this.ctx.fillStyle = '#C71013'; this.ctx.fill(); break; default: break }
+                }
+                drawHand(ctx, pos, length, width, transparentratio, colour, neglength) {
+                    if (colour == null) { colour = this.handsColour }
+                    if (transparentratio > 0) { this.strokestyle = this.ctx.createRadialGradient(0, 0, 0, 0, 0, this.radius); this.strokestyle.addColorStop(0, 'rgba(255, 255, 255, 0)'); this.strokestyle.addColorStop(transparentratio, 'rgba(255, 255, 255, 0)'); this.strokestyle.addColorStop(transparentratio, colour); this.strokestyle.addColorStop(1, colour); this.ctx.strokeStyle = this.strokestyle; this.ctx.lineCap = "butt" } else {
+                        this.ctx.strokeStyle = colour; if (this.handsEndType == 'rounded') { this.ctx.lineCap = "round" }
+                        switch (this.handsWidthType) { case "thin": width = width * 0.5; break; case "medium": break; case "thick": width = width * 2; break; default: break }
+                    }
+                    this.ctx.beginPath(); this.ctx.lineWidth = width; this.ctx.moveTo(0, 0); this.ctx.rotate(pos); this.ctx.lineTo(0, -length); this.ctx.stroke(); this.ctx.rotate(-pos); if (neglength > 0) { this.ctx.beginPath(); this.ctx.moveTo(0, 0); this.ctx.rotate(pos); this.ctx.lineTo(0, neglength); this.ctx.stroke(); this.ctx.rotate(-pos) }
+                }
             }
-        }
-        new renderclocksample6()
-    </script>
+            new renderclocksample6()
+        </script>
+        <script>
+            class renderclocksample7 {
+                constructor() { this.canvas = document.getElementById("canvas7"); this.backgroundColour = 'rgba(0,0,0,0)'; this.clockColour = '#FDFFFC'; this.handsColour = '#222222'; this.numbersType = 'roman'; this.secondHandType = 'none'; this.handsEndType = 'rounded'; this.handsWidthType = 'tapered'; this.handsCentreType = 'none'; this.handsLengthType = 'standard'; this.backgroundType = 'therefresh'; this.borderType = 'nothing'; this.dimensionType = '3d'; this.hourHandType = 'standard'; this.fps = 60; this.renderframe(); setInterval(this.renderframe.bind(this), 1000) }
+                drawStaticBackground() { this.ctx.fillStyle = this.backgroundColour; this.ctx.fillRect(-this.ss, -this.ss, this.ss * 2, this.ss * 2); this.ctx.restore(); this.drawFace(); this.drawNumbers() }
+                renderframe() {
+                    this.body = document.querySelector("body");
+                    var oldss = this.ss;
+                    this.ss = "260";
+                    if (this.ss != oldss) { this.canvas.width = this.ss; this.canvas.height = this.ss; this.ctx = this.canvas.getContext("2d"); this.radius = this.canvas.height / 2; this.ctx.translate(this.radius, this.radius); this.canvasc = document.querySelector(".clockdiv"); this.canvasc.style.width = this.ss; this.canvasc.style.height = this.ss }
+                    this.ctx.clearRect(-this.ss, -this.ss, this.ss * 2, this.ss * 2); this.drawStaticBackground(); this.drawTime()
+                }
+                formatNumber(n) { return n.toString().padStart(2, "0") }
+                drawFace() {
+                    var grad; if (this.backgroundType != "fractal" && this.backgroundType != "therefresh") { this.ctx.beginPath(); this.ctx.arc(0, 0, this.radius, 0, 2 * Math.PI); this.ctx.fillStyle = this.clockColour; this.ctx.fill() }
+                    if (this.borderType != "nothing") {
+                        if (this.borderType == "gradient") { grad = this.ctx.createRadialGradient(0, 0, this.radius * 0.9, 0, 0, this.radius * 1); grad.addColorStop(0, this.clockColour); grad.addColorStop(0.5, this.handsColour); grad.addColorStop(1, this.clockColour); this.ctx.strokeStyle = grad } else { this.ctx.strokeStyle = this.handsColour }
+                        this.ctx.lineWidth = this.radius * 0.03; this.ctx.stroke()
+                    }
+                }
+                drawNumbers() {
+                    var ang; var num; this.ctx.font = this.radius * 0.15 + "px arial"; this.ctx.textBaseline = "middle"; this.ctx.textAlign = "center"; this.ctx.fillStyle = "#222222"; switch (this.numbersType) {
+                        case "roman": this.ctx.font = this.radius * 0.25 + "px times new roman"; for (num = 1; num < 13; num++) {
+                            ang = num * Math.PI / 6; this.ctx.rotate(ang); this.ctx.translate(0, -this.radius * 0.85); var text = ""; var width = 0.11; switch (num) {
+                                case 1:
+                                    //text = " I ";
+                                    break;
+                                case 2:
+                                    //text = "II ";
+                                    break;
+                                case 3:
+                                    text = "III";
+                                    break;
+                                case 4:
+                                    //text = "IV";
+                                    break;
+                                case 5:
+                                    //text = " V ";
+                                    break;
+                                case 6:
+                                    text = "VI";
+                                    break;
+                                case 7:
+                                    //text = "VII";
+                                    break;
+                                case 8:
+                                    //text = "VIII";
+                                    width = 0.15;
+                                    break;
+                                case 9:
+                                    text = "IX ";
+                                    break;
+                                case 10:
+                                    //text = " X ";
+                                    break;
+                                case 11:
+                                    //text = "XI ";
+                                    break;
+                                case 12:
+                                    text = "XII";
+                                    break;
+                                default:
+                                    break;
+                            }
+                            this.ctx.fillText(text, 0, 0, this.radius * width); this.ctx.rotate(-ang); this.ctx.rotate(ang); this.ctx.translate(0, this.radius * 0.85); this.ctx.rotate(-ang)
+                        }
+                            break; case "nothing": break
+                    }
+                }
+                drawTime() {
+                    var now = new Date(); var hour = now.getHours(); var minute = now.getMinutes(); var second = now.getSeconds(); hour = hour % 12; hour = (hour * Math.PI / 6) + (minute * Math.PI / (6 * 60)) + (second * Math.PI / (360 * 60)); var ang = now.getHours() % 12 * 30 + (now.getMinutes() * 0.5) - 90; this.ctx.save(); if (this.dimensionType == "3d") { this.ctx.shadowBlur = 5; this.ctx.shadowColor = '#222222'; this.ctx.shadowOffsetX = -4; this.ctx.shadowOffsetY = 3 }
+                    if (this.handsCentreType == "circle" || this.handsCentreType == "circle") { this.ctx.beginPath(); this.ctx.arc(0, 0, this.radius * 0.05, 0, 2 * Math.PI); this.ctx.fillStyle = (this.hourHandType == "cutout" ? this.clockColour : this.handsColour); this.ctx.fill() }
+                    var extension = 0; if (this.handsLengthType == "extended" || this.handsLengthType == "extended") { extension = this.radius * 0.1 }
+                    var lengthratio = 1; if (this.handsLengthType == "short") { lengthratio = 0.7 }
+                    if (this.hourHandType != "cutout") { this.drawHand(this.ctx, hour, this.radius * 0.5 * lengthratio, this.radius * 0.03, 0, null, extension) }
+                    minute = (minute * Math.PI / 30) + (second * Math.PI / (30 * 60)); this.drawHand(this.ctx, minute, this.radius * 0.7 * lengthratio, this.radius * 0.02, 0, (this.hourHandType == "cutout" ? this.clockColour : this.handsColour), extension); second = (second * Math.PI / 30); switch (this.secondHandType) { case 'nothing': break; case 'handscolour': this.drawHand(this.ctx, second, this.radius * 0.8, this.radius * 0.01, 0, '#DDDDDD', this.radius * 0.2); this.ctx.beginPath(); this.ctx.arc(0, 0, this.radius * 0.015, 0, 2 * Math.PI); this.ctx.fillStyle = '#DDDDDD'; this.ctx.fill(); break; case 'red': this.drawHand(this.ctx, second, this.radius * 0.9, this.radius * 0.01, 0, '#C71013', this.radius * 0.2); this.ctx.beginPath(); this.ctx.arc(0, 0, this.radius * 0.015, 0, 2 * Math.PI); this.ctx.fillStyle = '#C71013'; this.ctx.fill(); break; default: break }
+                }
+                drawHand(ctx, pos, length, width, transparentratio, colour, neglength) {
+                    if (colour == null) { colour = this.handsColour }
+                    if (transparentratio > 0) { this.strokestyle = this.ctx.createRadialGradient(0, 0, 0, 0, 0, this.radius); this.strokestyle.addColorStop(0, 'rgba(255, 255, 255, 0)'); this.strokestyle.addColorStop(transparentratio, 'rgba(255, 255, 255, 0)'); this.strokestyle.addColorStop(transparentratio, colour); this.strokestyle.addColorStop(1, colour); this.ctx.strokeStyle = this.strokestyle; this.ctx.lineCap = "butt" } else {
+                        this.ctx.strokeStyle = colour; if (this.handsEndType == 'rounded') { this.ctx.lineCap = "round" }
+                        switch (this.handsWidthType) { case "thin": width = width * 0.5; break; case "medium": break; case "thick": width = width * 2; break; default: break }
+                    }
+                    this.ctx.beginPath(); this.ctx.lineWidth = width; this.ctx.moveTo(0, 0); this.ctx.rotate(pos); this.ctx.lineTo(0, -length); this.ctx.stroke(); this.ctx.rotate(-pos); if (neglength > 0) { this.ctx.beginPath(); this.ctx.moveTo(0, 0); this.ctx.rotate(pos); this.ctx.lineTo(0, neglength); this.ctx.stroke(); this.ctx.rotate(-pos) }
+                }
+            }
+            new renderclocksample7()
+        </script>
 </body>
 </html>

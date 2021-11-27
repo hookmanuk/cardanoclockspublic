@@ -44,9 +44,12 @@ body {
 }
 
 .clockicon {
-    width:220px;
+    width: 220px;
     color: white;
-    margin:auto;
+    margin: auto;
+    left: 22px;
+    top: 18px;
+    position: relative;
 }
 
 @media (min-width: 1107px) {
