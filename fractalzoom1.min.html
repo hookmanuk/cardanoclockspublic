@@ -5,12 +5,12 @@
 
         <canvas id="canvas" width="256" height="256" style="top:0;left:0;width:100%;height:100%; border-radius:50%;"></canvas>
 
-        <canvas style="padding: 0; position:relative; top:-100%; left:0;" id="canvas6"></canvas>
+        <canvas style="padding: 0; position: relative; top: -100%; left: 0; width: 100%; z-index: -1; border-radius: 50%;" id="canvas6"></canvas>
 
     </div>
     <script>
         class renderclocksample6 {
-            constructor() { this.canvas = document.getElementById("canvas6"); this.backgroundColour = 'rgba(0,0,0,0)'; this.clockColour = '#FDFFFC'; this.handsColour = '#FDFFFC'; this.numbersType = 'none'; this.secondHandType = 'none'; this.handsEndType = 'rounded'; this.handsWidthType = 'tapered'; this.handsCentreType = 'circle'; this.handsLengthType = 'extended'; this.backgroundType = 'therefresh'; this.borderType = 'nothing'; this.dimensionType = '3d'; this.hourHandType = 'standard'; this.fps = 60; this.renderframe(); setInterval(this.renderframe.bind(this), 1000) }
+            constructor() { this.canvas = document.getElementById("canvas"); this.backgroundColour = 'rgba(0,0,0,0)'; this.clockColour = '#FDFFFC'; this.handsColour = '#FDFFFC'; this.numbersType = 'none'; this.secondHandType = 'none'; this.handsEndType = 'rounded'; this.handsWidthType = 'tapered'; this.handsCentreType = 'circle'; this.handsLengthType = 'extended'; this.backgroundType = 'therefresh'; this.borderType = 'nothing'; this.dimensionType = '3d'; this.hourHandType = 'standard'; this.fps = 60; this.renderframe(); setInterval(this.renderframe.bind(this), 1000) }
             drawStaticBackground() { this.ctx.fillStyle = this.backgroundColour; this.ctx.fillRect(-this.ss, -this.ss, this.ss * 2, this.ss * 2); this.ctx.restore(); this.drawFace(); this.drawNumbers() }
             renderframe() {
                 this.body = document.querySelector("body"); var oldss = this.ss; this.ss = (this.body.clientWidth < this.body.clientHeight ? this.body.clientWidth : this.body.clientHeight) * 0.8; if (this.ss != oldss) { this.canvas.width = this.ss; this.canvas.height = this.ss; this.ctx = this.canvas.getContext("2d"); this.radius = this.canvas.height / 2; this.ctx.translate(this.radius, this.radius); this.canvasc = document.querySelector(".clockdiv"); this.canvasc.style.width = this.ss; this.canvasc.style.height = this.ss }
@@ -125,11 +125,16 @@
         }
 
         function main() {
-            const canvas = document.querySelector("#canvas");
+            const canvas = document.querySelector("#canvas6");
             const gl = canvas.getContext("webgl");
             if (!gl) {
                 return;
             }
+
+            gl.canvas.style.Width = gl.canvas.clientWidth;
+            gl.canvas.style.Height = gl.canvas.clientWidth;
+            gl.canvas.width = gl.canvas.clientWidth * 2;
+            gl.canvas.height = gl.canvas.clientWidth * 2;
 
             const vs = `
                 attribute vec4 a_position;
@@ -164,7 +169,7 @@ return x - y * int(floor(f));
 
 void mainImage( out vec4 fragColor, in vec2 fragCoord )
 {
-        vec2 m = iMouse.xy/iResolution.xy;
+         vec2 m = iMouse.xy/iResolution.xy;
     float zoom = pow(10., -m.x*3.);
 
     //zoom = 1./iTime;
@@ -183,8 +188,7 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord )
 
     const float max_iter = 100.;
 
-    //float t = sin(iTime*0.01)*0.8;
-    float t = floor((sin((iTime)*0.01)*0.8 + 0.5)*10000.)/10000.;
+    float t = sin(iTime*0.01)*0.8;
 
     for(float i=0.; i<max_iter; i++) {
         z = vec2(z.x*z.x - z.y*z.y, t*z.x*z.y) + c;
@@ -272,7 +276,7 @@ for (int k=0; k <9; k++ )
                 then = now;
 
                 //webglUtils.resizeCanvasToDisplaySize(gl.canvas);
-
+                console.log(gl.canvas.width);
                 gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
 
                 gl.useProgram(program);

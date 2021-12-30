@@ -272,15 +272,7 @@ for (int k=0; k <8; k++ )
                 now *= 0.001;
                 const elapsedTime = Math.min(now - then, 0.1);
                 time += elapsedTime;
-                then = now;
-
-                //webglUtils.resizeCanvasToDisplaySize(gl.canvas);
-
-                //console.log(gl.drawingBufferWidth);
-                console.log(gl.drawingBufferWidth);
-                //gl.drawingBufferWidth = gl.canvas.style.width;
-                //gl.drawingBufferHeight = gl.canvas.style.height;
-                
+                then = now;                               
 
                 gl.viewport(0, 0, gl.drawingBufferWidth, gl.drawingBufferHeight);
 
