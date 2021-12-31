@@ -5,12 +5,12 @@
 
         <canvas id="canvas" width="256" height="256" style="top:0;left:0;width:100%;height:100%; border-radius:50%;"></canvas>
 
-        <canvas style="padding: 0; position: relative; top: -100%; left: 0; width: 100%; z-index: -1; border-radius: 50%;" id="canvas6"></canvas>
+        <canvas style="padding: 0; position:relative; top:-100%; left:0;" id="canvas6"></canvas>
 
     </div>
     <script>
-        class renderclocksample6 {
-            constructor() { this.canvas = document.getElementById("canvas"); this.backgroundColour = 'rgba(0,0,0,0)'; this.clockColour = '#FDFFFC'; this.handsColour = '#FDFFFC'; this.numbersType = 'none'; this.secondHandType = 'none'; this.handsEndType = 'rounded'; this.handsWidthType = 'tapered'; this.handsCentreType = 'circle'; this.handsLengthType = 'extended'; this.backgroundType = 'therefresh'; this.borderType = 'nothing'; this.dimensionType = '3d'; this.hourHandType = 'standard'; this.fps = 60; this.renderframe(); setInterval(this.renderframe.bind(this), 1000) }
+    class renderclocksample6 {
+            constructor() { this.canvas = document.getElementById("canvas6"); this.backgroundColour = 'rgba(0,0,0,0)'; this.clockColour = '#FDFFFC'; this.handsColour = '#DDDDDD'; this.numbersType = 'roman'; this.secondHandType = 'handscolour'; this.handsEndType = 'rounded'; this.handsWidthType = 'tapered'; this.handsCentreType = 'circle'; this.handsLengthType = 'extended'; this.backgroundType = 'therefresh'; this.borderType = 'nothing'; this.dimensionType = '3d'; this.hourHandType = 'standard'; this.fps = 60; this.renderframe(); setInterval(this.renderframe.bind(this), 1000) }
             drawStaticBackground() { this.ctx.fillStyle = this.backgroundColour; this.ctx.fillRect(-this.ss, -this.ss, this.ss * 2, this.ss * 2); this.ctx.restore(); this.drawFace(); this.drawNumbers() }
             renderframe() {
                 this.body = document.querySelector("body"); var oldss = this.ss; this.ss = (this.body.clientWidth < this.body.clientHeight ? this.body.clientWidth : this.body.clientHeight) * 0.8; if (this.ss != oldss) { this.canvas.width = this.ss; this.canvas.height = this.ss; this.ctx = this.canvas.getContext("2d"); this.radius = this.canvas.height / 2; this.ctx.translate(this.radius, this.radius); this.canvasc = document.querySelector(".clockdiv"); this.canvasc.style.width = this.ss; this.canvasc.style.height = this.ss }
@@ -25,50 +25,49 @@
                 }
             }
             drawNumbers() {
-                if (this.dimensionType == "3d") { this.ctx.shadowBlur = 5; this.ctx.shadowColor = '#222222'; this.ctx.shadowOffsetX = -2; this.ctx.shadowOffsetY = 1 }
-                var ang; var num; this.ctx.font = this.radius * 0.15 + "px arial"; this.ctx.textBaseline = "middle"; this.ctx.textAlign = "center"; this.ctx.fillStyle = "#CCCCCC"; switch (this.numbersType) {
+                var ang; var num; this.ctx.font = this.radius * 0.15 + "px arial"; this.ctx.textBaseline = "middle"; this.ctx.textAlign = "center"; this.ctx.fillStyle = "#CDCDCD"; switch (this.numbersType) {
                     case "roman": this.ctx.font = this.radius * 0.25 + "px times new roman"; for (num = 1; num < 13; num++) {
                         ang = num * Math.PI / 6; this.ctx.rotate(ang); this.ctx.translate(0, -this.radius * 0.85); var text = ""; var width = 0.11; switch (num) {
-                            case 1:
-                                text = " I ";
-                                break;
-                            case 2:
-                                text = "II ";
-                                break;
-                            case 3:
-                                text = "III";
-                                break;
-                            case 4:
-                                text = "IV";
-                                break;
-                            case 5:
-                                text = " V ";
-                                break;
-                            case 6:
-                                text = "VI";
-                                break;
-                            case 7:
-                                text = "VII";
-                                break;
-                            case 8:
-                                text = "VIII";
-                                width = 0.15;
-                                break;
-                            case 9:
-                                text = "IX ";
-                                break;
-                            case 10:
-                                text = " X ";
-                                break;
-                            case 11:
-                                text = "XI ";
-                                break;
-                            case 12:
-                                text = "XII";
-                                break;
-                            default:
-                                break;
-                        }
+                                case 1:
+                                    text = " I ";
+                                    break;
+                                case 2:
+                                    text = "II ";
+                                    break;
+                                case 3:
+                                    text = "III";
+                                    break;
+                                case 4:
+                                    text = "IV";
+                                    break;
+                                case 5:
+                                    text = " V ";
+                                    break;
+                                case 6:
+                                    text = "VI";
+                                    break;
+                                case 7:
+                                    text = "VII";
+                                    break;
+                                case 8:
+                                    text = "VIII";
+                                    width = 0.15;
+                                    break;
+                                case 9:
+                                    text = "IX ";
+                                    break;
+                                case 10:
+                                    text = " X ";
+                                    break;
+                                case 11:
+                                    text = "XI ";
+                                    break;
+                                case 12:
+                                    text = "XII";
+                                    break;
+                                default:
+                                    break;
+                            }
                         this.ctx.fillText(text, 0, 0, this.radius * width); this.ctx.rotate(-ang); this.ctx.rotate(ang); this.ctx.translate(0, this.radius * 0.85); this.ctx.rotate(-ang)
                     }
                         break; case "nothing": break
@@ -125,133 +124,156 @@
         }
 
         function main() {
-            const canvas = document.querySelector("#canvas6");
+            const canvas = document.querySelector("#canvas");
             const gl = canvas.getContext("webgl");
             if (!gl) {
                 return;
             }
 
-            gl.canvas.style.Width = gl.canvas.clientWidth;
-            gl.canvas.style.Height = gl.canvas.clientWidth;
-            gl.canvas.width = gl.canvas.clientWidth * 2;
-            gl.canvas.height = gl.canvas.clientWidth * 2;            
-
             const vs = `
-                attribute vec4 a_position;
+            attribute vec4 a_position;
 
-                void main() {
-                  gl_Position = a_position;
-                }
-              `;
+            void main() {
+              gl_Position = a_position;
+            }
+          `;
 
             const fs = `
-                precision highp float;
+            precision highp float;
 
-                uniform vec2 iResolution;
-                uniform vec2 iMouse;
-                uniform float iTime;
+            uniform vec2 iResolution;
+            uniform vec2 iMouse;
+            uniform float iTime;
 
-                #define t iTime
-                #define r iResolution.xy
+            #define t iTime
+            #define r iResolution.xy
 
-int mod(int x, int y)
-{
-float f = float(x)/float(y);
-return x - y * int(floor(f));
-}
+            highp float rand(vec2 co)
+            {
+                highp float a = 12.9898;
+                highp float b = 78.233;
+                highp float c = 43758.5453;
+                highp float dt= dot(co.xy ,vec2(a,b));
+                highp float sn= mod(dt,3.14);
+                return fract(sin(sn) * c);
+            }
 
-const float PI = 3.14;
+            const float animSpeed = 0.06;
 
-mat2 rotationMatrix(float angle)
-{
-	angle *= PI / 180.0;
-    float s=sin(angle), c=cos(angle);
-    return mat2( c, -s, s, c );
-}
+            float getWaveHeight(int waveIndex)
+            {
+                return 1.0;
+            }
 
-vec2 rotation(in float angle,in vec2 position,in vec2 center)
-{
-    //Function seen from https://www.shadertoy.com/view/XlsGWf
-    float rot = radians(angle);
-    mat2 rotation = mat2(cos(rot), -sin(rot), sin(rot), cos(rot));
-    return vec2((position-center)*rotation);
-}
+            float getWaveLength(int waveIndex)
+            {
+                const float minWavelength = 1.0;
+                const float maxWavelength = 25.0;
 
-vec3 pal( in float t, in vec3 a, in vec3 b, in vec3 c, in vec3 d )
-{
+                return minWavelength + ((maxWavelength-minWavelength) * rand(vec2(float(waveIndex), 42.0)));
+            }
 
-    return a + b*cos( 6.28318*(c*t+d) );
-}
+            float getSpeed(int waveIndex)
+            {
+                const float minSpeed = 0.01;
+                const float maxSpeed = 0.16;
 
-void mainImage( out vec4 fragColor, in vec2 fragCoord )
-{
-    vec2 m = iMouse.xy/iResolution.xy;
-    float zoom = pow(10., -m.x*3.);
+                return (minSpeed + ((maxSpeed-minSpeed) * rand(vec2(float(waveIndex), 420.0))))*animSpeed;
+            }
 
-    //zoom = 1./iTime;
-    zoom = 0.01;
-    //zoom = 1.;
-
-    vec2 uv = (fragCoord.xy-.5*iResolution.xy) / iResolution.y;
-
-   
-
-    uv.x += 0.1985/ zoom;
-    uv.y -= 0.4355/ zoom;
-
-    vec2 c = uv*zoom*3.;
-    c+=vec2(-0.69955, 0.37999);
-
-    uv *= rotationMatrix( 0.01 * (iTime + 120.));
-
-    vec2 z = vec2(0.);
-    float iter = 0.;
-
-    //float max_iter = 100.*(abs(sin(iTime*0.1)) + 0.1);
-    //float max_iter = 45. + 15.*(abs(sin(iTime*1.)));
-const float max_iter = 100.;
-
-    //float t = sin(iTime*0.5)*2.8;
-    float t = 2.;
-
-    for(float i=0.; i<max_iter; i++) {
-        z = vec2(z.x*z.x - z.y*z.y, t*z.x*z.y) + c;
-
-        if (length(z)>2.) break;
-
-        iter++;
-    }
-
-
-
-    float f = iter/max_iter;
-
-    vec3 col = vec3(f);
-
-    col *= pal( uv.x*3., vec3(0.978,0.218,0.338),vec3(-0.012,0.738,0.598),vec3(-0.812,-0.162,0.228),vec3(3.138,3.138,3.805));
-
-    // Output to screen
-    fragColor = vec4(col,1.0);
-}
-
-
-                void main() {
-                  mainImage(gl_FragColor, gl_FragCoord.xy);
-
-
-//if ( fwidth(length(gl_FragColor)) > .01 ) {
-
-//vec4 o;
-//for (int k=0; k <9; k++ )
-//          { mainImage(o,gl_FragCoord.xy+vec2(mod(k,3)-1,k/3-1)/3.); gl_FragColor += o; }
-//        gl_FragColor /= 9.;
-
-//}
+            float getAngle(int waveIndex)
+            {
+                if(waveIndex == 0) // just makes it look a little nicer.
+                {
+                    return 0.0;
                 }
 
+                return rand(vec2(float(waveIndex), 69.0)) * 3.14 * 2.0;
+            }
 
-                
-              `;
+            float getHeightAtPoint(int waveIndex,vec2 uv)
+            {
+                float angle = getAngle(waveIndex);
+                float speed = getSpeed(waveIndex);
+
+                float xMag = cos(angle);
+                float yMag = sin(angle);
+
+                float height = cos(((xMag*uv.x)+(yMag*uv.y)+(iTime*speed))*getWaveLength(waveIndex)) + 1.0;
+
+                return (height/2.0)*getWaveHeight(waveIndex);
+            }
+
+            void mainImage( out vec4 fragColor, in vec2 fragCoord )
+            {
+                // Number of layers (cos waves on top of each other).
+                const int numLayers = 9;
+
+                // For calculating the normal, which adjust all lighting.
+                const float heightMulti = 100.0;
+                const float xyMulti = 60.0;
+
+                // Lighting Params.
+                const float specularPower = 2.0;
+                const vec3 ambient = vec3(0.1, 0.1, 0.1);
+                const vec3 light = vec3(0.1, 0.2, 0.5);
+                const vec3 spec = vec3(1.0, 1.0, 1.0);
+
+
+                vec2 uv = fragCoord/iResolution.xy;
+
+                float height = 0.0;
+
+                float distToSample = 0.01;
+                vec4 surroundingHeight = vec4(0.0,0.0,0.0,0.0);
+
+                for(int layer = 0; layer < numLayers; ++layer)
+                {
+                    height += getHeightAtPoint(layer, uv);
+
+                    surroundingHeight.x += getHeightAtPoint(layer, uv + vec2(distToSample,0.0));
+                    surroundingHeight.y += getHeightAtPoint(layer, uv + vec2(-distToSample,0.0));
+                    surroundingHeight.z += getHeightAtPoint(layer, uv + vec2(0.0,distToSample));
+                    surroundingHeight.w += getHeightAtPoint(layer, uv + vec2(0.0,-distToSample));
+                }
+
+                surroundingHeight /= float(numLayers);
+
+                float sampleDeltaPosInWorldSpace = xyMulti * distToSample;
+
+                vec3 lightDir = normalize(vec3(0.2, 0.1, 0.6));
+                vec3 cameraDir = normalize(vec3(-0.2, -0.1, 0.6));
+
+
+                vec3 p0 = vec3(sampleDeltaPosInWorldSpace, 0.0, surroundingHeight.x * heightMulti);
+                vec3 p1 = vec3(-sampleDeltaPosInWorldSpace, 0.0, surroundingHeight.y * heightMulti);
+                vec3 p2 = vec3(0.0, sampleDeltaPosInWorldSpace, surroundingHeight.z * heightMulti);
+
+                vec3 normal = normalize(cross(p2-p0, p1-p0));
+
+                vec3 lightReflect = normalize(-reflect(lightDir, normal));
+
+
+
+                float lightStrength = clamp(dot(lightDir, normal), 0.0, 1.0);
+                float specStrength = pow(clamp(dot(lightReflect, cameraDir),0.0,1.0),specularPower);
+
+                specStrength = clamp(specStrength, 0.0, 1.0);
+
+
+                fragColor.rgb = ambient + (light*lightStrength) + (spec*specStrength);
+
+
+                //Debug Vars!
+                //fragColor = vec4(height, height, height, 1.0);
+                //fragColor = vec4(normal.x, normal.y, normal.z, 1.0);
+                //fragColor = vec4(surroundingHeight.x, surroundingHeight.y, surroundingHeight.z, 1.0);
+            }
+
+            void main() {
+              mainImage(gl_FragColor, gl_FragCoord.xy);
+            }
+          `;
 
             var vertexShader = createShader(gl, gl.VERTEX_SHADER, vs);
             var fragmentShader = createShader(gl, gl.FRAGMENT_SHADER, fs);
@@ -299,18 +321,17 @@ const float max_iter = 100.;
                 now *= 0.001;
                 const elapsedTime = Math.min(now - then, 0.1);
                 time += elapsedTime;
-                then = now;                
+                then = now;
 
-                //webglUtils.resizeCanvasToDisplaySize(gl.canvas);                
-                gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);                
+                //webglUtils.resizeCanvasToDisplaySize(gl.canvas);
+
+                gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
 
                 gl.useProgram(program);
 
                 gl.enableVertexAttribArray(positionAttributeLocation);
 
                 gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
-
-                
 
                 gl.vertexAttribPointer(
                     positionAttributeLocation,
@@ -329,8 +350,6 @@ const float max_iter = 100.;
                     0,
                     6,
                 );
-
-                
 
                 requestFrame();
             }
