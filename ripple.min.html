@@ -186,7 +186,7 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord )
     vec2 z = vec2(0.);
     float iter = 0.;
 
-    const float max_iter = 100.;
+    const float max_iter = 80.;
 
     float t = sin(iTime*0.01)/800. + 2.49;
     //float t = 1.5;
@@ -215,12 +215,12 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord )
                   mainImage(gl_FragColor, gl_FragCoord.xy);
 
 
-if ( length(gl_FragColor) > 1. ) {
+if ( length(gl_FragColor) > 100. ) {
 
 vec4 o;
-for (int k=0; k <9; k++ )
+for (int k=0; k <3; k++ )
           { mainImage(o,gl_FragCoord.xy+vec2(mod(k,3)-1,k/3-1)/3.); gl_FragColor += o; }
-        gl_FragColor /= 9.;
+        gl_FragColor /= 3.;
 
 }
                }
