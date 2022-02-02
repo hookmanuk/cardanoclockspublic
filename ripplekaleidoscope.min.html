@@ -172,13 +172,13 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord )
     float zoom = pow(10., -m.x*3.);
 
     //zoom = 1./iTime;
-    zoom = 0.003;
+    zoom = 0.0008;
 
     vec2 uv = (fragCoord.xy-.5*iResolution.xy) / iResolution.y;
 
     //uv.x -= 0.4/ zoom;
-    uv.y -= 0.1556/ zoom;
-    uv.x -= 0.0047/ zoom;
+    uv.y -= 0.15552/ zoom;
+    uv.x -= 0.0048/ zoom;
 
     vec2 c = uv*zoom*3.;
     c+=vec2(-0.69955, 0.37999);
@@ -186,7 +186,7 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord )
     vec2 z = vec2(0.);
     float iter = 0.;
 
-    const float max_iter = 100.;
+    const float max_iter = 80.;
 
     float t = sin(iTime*0.01)/800. + 2.49;
     //float t = 1.5;
@@ -203,8 +203,9 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord )
     float f = iter/max_iter;
 
     vec3 col = vec3(f);
+    //col.g += length(z)*0.05;
 
-    col *= pal( uv.x*3., vec3(0.978,0.218,0.338),vec3(-0.012,0.738,0.598),vec3(-0.812,-0.162,0.228),vec3(3.138,3.138,3.805));
+    col *= pal( length(z)*0.2 * (t+55.), vec3(0.978,0.218,0.338),vec3(-0.012,0.738,0.598),vec3(-0.812,-0.162,0.228),vec3(3.138,3.138,3.805));
 
     // Output to screen
     fragColor = vec4(col,1.0);
@@ -215,15 +216,15 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord )
                   mainImage(gl_FragColor, gl_FragCoord.xy);
 
 
-if ( length(gl_FragColor) > 1. ) {
+//if ( fwidth(length(gl_FragColor)) > .01 ) {
 
-vec4 o;
-for (int k=0; k <9; k++ )
-          { mainImage(o,gl_FragCoord.xy+vec2(mod(k,3)-1,k/3-1)/3.); gl_FragColor += o; }
-        gl_FragColor /= 9.;
+//vec4 o;
+//for (int k=0; k <3; k++ )
+          //{ mainImage(o,gl_FragCoord.xy+vec2(mod(k,3)-1,k/3-1)/3.); gl_FragColor += o; }
+        //gl_FragColor /= 3.;
 
-}
-               }
+//}
+                }
 
 
                 
