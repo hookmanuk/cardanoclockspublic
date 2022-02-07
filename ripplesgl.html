@@ -72,38 +72,36 @@ float line(vec2 lP, vec2 lA, vec2 lB, float lr)
 
 vec3 hands(vec2 p, vec3 col)
 {
-    const float pi = 3.1415;
-    float mils = fract(iDate.w);
-    float secs = mod( floor(iDate.w), 60.0 );
-	float mins = mod( floor(iDate.w/60.0), 60.0 ) + secs/60.;
-	float hours = mod( floor(iDate.w/3600.0), 12.0 ) + mins/60.;
-    //secs += mils;    
+    float sc = mod( floor(iDate.w), 60.0 );
+    float mn = mod( iDate.w/60.0, 60.0 );
+    float hr = mod( iDate.w/3600.0, 12.0 );
+    //secs += fract(iDate.w); //smooth
 
     float l;
 
-    vec2 hp = vec2(sin(2.*pi*hours/12.0),cos(2.*pi*hours/12.))/5.3;
-    vec2 mp = vec2(sin(2.*pi*mins/60.0),cos(2.*pi*mins/60.))/3.5;
-    vec2 sp = vec2(sin(2.*pi*secs/60.0),cos(2.*pi*secs/60.))/3.;
+    vec2 hp = vec2(sin(2.*pi*hr/12.0),cos(2.*pi*hr/12.))/5.3;
+    vec2 mp = vec2(sin(2.*pi*mn/60.0),cos(2.*pi*mn/60.))/3.5;
+    vec2 sp = vec2(sin(2.*pi*sc/60.0),cos(2.*pi*sc/60.))/3.;
 
-    vec2 shoff = vec2(-0.006,-0.003);
+    vec2 shoff = vec2(-0.004,-0.002);
     vec3 shcol = vec3(0.3);
 
-    if (distance(p, shoff) < 0.025) { col = mix(col, shcol * 1.25, 1.); }
-    if (distance(p, vec2(0,0)) < 0.025) { col = mix(col, vec3(1.), 1.); }     
-    
-    l = line(p, shoff - hp*0.2, shoff + hp, 0.01);
+    if (distance(p, shoff) < 0.025) { col = mix(col, shcol, smoothstep(0.025,0.021,distance(p, shoff))); }
+    if (distance(p, vec2(0,0)) < 0.025) { col = mix(col, vec3(1.), 1.); }
+
+    l = line(p, shoff - hp*0.2, shoff + hp, 0.01, 0.1);
     col = mix(col, shcol, l);
-    l = line(p, vec2(0.0) - hp*0.2, hp, 0.01);
+    l = line(p, vec2(0.0) - hp*0.2, hp, 0.01, 0.9);
     col = mix(col, vec3(1.), l);
 
-    l = line(p, shoff - mp*0.2, shoff + mp, 0.008);
+    l = line(p, shoff - mp*0.2, shoff + mp, 0.008, 0.1);
     col = mix(col, shcol, l);
-    l = line(p, vec2(0.0) - mp*0.2, mp, 0.008);
+    l = line(p, vec2(0.0) - mp*0.2, mp, 0.008, 0.9);
     col = mix(col, vec3(1.), l);
 
-    l = line(p, shoff - sp*0.2, shoff + sp, 0.005);
+    l = line(p, shoff - sp*0.2, shoff + sp, 0.005, 0.1);
     col = mix(col, shcol, l);
-    l = line(p, vec2(0.0) - sp*0.2, sp, 0.005);
+    l = line(p, vec2(0.0) - sp*0.2, sp, 0.005, 0.9);
     col = mix(col, vec3(1.,0,0), l);
 
     return col;
