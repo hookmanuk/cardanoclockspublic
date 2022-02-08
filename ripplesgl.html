@@ -27,15 +27,7 @@
             var canvas = document.querySelector("#canvas");
             var webGL = document.createElement("canvas");
             const b = document.body;
-            var s = (b.clientWidth < b.clientHeight ? b.clientWidth : b.clientHeight) * 0.9;            
-            var r = s / 2;
-            var ctx = canvas.getContext("2d");                      
-            canvas.style.width = s;
-            canvas.style.height = s;
-            canvas.width = s;
-            canvas.height = s;            
-            webGL.width = s * 2;
-            webGL.height = s * 2;
+            var ctx = canvas.getContext("2d");            
             const gl = webGL.getContext("webgl");                        
             const vs = `
                 attribute vec4 a_position;
@@ -49,12 +41,12 @@
 precision highp float;
 
 uniform vec2 iResolution;
-uniform vec2 iMouse;
 uniform float iTime;
 uniform vec4 iDate;
 
 #define t iTime
 #define r iResolution.xy
+#define pi 3.1415
 
 int mod(int x, int y)
 {
@@ -62,12 +54,12 @@ int mod(int x, int y)
     return x - y * int(floor(f));
 }
 
-float line(vec2 lP, vec2 lA, vec2 lB, float lr)
+float line(vec2 lP, vec2 lA, vec2 lB, float lr, float ls)
 {
     vec2 g = lB - lA;
     vec2 h = lP - lA;
     float d = length(h - g * clamp(dot(g, h) / dot(g,g), 0.0, 1.0));
-	return smoothstep(lr, 0.5*lr, d);
+	return smoothstep(lr, ls*lr, d);
 }
 
 vec3 hands(vec2 p, vec3 col)
@@ -114,12 +106,8 @@ vec3 pal( in float t, in vec3 a, in vec3 b, in vec3 c, in vec3 d )
 }
 
 void mainImage( out vec4 fragColor, in vec2 fragCoord )
-{
-    vec2 m = iMouse.xy/iResolution.xy;
-    float zoom = pow(10., -m.x*3.);
-
-    //zoom = 1./iTime;
-    zoom = 0.003;
+{        
+    const float zoom = 0.003;
 
     vec2 uv = (fragCoord.xy-.5*iResolution.xy) / iResolution.y;
 
@@ -176,8 +164,7 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord )
         var fragmentShader = cs(gl, gl.FRAGMENT_SHADER, fs);
         const program = cp(gl, vertexShader, fragmentShader);
         const positionAttributeLocation = gl.getAttribLocation(program, "a_position");
-        const resolutionLocation = gl.getUniformLocation(program, "iResolution");
-        const mouseLocation = gl.getUniformLocation(program, "iMouse");
+        const resolutionLocation = gl.getUniformLocation(program, "iResolution");        
         const timeLocation = gl.getUniformLocation(program, "iTime");
         const dateLocation = gl.getUniformLocation(program, "iDate");
         const positionBuffer = gl.createBuffer();
@@ -206,6 +193,15 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord )
         let then = 0;
         let time = 0;
         function render(now) {
+            var s = (b.clientWidth < b.clientHeight ? b.clientWidth : b.clientHeight) * 0.9;
+            var r = s / 2;
+            canvas.style.width = s;
+            canvas.style.height = s;
+            canvas.width = s;
+            canvas.height = s;
+            webGL.width = s * 2;
+            webGL.height = s * 2;
+
             requestId = undefined;
             now *= 0.001;
             const elapsedTime = Math.min(now - then, 0.1);
