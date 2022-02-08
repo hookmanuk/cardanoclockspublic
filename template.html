@@ -1,8 +1,25 @@
 <html>
 <body style="margin:0;">    
     <canvas style="display:block; margin: 0 auto; border-radius: 50%;" id="canvas"></canvas>    
+
+    {{#externalnft#}}
+
     <script>
-        function cs(e, t, r) { var a = e.createShader(t); if (e.shaderSource(a, r), e.compileShader(a), e.getShaderParameter(a, e.COMPILE_STATUS)) return a; e.deleteShader(a) } function cp(e, t, r) { var a = e.createProgram(); if (e.attachShader(a, t), e.attachShader(a, r), e.linkProgram(a), e.getProgramParameter(a, e.LINK_STATUS)) return a; e.deleteProgram(a) } function main() { var e = document.querySelector("#canvas"), t = document.createElement("canvas"); const r = document.body; var a = .9 * (r.clientWidth < r.clientHeight ? r.clientWidth : r.clientHeight); e.getContext("2d"); e.style.width = a, e.style.height = a, e.width = a, e.height = a, t.width = 2 * a, t.height = 2 * a; t.getContext("webgl") 
+        function cs(e, t, r) { var a = e.createShader(t); if (e.shaderSource(a, r), e.compileShader(a), e.getShaderParameter(a, e.COMPILE_STATUS)) return a; e.deleteShader(a) } function cp(e, t, r) { var a = e.createProgram(); if (e.attachShader(a, t), e.attachShader(a, r), e.linkProgram(a), e.getProgramParameter(a, e.LINK_STATUS)) return a; e.deleteProgram(a) }
+
+        function main() {
+            var canvas = document.querySelector("#canvas");
+            var webGL = document.createElement("canvas");
+            const b = document.body;
+            var ctx = canvas.getContext("2d");
+            const gl = webGL.getContext("webgl");
+            const vs = `
+                attribute vec4 a_position;
+
+                void main() {
+                  gl_Position = a_position;
+                }
+              `;
 
 const fs = `
 precision highp float;
@@ -13,6 +30,7 @@ uniform vec4 iDate;
 
 #define t iTime
 #define r iResolution.xy
+#define pi 3.1415
 
 int mod(int x, int y)
 {
@@ -20,12 +38,12 @@ int mod(int x, int y)
     return x - y * int(floor(f));
 }
 
-float line(vec2 lP, vec2 lA, vec2 lB, float lr)
+float line(vec2 lP, vec2 lA, vec2 lB, float lr, float ls)
 {
     vec2 g = lB - lA;
     vec2 h = lP - lA;
     float d = length(h - g * clamp(dot(g, h) / dot(g,g), 0.0, 1.0));
-	return smoothstep(lr, 0.5*lr, d);
+	return smoothstep(lr, ls*lr, d);
 }
 
 {{#hands#}}
@@ -70,14 +88,22 @@ float line(vec2 lP, vec2 lA, vec2 lB, float lr)
         let then = 0;
         let time = 0;
 
-        function rc() {
-            //replace clock parts below
+        function rc() {            
             ctx.drawImage(webGL, 0, 0, canvas.width, canvas.height);
 
             {{#numbers#}}           
         }
 
         function render(now) {
+            var s = (b.clientWidth < b.clientHeight ? b.clientWidth : b.clientHeight) * 0.9;
+            var r = s / 2;
+            canvas.style.width = s;
+            canvas.style.height = s;
+            canvas.width = s;
+            canvas.height = s;
+            webGL.width = s * 2;
+            webGL.height = s * 2;
+
             requestId = undefined;
             now *= 0.001;
             const elapsedTime = Math.min(now - then, 0.1);
