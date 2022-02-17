@@ -48,7 +48,19 @@ float line(vec2 lP, vec2 lA, vec2 lB, float lr, float ls)
 
 {{#hands#}}
 
-{{#background#}}
+void mainImage( out vec4 fragColor, in vec2 fragCoord )
+{
+            vec2 uv = (fragCoord.xy-.5*iResolution.xy) / iResolution.y;
+
+            vec4 cols = vec4(0.,0.,0.,0.);
+            cols = hands(uv, cols);
+
+            {{#background#}}
+            
+            if (distance(uv, vec2(0,0))*2.5 > 1.) cols.a = 0.;
+
+            fragColor = cols;
+}
 
     void main() {
         mainImage(gl_FragColor, gl_FragCoord.xy);

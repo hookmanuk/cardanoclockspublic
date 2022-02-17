@@ -1,0 +1,36 @@
+vec4 hands(vec2 p, vec4 cols)
+{
+            float sc = mod( floor(iDate.w), 60.0 );
+            float mn = mod( iDate.w/60.0, 60.0 );
+            float hr = mod( iDate.w/3600.0, 12.0 );
+            //secs += fract(iDate.w); //smooth
+
+            float l;
+
+            vec2 hp = vec2(sin(2.*pi*hr/12.0),cos(2.*pi*hr/12.))/5.3;
+            vec2 mp = vec2(sin(2.*pi*mn/60.0),cos(2.*pi*mn/60.))/3.5;
+            vec2 sp = vec2(sin(2.*pi*sc/60.0),cos(2.*pi*sc/60.))/3.;
+
+            vec2 shoff = vec2(-0.004,-0.002);
+            vec4 shcol = vec4(0.3,0.3,0.3,1.0);
+
+            if (distance(p, shoff) < 0.025) { cols = mix(cols, shcol, smoothstep(0.025,0.021,distance(p, shoff))); }
+            if (distance(p, vec2(0,0)) < 0.025) { cols = mix(cols, vec4(0.9,0.9,0.9,1.), 1.); }
+
+            l = line(p, shoff - hp*0.2, shoff + hp, 0.01, 0.1);
+            cols = mix(cols, shcol, l);
+            l = line(p, vec2(0.0) - hp*0.2, hp, 0.01, 0.9);
+            cols = mix(cols, vec4(0.9,0.9,0.9,1.), l);
+
+            l = line(p, shoff - mp*0.2, shoff + mp, 0.008, 0.1);
+            cols = mix(cols, shcol, l);
+            l = line(p, vec2(0.0) - mp*0.2, mp, 0.008, 0.9);
+            cols = mix(cols, vec4(0.9,0.9,0.9,1.), l);
+
+            l = line(p, shoff - sp*0.2, shoff + sp, 0.005, 0.1);
+            cols = mix(cols, shcol, l);
+            l = line(p, vec2(0.0) - sp*0.2, sp, 0.005, 0.9);
+            cols = mix(cols, vec4(1.,0.,0.,1.), l);
+
+            return cols;
+}
