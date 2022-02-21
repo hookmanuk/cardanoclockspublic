@@ -13,24 +13,26 @@ vec4 hands(vec2 p, vec4 cols)
 
             vec2 shoff = vec2(-0.004,-0.002);
             vec4 shcol = vec4(0.3,0.3,0.3,1.0);
+            vec4 hc = {{#handcolour#}};
 
             if (distance(p, shoff) < 0.025) { cols = mix(cols, shcol, smoothstep(0.025,0.021,distance(p, shoff))); }
-            if (distance(p, vec2(0,0)) < 0.025) { cols = mix(cols, vec4(0.9,0.9,0.9,1.), 1.); }
+            if (distance(p, vec2(0,0)) < 0.025) { cols = mix(cols, hc, 1.); }
 
             l = line(p, shoff - hp*0.2, shoff + hp, 0.01, 0.1);
             cols = mix(cols, shcol, l);
             l = line(p, vec2(0.0) - hp*0.2, hp, 0.01, 0.9);
-            cols = mix(cols, vec4(0.9,0.9,0.9,1.), l);
+            cols = mix(cols, hc, l);
 
             l = line(p, shoff - mp*0.2, shoff + mp, 0.008, 0.1);
             cols = mix(cols, shcol, l);
             l = line(p, vec2(0.0) - mp*0.2, mp, 0.008, 0.9);
-            cols = mix(cols, vec4(0.9,0.9,0.9,1.), l);
+            cols = mix(cols, hc, l);
 
             l = line(p, shoff - sp*0.2, shoff + sp, 0.005, 0.1);
             cols = mix(cols, shcol, l);
             l = line(p, vec2(0.0) - sp*0.2, sp, 0.005, 0.9);
-            cols = mix(cols, vec4(1.,0.,0.,1.), l);
+            cols = mix(cols, {{#secondcolour#}}, l);
+            //cols = mix(cols, vec4(1.,0.,0.,1.), l);
 
             return cols;
 }

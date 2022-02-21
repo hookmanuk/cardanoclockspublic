@@ -1,5 +1,5 @@
-<html>
-<body style="margin:0;">    
+<html style="height:100%">
+<body style="margin:0;height:100%">    
     <canvas style="display:block; margin: 0 auto; border-radius: 50%;" id="canvas"></canvas>    
 
     {{#externalnft#}}
@@ -48,23 +48,18 @@ float line(vec2 lP, vec2 lA, vec2 lB, float lr, float ls)
 
 {{#hands#}}
 
-void mainImage( out vec4 fragColor, in vec2 fragCoord )
-{
-            vec2 uv = (fragCoord.xy-.5*iResolution.xy) / iResolution.y;
+{{#background#}}
+    
+    cols = hands(uv, cols);            
+    
+    if (distance(uv, vec2(0,0))*2. > 1.) cols.a = 0.;
 
-            vec4 cols = vec4(0.,0.,0.,0.);
-            cols = hands(uv, cols);
-
-            {{#background#}}
-            
-            if (distance(uv, vec2(0,0))*2.5 > 1.) cols.a = 0.;
-
-            fragColor = cols;
+    fragColor = cols;
 }
 
-    void main() {
-        mainImage(gl_FragColor, gl_FragCoord.xy);
-    }
+void main() {
+    mainImage(gl_FragColor, gl_FragCoord.xy);
+}
 `;
 
         var vertexShader = cs(gl, gl.VERTEX_SHADER, vs);
@@ -107,8 +102,9 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord )
         }
 
         function render(now) {
-            var s = (b.clientWidth < b.clientHeight ? b.clientWidth : b.clientHeight) * 0.9;
-            var r = s / 2;
+            //var s = (b.clientWidth < b.clientHeight ? b.clientWidth : b.clientHeight) * 0.9;
+            var s = (b.clientWidth < b.clientHeight ? b.clientWidth : b.clientHeight);
+            
             canvas.style.width = s;
             canvas.style.height = s;
             canvas.width = s;
