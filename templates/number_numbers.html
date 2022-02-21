@@ -1,0 +1,9 @@
+var r = canvas.width / 2;
+ctx.shadowBlur = 5; ctx.shadowColor = '#222222'; ctx.shadowOffsetX = -2; ctx.shadowOffsetY = 1;
+ctx.translate(r, r);
+var ang; var num; ctx.font = r * 0.15 + 'px arial'; ctx.textBaseline = 'middle'; ctx.textAlign = 'center'; ctx.fillStyle = '#DDDDDD';
+ctx.font = r * 0.25 + 'px times new roman'; for (num = 1; num < 13; num++) {
+    ang = num * Math.PI / 6; ctx.rotate(ang); ctx.translate(0, -r * 0.85); var width = (num >= 10 ? 0.16 : 0.11);
+    ctx.rotate(-ang); ctx.fillText(num, 0, 0, r * width);  ctx.rotate(ang); ctx.translate(0, r * 0.85); ctx.rotate(-ang)
+}
+ctx.translate(-r, -r);           

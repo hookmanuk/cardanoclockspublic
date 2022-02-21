@@ -31,8 +31,7 @@ vec4 hands(vec2 p, vec4 cols)
             l = line(p, shoff - sp*0.2, shoff + sp, 0.005, 0.1);
             cols = mix(cols, shcol, l);
             l = line(p, vec2(0.0) - sp*0.2, sp, 0.005, 0.9);
-            cols = mix(cols, {{#secondcolour#}}, l);
-            //cols = mix(cols, vec4(1.,0.,0.,1.), l);
+            cols = mix(cols, vec4(1.,0.,0.,1.), l);            
 
             return cols;
 }
