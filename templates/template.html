@@ -46,11 +46,7 @@ float line(vec2 lP, vec2 lA, vec2 lB, float lr, float ls)
 	return smoothstep(lr, ls*lr, d);
 }
 
-{{#hands#}}
-
-{{#background#}}
-    
-    cols = hands(uv, cols);            
+{{#background#}}        
     
     if (distance(uv, vec2(0,0))*2. > 1.) cols.a = 0.;
 
@@ -59,6 +55,11 @@ float line(vec2 lP, vec2 lA, vec2 lB, float lr, float ls)
 
 void main() {
     mainImage(gl_FragColor, gl_FragCoord.xy);
+
+    vec4 o;
+    for (int k=0; k <9; k++ )
+        { mainImage(o,gl_FragCoord.xy+vec2(mod(k,3)-1,k/3-1)/3.); gl_FragColor += o; }
+    gl_FragColor /= 9.;
 }
 `;
 
@@ -98,7 +99,10 @@ void main() {
         function rc() {            
             ctx.drawImage(webGL, 0, 0, canvas.width, canvas.height);
 
-            {{#numbers#}}           
+            var r = canvas.width / 2;
+
+            {{#numbers#}}
+            {{#hands#}}
         }
 
         function render(now) {

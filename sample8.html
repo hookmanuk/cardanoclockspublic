@@ -1,7 +1,6 @@
 <html>
 <body style="margin:0;">            
-<div class="clockdiv" style="width:80%; margin:auto;">
-    <canvas style="padding: 0; border-radius: 50%; position:absolute; top:0; left:0;" id="canvas"></canvas>  
+<div class="clockdiv" style="width:80%; margin:auto;">   
     <canvas style="padding: 0; position:absolute; top:0; left:0;" id="canvas8"></canvas>                  
 </div>
 
@@ -29,12 +28,7 @@
                 this.fps = 60;                
                 
                 //this.radius = this.radius * 0.85;
-                this.renderframe();
-
-                this.canvasgl = document.getElementById("canvas");
-            
-                this.canvasgl.width = this.ss;
-                this.canvasgl.height = this.ss;  
+                this.renderframe();                
                 
                 setInterval(this.renderframe.bind(this), 1000);                                       
             }

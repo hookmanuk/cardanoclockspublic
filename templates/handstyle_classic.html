@@ -9,11 +9,14 @@ function drawHand(ctx, pos, length, width, transparentratio, colour, thickness) 
     var x = length * Math.sin(endang) / Math.sin(90 * Math.PI / 180);
     var y = length * Math.sin(positiveang) / Math.sin(90 * Math.PI / 180);
 
-    ctx.beginPath();
-    ctx.moveTo(0,0);
-    ctx.lineWidth = width * thickness;
-    ctx.lineTo(x, y);
-    ctx.stroke();
+    var steps = 40;
+    for (var i = steps * -0.3; i < steps; i++) {
+        ctx.beginPath();
+        ctx.moveTo(x * i / steps, y * i / steps);
+        ctx.lineWidth = width * (steps - i) * thickness / steps + 6;
+        ctx.lineTo(x * (i + 1) / steps, y * (i + 1) / steps);
+        ctx.stroke();
+    }
 }
 
 var now = new Date(); var hour = now.getHours(); var minute = now.getMinutes(); var second = now.getSeconds();
@@ -24,13 +27,14 @@ hour = hour / 12;
 var ang = now.getHours() % 12 * 30 + (now.getMinutes() * 0.5) - 90;
 //ctx.save();
 
-ctx.shadowBlur = 5; ctx.shadowColor = ({{#handcolour#}} != '#EEE' ? '#22222233' : '#00000000'); ctx.shadowOffsetX = -4; ctx.shadowOffsetY = 3;
+ctx.shadowColor = '#00000000';
 
 //if (this.handsCentreType == "circle" || this.handsCentreType == "circle") { this.ctx.beginPath(); this.ctx.arc(0, 0, this.radius * 0.05, 0, 2 * Math.PI); this.ctx.fillStyle = (this.hourHandType == "cutout" ? this.clockColour : this.handsColour); this.ctx.fill() }
 
-drawHand(ctx, hour, r * 0.45, r * 0.03, 0, null, 2);
+drawHand(ctx, hour, r * 0.45, r * 0.03, 0, null, 1.4);
 
 //minute %
 minute = minute + second / 60;
 minute = minute / 60;
-drawHand(ctx, minute, r * 0.65, r * 0.03, 0, null, 2);
+drawHand(ctx, minute, r * 0.65, r * 0.03, 0, null, 1);
+

@@ -1,0 +1,27 @@
+float noise(vec2 p)
+{
+    vec3 p3  = fract(vec3(p.x, p.y, p.x*0.1) * 1.);
+    return fract((p3.x + p3.y) * p3.z);
+}
+
+void mainImage( out vec4 fragColor, in vec2 fragCoord )
+{
+    // Normalized pixel coordinates (from 0 to 1)
+    vec2 uv = fragCoord/iResolution.xy;
+    uv *= 1.; //zoom in a bit, stops recurring pattern from showing
+    //uv.x += noise(abs(vec2(cos(iTime * 0.1))))*0.1 ; //bend the pattern slowly over time
+    //uv.y += noise(abs(vec2(cos(iTime * 0.1))))*0.1 ; //bend the pattern slowly over time
+
+    float speed;
+    speed = noise(uv.xy) * 10.;
+
+    float saturation = 1.;
+
+    vec3 rgb;
+    rgb.x=uv.x * (3.-cos(iTime/10.) * 0.5) * speed * saturation; //calc red from noise pos
+    rgb.y=uv.y * (3.-cos(iTime/10.) * 0.5) * speed * saturation; //calc green from noise pos
+    rgb.z=(uv.x + uv.y) * (3.-cos(iTime/10.)*0.5) * speed * saturation * 0.05; //no 3rd pos dim to use, just use x+y at 0.1 to vary blue slightly
+
+    rgb.z += 0.5; //add to all colour channels to ensure bright pixels
+
+    vec4 cols = vec4(rgb.x,rgb.y,rgb.z,1.);

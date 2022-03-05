@@ -1,0 +1,49 @@
+vec4 pal( in float t, in vec3 a, in vec3 b, in vec3 c, in vec3 d )
+{
+    vec3 cc = a + b*cos( 6.28318*(c*t+d) );
+
+    return vec4(cc.x,cc.y,cc.z,1.);
+}
+
+void mainImage( out vec4 fragColor, in vec2 fragCoord )
+{
+    float zoom = 3.5;
+
+    vec2 uv = (fragCoord.xy-.5*iResolution.xy) / iResolution.y;
+
+    //uv.x += 0.0195/ zoom;
+    //uv.y -= 0.1026/ zoom;
+
+    vec2 c = uv*zoom*3.;
+    //c+=vec2(0.0, 0.0);
+
+
+    vec2 z = vec2(0.);
+    float iter = 0.;
+
+    const float max_iter = 30.;
+
+    //float t = 1.9 + sin(iTime*0.2)*1.04;
+    float t = 0. + sin(iTime*0.01)/1.;
+    //float t = 2.;
+
+    float xmax = 0.5 + 1. * abs(sin(iTime*0.005)/1.)*10.;
+    float ymax = 0.5 + 1. * abs(cos(iTime*0.005)/1.);
+
+    for(float i=0.; i<max_iter; i++) {
+                                z=vec2(z.x*z.x - z.y*z.y, t*z.x*z.y) + c;
+                                xmax=min(xmax, abs(z.x));
+                                ymax=min(ymax, abs(z.y));
+                                if (length(z)>
+    6.) break;
+
+    iter++;
+    }
+
+    float f = iter/max_iter;
+
+    vec4 cols = vec4(f*xmax*ymax * 4.);
+
+    cols *= pal( uv.x/1.4, vec3(1.000,0.748,0.458),vec3(0.000,-0.152,0.000),vec3(1.000,1.000,1.000),vec3(0.000,0.000,0.000));
+
+    cols = 0.9- cols;

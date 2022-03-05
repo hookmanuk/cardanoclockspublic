@@ -1,0 +1,59 @@
+mat2 rotationMatrix(float angle)
+{
+	angle *= pi / 180.0;
+    float s=sin(angle), c=cos(angle);
+    return mat2( c, -s, s, c );
+}
+
+vec4 pal( in float t, in vec3 a, in vec3 b, in vec3 c, in vec3 d )
+{
+    vec3 cc = a + b*cos( 6.28318*(c*t+d) );
+
+    return vec4(cc.x,cc.y,cc.z,1.);
+}
+
+void mainImage( out vec4 fragColor, in vec2 fragCoord )
+{
+    float zoom = 0.004;
+
+    vec2 uv = (fragCoord.xy-.5*iResolution.xy) / iResolution.y;
+
+
+
+    //uv.x -= 0.259/ zoom;
+    uv.x -= 0.29872/ zoom;
+    uv.y -= 0.12666/ zoom;
+
+    vec2 c = uv*zoom*3.;
+    c+=vec2(-0.69955, 0.37999);
+
+    vec2 z = vec2(0.);
+    float iter = 0.;
+
+    //float max_iter = 100.*(abs(sin(iTime*0.1)) + 0.1);
+    const float max_iter = 60.;
+
+    float t = 1.9 + sin(iTime*0.2)*0.04;
+    //float t = 2.;
+
+    for(float i=0.; i<max_iter; i++) {
+                                z=vec2(z.x*z.x - z.y*z.y, t*z.x*z.y) + c;
+                                if (length(z)>
+    2.) break;
+
+    iter++;
+    }
+
+
+
+    float f = iter/max_iter;
+
+    vec4 cols = vec4(f);
+
+    cols *= pal( uv.x*3., vec3(0.978,0.218,0.338),vec3(-0.012,0.738,0.598),vec3(-0.812,-0.162,0.228),vec3(3.138,3.138,3.805));
+
+    cols = vec4(((cols.rgb-vec3(0.5))*2.4)+vec3(0.5), 1.0);
+    cols = clamp(cols, 0.0, 1.0);
+
+    uv.x += 0.29872/ zoom;
+    uv.y += 0.12666/ zoom;

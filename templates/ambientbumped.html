@@ -1,0 +1,38 @@
+float pattern(vec2 p,float offset)
+{
+    vec3 p3  = fract(vec3(p.x, p.y, p.x))* 0.25;
+    float f = fract((p3.x + p3.y) * p3.z);
+    return f * 0.5 * abs(1.5 - cos(offset*iTime*0.05));
+}
+
+void mainImage( out vec4 fragColor, in vec2 fragCoord )
+{
+    // Normalized pixel coordinates (from 0 to 1)
+    vec2 uv = fragCoord/iResolution.xy;
+
+    //primary layer - background
+    float pat;
+    pat = pattern(uv.xy,.3) * 50.;
+
+    float saturation = 1.;
+
+    vec3 rgb;
+    rgb.x=uv.x * cos(pat) * saturation * 2.5; //calc red from noise pos
+    rgb.y=uv.y * cos(pat) * saturation; //calc green from noise pos
+    rgb.z=(uv.x + uv.y) * cos(pat) * saturation * 0.02; //no 3rd pos dim to use, just use x+y at 0.1 to vary blue slightly
+
+    rgb += 0.5; //add to all colour channels to ensure bright pixels
+
+
+    //secondary layer - ribbed foreground
+    pat = pattern(uv.yx,1.) * 1500.;
+    saturation = 0.01;
+
+    rgb.x+=uv.y * cos(pat) * saturation * 2.5; //calc red from noise pos
+    rgb.y+=uv.x * sin(pat) * saturation; //calc green from noise pos
+    rgb.z+=(uv.x + uv.y) * cos(pat) * saturation; //no 3rd pos dim to use, just use x+y at 0.1 to vary blue slightly
+
+    vec4 cols = vec4(rgb.x,rgb.y,rgb.z,1.0);
+
+    uv.x -= 0.5;
+    uv.y -= 0.5;
