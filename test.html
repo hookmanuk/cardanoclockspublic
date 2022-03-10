@@ -150,7 +150,7 @@ void main() {
             bW = r / 8,
             bX = -r / 1.95,
             bF = 0,
-            bY = -r / 4 * 3;
+            bY = -r / 1.8;
 
             ctx.translate(r, r);
 
@@ -178,6 +178,8 @@ hour = hour / 12;
 var ang = now.getHours() % 12 * 30 + (now.getMinutes() * 0.5) - 90;
 //ctx.save();
 
+            if (ov || si) { upCt(ctx, r); }
+
 ctx.shadowBlur = 5; ctx.shadowColor = ('#000' != '#EEE' ? '#22222233' : '#00000000'); ctx.shadowOffsetX = -4; ctx.shadowOffsetY = 3;
 
 //if (this.handsCentreType == "circle" || this.handsCentreType == "circle") { this.ctx.beginPath(); this.ctx.arc(0, 0, this.radius * 0.05, 0, 2 * Math.PI); this.ctx.fillStyle = (this.hourHandType == "cutout" ? this.clockColour : this.handsColour); this.ctx.fill() }
@@ -187,10 +189,7 @@ drawHand(ctx, hour, r * 0.45, r * 0.02, 0, null, 2);
 //minute %
 minute = minute + second / 60;
 minute = minute / 60;
-            drawHand(ctx, minute, r * 0.65, r * 0.02, 0, null, 2);
-
-            
-            if (ov || si) { upCt(ctx,r); }
+            drawHand(ctx, minute, r * 0.65, r * 0.02, 0, null, 2);                        
         }
 
         function render(now) {
@@ -244,14 +243,18 @@ minute = minute / 60;
             //FNT(`${bF}px Arial`)                                    
             ctx.font = r / 15 + "px sans-serif";
             ctx.textAlign = "center";
-            ctx.strokeStyle = '#000';            
+            ctx.strokeStyle = '#00000099';
+            ctx.lineWidth = 5;            
+            ctx.lineJoin = "round";
             //hdh ? fWH(0.1) : fBL(1)
             //ctx.fillRect(bX, bY, bW, bW)
             var now = new Date();             
             ctx.shadowColor = '#00000000';
             ctx.fillStyle = '#FFFFFF77';
-            ctx.fillRect(bX, bY, bW * 8.2, bW * 2)            
-            ctx.fillStyle = '#000';
+            ctx.rect(bX, bY, bW * 8.2, bW * 2)
+            ctx.fill();
+            ctx.stroke();
+            ctx.fillStyle = '#00000099';
             ctx.fillText(now.toUTCString().replace(" GMT", "") + " UTC", 0, bY + bW * 0.7);
 
             var epoch = new Date("01 Mar 2022 21:45 UTC");
@@ -282,7 +285,7 @@ minute = minute / 60;
             //hdh ? fBL(1) : fWH(1)            
         }
 
-        ov = 0;        
+        ov = 1;        
 
         MDN = () => {
             ov = 1;
