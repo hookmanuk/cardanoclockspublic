@@ -1,6 +1,6 @@
-ctx.shadowBlur = 5; ctx.shadowColor = '#222222'; ctx.shadowOffsetX = -2; ctx.shadowOffsetY = 1;
+ctx.shadowBlur = 1; ctx.shadowColor = '#00000088'; ctx.shadowOffsetX = -1; ctx.shadowOffsetY = 1;
 ctx.translate(r, r);
-var ang; var num; ctx.font = r * 0.15 + "px arial"; ctx.textBaseline = "middle"; ctx.textAlign = "center"; ctx.fillStyle = "#DDDDDD";
+var ang; var num; ctx.font = r * 0.15 + "px arial"; ctx.textBaseline = "middle"; ctx.textAlign = "center"; ctx.fillStyle = {{#handcolour#}};
 ctx.font = r * 0.25 + "px times new roman"; for (num = 1; num < 13; num++) {
     ang = num * Math.PI / 6; ctx.rotate(ang); ctx.translate(0, -r * 0.85); var text = ""; var width = 0.11; switch (num) {
         case 1:
