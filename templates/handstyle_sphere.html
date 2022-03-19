@@ -1,0 +1,19 @@
+ctx.translate(r, r);
+
+var now = new Date(); var hour = now.getHours(); var minute = now.getMinutes(); var second = now.getSeconds();
+hour = hour % 12;
+hour = hour + minute / 60 + second / (60 * 60);
+hour = hour / 12;
+
+var ang = now.getHours() % 12 * 30 + (now.getMinutes() * 0.5) - 90;
+
+let x = Math.cos(ang * Math.PI / 180) * r * 0.7;
+let y = Math.sin(ang * Math.PI / 180) * r * 0.7;
+
+var gradient = ctx.createRadialGradient(x + r * 0.025, y - r * 0.02, r * 0.01, x, y, r * 0.1);
+gradient.addColorStop(0, 'white');
+gradient.addColorStop(1, '#333333EE');
+ctx.beginPath();
+ctx.arc(x, y, r * 0.08, 0, 2 * Math.PI);
+ctx.fillStyle = gradient;
+ctx.fill();

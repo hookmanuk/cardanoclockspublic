@@ -1,6 +1,6 @@
-<html style="height:100%; background:#000">
-<body style="margin:0;height:100%">
-    <canvas style="display:block; margin: 0 auto; border-radius: 50%;" id="canvas"></canvas>
+<html style=&quot;height:100%; background:#000&quot;>
+<body style=&quot;margin:0;height:100%&quot;>
+    <canvas style=&quot;display:block; margin: 0 auto; border-radius: 50%;&quot; id=&quot;canvas&quot;></canvas>
 
 
 
@@ -17,11 +17,11 @@
             ct = 'l';
 
         function main() {
-            var canvas = document.querySelector("#canvas");
-            var webGL = document.createElement("canvas");
+            var canvas = document.querySelector(&quot;#canvas&quot;);
+            var webGL = document.createElement(&quot;canvas&quot;);
             const b = document.body;
-            ctx = canvas.getContext("2d");
-            const gl = webGL.getContext("webgl");
+            ctx = canvas.getContext(&quot;2d&quot;);
+            const gl = webGL.getContext(&quot;webgl&quot;);
             const vs = `
                 attribute vec4 a_position;
 
@@ -112,10 +112,10 @@ void main() {
         var vertexShader = cs(gl, gl.VERTEX_SHADER, vs);
         var fragmentShader = cs(gl, gl.FRAGMENT_SHADER, fs);
         const program = cp(gl, vertexShader, fragmentShader);
-        const positionAttributeLocation = gl.getAttribLocation(program, "a_position");
-        const resolutionLocation = gl.getUniformLocation(program, "iResolution");
-        const timeLocation = gl.getUniformLocation(program, "iTime");
-        const dateLocation = gl.getUniformLocation(program, "iDate");
+        const positionAttributeLocation = gl.getAttribLocation(program, &quot;a_position&quot;);
+        const resolutionLocation = gl.getUniformLocation(program, &quot;iResolution&quot;);
+        const timeLocation = gl.getUniformLocation(program, &quot;iTime&quot;);
+        const dateLocation = gl.getUniformLocation(program, &quot;iDate&quot;);
         const positionBuffer = gl.createBuffer();
         gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
         gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([
@@ -156,7 +156,7 @@ void main() {
 
 function drawHand(ctx, pos, length, width, transparentratio, colour, thickness) {
     ctx.strokeStyle = '#000';
-    ctx.lineCap = "round";
+    ctx.lineCap = &quot;round&quot;;
 
     var positiveang = 2 * Math.PI * pos - Math.PI / 2;
     var endang = Math.PI - positiveang - 90 * Math.PI / 180;
@@ -182,7 +182,7 @@ var ang = now.getHours() % 12 * 30 + (now.getMinutes() * 0.5) - 90;
 
 ctx.shadowBlur = 5; ctx.shadowColor = ('#000' != '#EEE' ? '#22222233' : '#00000000'); ctx.shadowOffsetX = -4; ctx.shadowOffsetY = 3;
 
-//if (this.handsCentreType == "circle" || this.handsCentreType == "circle") { this.ctx.beginPath(); this.ctx.arc(0, 0, this.radius * 0.05, 0, 2 * Math.PI); this.ctx.fillStyle = (this.hourHandType == "cutout" ? this.clockColour : this.handsColour); this.ctx.fill() }
+//if (this.handsCentreType == &quot;circle&quot; || this.handsCentreType == &quot;circle&quot;) { this.ctx.beginPath(); this.ctx.arc(0, 0, this.radius * 0.05, 0, 2 * Math.PI); this.ctx.fillStyle = (this.hourHandType == &quot;cutout&quot; ? this.clockColour : this.handsColour); this.ctx.fill() }
 
 drawHand(ctx, hour, r * 0.45, r * 0.02, 0, null, 2);
 
@@ -241,11 +241,11 @@ minute = minute / 60;
         upCt = (ctx, r, a) => {
             
             //FNT(`${bF}px Arial`)                                    
-            ctx.font = r / 15 + "px sans-serif";
-            ctx.textAlign = "center";
+            ctx.font = r / 15 + &quot;px sans-serif&quot;;
+            ctx.textAlign = &quot;center&quot;;
             ctx.strokeStyle = '#00000099';
             ctx.lineWidth = 5;            
-            ctx.lineJoin = "round";
+            ctx.lineJoin = &quot;round&quot;;
             //hdh ? fWH(0.1) : fBL(1)
             //ctx.fillRect(bX, bY, bW, bW)
             var now = new Date();             
@@ -255,9 +255,9 @@ minute = minute / 60;
             ctx.fill();
             ctx.stroke();
             ctx.fillStyle = '#00000099';
-            ctx.fillText(now.toUTCString().replace(" GMT", "") + " UTC", 0, bY + bW * 0.7);
+            ctx.fillText(now.toUTCString().replace(&quot; GMT&quot;, &quot;&quot;) + &quot; UTC&quot;, 0, bY + bW * 0.7);
 
-            var epoch = new Date("01 Mar 2022 21:45 UTC");
+            var epoch = new Date(&quot;01 Mar 2022 21:45 UTC&quot;);
             var diff = now - epoch;
 
             var ms = 432000000 - diff % 432000000;
@@ -278,7 +278,7 @@ minute = minute / 60;
             //var hr = (days - day) * 24;
             //var ee = new Date(now.getFullYear(), now.getMonth(), now.getDate() + days, now.getHours());
             
-            ctx.fillText("Epoch ends in " + Math.floor(days) + "d " + Math.floor((days - Math.floor(days))*24) + "h " + Math.floor((hours - Math.floor(hours))*60) + "m " + Math.ceil((mins - Math.floor(mins))*60) + "s", 0, bY + bW * 1.7);
+            ctx.fillText(&quot;Epoch ends in &quot; + Math.floor(days) + &quot;d &quot; + Math.floor((days - Math.floor(days))*24) + &quot;h &quot; + Math.floor((hours - Math.floor(hours))*60) + &quot;m &quot; + Math.ceil((mins - Math.floor(mins))*60) + &quot;s&quot;, 0, bY + bW * 1.7);
 
             
             
@@ -331,7 +331,7 @@ minute = minute / 60;
         l.forEach(e => canvas.addEventListener(e[0], e[1]))
 
         function initnft (args) {
-            if (args == "showinfo") {
+            if (args == &quot;showinfo&quot;) {
                 si = 1;
             }
         }

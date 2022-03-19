@@ -1,0 +1,33 @@
+ctx.translate(r, r);
+
+function dcl()
+{
+    dcr(0, r * 0.3, r * 0.116);
+    dcr(90, r * 0.42, r * 0.05);
+    dcr(0, r * 0.52, r * 0.04);
+    dcr(90, r * 0.60, r * 0.033);
+    dcr(0, r * 0.65, r * 0.024);
+}
+
+function dcr(startangle, distance, circlesize)
+{
+    var x, y;
+    for (let i = 0; i < 6; i++) {
+        x = 0 + Math.cos(startangle * Math.PI / 180) * distance;
+        y = 0 + Math.sin(startangle * Math.PI / 180) * distance;
+
+        startangle = startangle + 60;
+
+        ctx.beginPath();
+        ctx.arc(x, y, circlesize, 0, 2 * Math.PI);
+        ctx.fillStyle = '#1F61BA';
+        ctx.fill();
+    }
+}
+
+ctx.beginPath();
+ctx.arc(0, 0, r, 0, 2 * Math.PI);
+ctx.fillStyle = '#EEE';
+ctx.fill();
+dcl();
+ctx.translate(-r, -r);
